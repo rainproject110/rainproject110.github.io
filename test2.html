@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAIN-INN Community</title>
+    <link rel="icon" href="assets/images/inn gold.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-gold: #D3AA3C;
+            --dark-bg: #1a1a2e;
+            --light-bg: #f8f9fa;
+            --text-dark: #2c3e50;
+            --text-light: #ffffff;
+            --accent-orange: #F47B56;
+            --gradient-start: #D3AA3C;
+            --gradient-end: #F4D03F;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            width: 100%;
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-gold);
+        }
+
+        .cta-btn {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            padding: 0.7rem 1.5rem;
+            border-radius: 25px;
+            color: white !important;
+            font-weight: 600;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a1a2e 0%, #2d3561 100%);
+            display: flex;
+            align-items: center;
+            padding: 100px 5% 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, rgba(211, 170, 60, 0.1) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -200px;
+            right: -200px;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-text h1 {
+            font-size: 3.5rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-text h1 span {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-text .subtitle {
+            color: var(--primary-gold);
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hero-text p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            color: white;
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 20px rgba(211, 170, 60, 0.3);
+            border: none;
+            cursor: pointer;
+        }
+
+        .hero-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(211, 170, 60, 0.5);
+        }
+
+        .hero-image {
+            position: relative;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero-image img {
+            width: 100%;
+            max-width: 500px;
+            filter: drop-shadow(0 20px 40px rgba(0,0,0,0.3));
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* About Section */
+        .about {
+            padding: 100px 5%;
+            background: var(--light-bg);
+        }
+
+        .about-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-image img {
+            width: 100%;
+            max-width: 500px;
+            animation: float 6s ease-in-out infinite;
+            animation-delay: 1s;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .section-subtitle {
+            color: var(--primary-gold);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        .title-line {
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            margin: 1rem 0 2rem;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 100px 5%;
+            background: white;
+        }
+
+        .services-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .service-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+
+        .service-header {
+            padding: 2rem 2rem 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .service-icon {
+            width: 64px;
+            height: 64px;
+            flex-shrink: 0;
+        }
+
+        .service-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .service-card h3 {
+            font-size: 1.3rem;
+            color: var(--text-dark);
+        }
+
+        .service-content {
+            padding: 0 2rem 2rem;
+        }
+
+        .service-content p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 1rem;
+        }
+
+        .service-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        /* FAQ Section */
+        .faq {
+            padding: 100px 5%;
+            background: var(--light-bg);
+        }
+
+        .faq-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            background: white;
+            margin-bottom: 1rem;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .faq-question {
+            padding: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            color: var(--text-dark);
+            transition: background 0.3s;
+        }
+
+        .faq-question:hover {
+            background: rgba(211, 170, 60, 0.05);
+        }
+
+        .faq-icon {
+            color: var(--primary-gold);
+            transition: transform 0.3s;
+            flex-shrink: 0;
+            margin-left: 1rem;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            padding: 0 1.5rem;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 0 1.5rem 1.5rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 5%;
+            background: linear-gradient(135deg, #1a1a2e 0%, #2d3561 100%);
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 5%;
+            background: white;
+        }
+
+        .contact-container {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .contact-image {
+            width: 100%;
+            max-width: 400px;
+            margin: 2rem auto;
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-bg);
+            color: white;
+            padding: 3rem 5% 1rem;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-gold);
+        }
+
+        .copyright {
+            background: var(--primary-gold);
+            padding: 1rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .copyright a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-content,
+            .about-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-header {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="assets/images/raininn gold text.png" alt="RAIN-INN Logo">
+            </a>
+            <ul class="nav-links">
+                <li><a href="#top">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="https://rainigeria.com/" class="cta-btn" target="_blank">Apply to RAIN</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="top">
+        <div class="hero-content">
+            <div class="hero-text">
+                <p class="subtitle">RAIN-INN COMMUNITY</p>
+                <h1>Research, Advance, Innovate & <span>Network</span></h1>
+                <p>Robotics and Artificial INtelligence INnovators Network is a dynamic community for AI and Robotics Enthusiast. We assist and support individuals in acquiring real-life project experience and exposure to the industry by offering learning resources, mentorship, virtual and physical workshops, and annual Hackathons focused on real-life problems.</p>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSd94XChPRDqdYdi2IjKuujPlc-H8nu_R_XesTpujvNpduWd4w/viewform?usp=header" class="hero-btn" target="_blank">Join the Community</a>
+            </div>
+            <div class="hero-image">
+                <img src="assets/images/Pair programming-cuate2.png" alt="Programming Illustration">
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about" id="about">
+        <div class="about-content">
+            <div class="about-image">
+                <img src="assets/images/Digital transformation-cuate.png" alt="Digital Transformation">
+            </div>
+            <div>
+                <p class="section-subtitle">Are you a Leader?</p>
+                <h2 class="section-title">Apply to become a <em>RAIN-INN Lead</em></h2>
+                <div class="title-line"></div>
+                <p>Are you an undergraduate in a tertiary institution with a strong enthusiasm for learning and contributing to the INnovators Network? <strong>Apply now to become a RAIN-INN Lead in your institution!</strong></p>
+                <a href="apply.html" class="hero-btn" target="_blank" style="margin-top: 2rem;">Apply Here</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="services-container">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <p class="section-subtitle">Our Services</p>
+                <h2 class="section-title">What <em>RAIN-INNetwork</em> provides</h2>
+                <div class="title-line" style="margin: 1rem auto 0;"></div>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <img src="assets/images/icons8-personal-64.png" alt="Projects Icon">
+                        </div>
+                        <h3>Practical Projects</h3>
+                    </div>
+                    <div class="service-content">
+                        <p>Engage in real-life projects to gain hands-on experience</p>
+                        <img src="assets/images/5.jpg" alt="Practical Projects" class="service-image">
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <img src="assets/images/icons8-online-conference-64.png" alt="Mentorship Icon">
+                        </div>
+                        <h3>Mentorship</h3>
+                    </div>
+                    <div class="service-content">
+                        <p>Receive personalized guidance from experienced mentors.</p>
+                        <img src="assets/images/3.jpg" alt="Mentorship" class="service-image">
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <img src="assets/images/icons8-learning-50.png" alt="Learning Icon">
+                        </div>
+                        <h3>Learning Resources</h3>
+                    </div>
+                    <div class="service-content">
+                        <p>Access curated materials for continuous education.</p>
+                        <img src="assets/images/1.jpg" alt="Learning Resources" class="service-image">
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <img src="assets/images/icons8-coding-50.png" alt="Hackathons Icon">
+                        </div>
+                        <h3>Workshops & Hackathons</h3>
+                    </div>
+                    <div class="service-content">
+                        <p>Participate in a mix of virtual and physical workshops. Join annual events focused on themed challenges and real-world problems.</p>
+                        <img src="assets/images/2.jpg" alt="Hackathons" class="service-image">
+                    </div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-header">
+                        <div class="service-icon">
+                            <img src="assets/images/icons8-networking-50.png" alt="Networking Icon">
+                        </div>
+                        <h3>Innovations & Networking</h3>
+                    </div>
+                    <div class="service-content">
+                        <p>Connect with like-minded enthusiasts globally to share goals and aspirations. Explore and apply creative solutions to advance the fields of AI and Robotics.</p>
+                        <img src="assets/images/network.jpg" alt="Networking" class="service-image">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq" id="faq">
+        <div class="faq-container">
+            <div style="text-align: center; margin-bottom: 3rem;">
+                <p class="section-subtitle">Got Questions?</p>
+                <h2 class="section-title">FAQs</h2>
+                <div class="title-line" style="margin: 1rem auto 0;"></div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Is there a fee to join the community?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>No, joining RAIN-INN is completely free of charge.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Can individuals who are not undergraduates join the community?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, the community is inclusive and open to everyone. Additionally, the graduate mentorship program will be launching soon.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Can non-undergraduates apply to become a RAIN-INN Lead?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>No, eligibility for the role of RAIN-INN Lead requires being an undergraduate currently enrolled in a Nigerian tertiary institution with at least one year remaining before graduation.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>As a non-Nigerian undergraduate, can I still join the community?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Absolutely, you are welcome to join the community. The application to become a RAIN-INN Lead in other African countries will be launching soon.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Why is a RAIN-INN Lead needed in our institution?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>An RAIN-INN Lead plays a crucial role in coordinating events and serving as an intermediary between community members in your institution and RAIN.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>I lack experience in AI or Robotics; can I still join the community?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Certainly, AI and Robotics have applications in various fields. You can learn how these technologies are applied in different domains.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>I'm not studying a STEM-related course; can I still join the community?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Absolutely, regardless of your course of study, you can join the community and explore the applications of AI or Robotics in your specific field.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>What is the duration of the program?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>The program is structured into three phases: the Learning Phase (6 months), the Hackathon (3 months for development), and the Selection and Presentation of the top 10 teams.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>When does the Hackathon begin?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>The Hackathon commences on October 1st. Further details regarding the Hackathon will be announced later.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Can I obtain certificates?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Yes, certificates can be earned by taking our exams and participating in other programs within the community.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>JOIN RAIN-INN</h2>
+        <p>Click the link below</p>
+        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeElFOZqgB4bcqRV82vzRfQzu8zJLlLKTJGdS9jdhLOWNvHqw/viewform?vc=0&c=0&w=1&flr=0&pli=1" class="hero-btn" target="_blank">Join Us</a>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="contact-container">
+            <p class="section-subtitle">Contact Us</p>
+            <h2 class="section-title">Get In Touch With Us <em>Now</em></h2>
+            <div class="title-line" style="margin: 1rem auto 2rem;"></div>
+            <img src="assets/images/undraw_Messages_re_qy9x.png" alt="Contact Us" class="contact-image">
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="social-links">
+            <a href="https://twitter.com/rain_innetwork?t=IJjNoIEVwQzNQdUd5hDxgw&s=09" target="_blank"><i class="fab fa-twitter"></i></a>
+            <a href="https://rainigeria.com/" target="_blank"><i class="fas fa-globe"></i></a>
+            <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+        </div>
+        <div class="copyright">
+            © 2025 Copyright: <a href="#">A Subsidiary of RAIN Nigeria</a>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Accordion
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                const isActive = item.classList.contains('active');
+                faqItems.forEach(i => i.classList.remove('active'));
+                if (!isActive) {
+                    item.classList.add('active');
+                }
+            });
+        });
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
