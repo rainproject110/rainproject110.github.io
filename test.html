@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>RAIN-INN Community</title>
+    <link rel="icon" href="assets/images/inn gold.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -49,17 +50,16 @@
             margin: 0 auto;
         }
 
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: var(--primary-gold);
-            text-decoration: none;
+        .logo img {
+            height: 50px;
+            width: auto;
         }
 
         .nav-links {
             display: flex;
             gap: 2rem;
             list-style: none;
+            align-items: center;
         }
 
         .nav-links a {
@@ -134,7 +134,7 @@
         }
 
         .hero-text p {
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(255, 255, 255, 0.9);
             font-size: 1.1rem;
             margin-bottom: 2rem;
             line-height: 1.8;
@@ -150,6 +150,8 @@
             font-weight: 600;
             transition: transform 0.3s, box-shadow 0.3s;
             box-shadow: 0 5px 20px rgba(211, 170, 60, 0.3);
+            border: none;
+            cursor: pointer;
         }
 
         .hero-btn:hover {
@@ -164,6 +166,7 @@
 
         .hero-image img {
             width: 100%;
+            max-width: 500px;
             filter: drop-shadow(0 20px 40px rgba(0,0,0,0.3));
         }
 
@@ -175,16 +178,27 @@
         /* About Section */
         .about {
             padding: 100px 5%;
-            background: var(--light-bg);
+            background: white;
         }
 
         .about-content {
             max-width: 1400px;
             margin: 0 auto;
+        }
+
+        .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 4rem;
             align-items: center;
+            margin-top: 3rem;
+        }
+
+        .about-image img {
+            width: 100%;
+            max-width: 500px;
+            animation: float 6s ease-in-out infinite;
+            animation-delay: 1s;
         }
 
         .section-title {
@@ -208,27 +222,75 @@
             margin: 1rem 0 2rem;
         }
 
-        /* Services Section */
-        .services {
+        /* Stakeholders Section */
+        .stakeholders {
             padding: 100px 5%;
-            background: white;
+            background: var(--light-bg);
         }
 
-        .services-container {
+        .stakeholders-container {
             max-width: 1400px;
             margin: 0 auto;
         }
 
-        .services-grid {
+        .stakeholders-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
             margin-top: 3rem;
         }
 
-        .service-card {
+        .stakeholder-card {
             background: white;
-            padding: 2.5rem;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .stakeholder-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .stakeholder-icon {
+            font-size: 3rem;
+            color: var(--primary-gold);
+            margin-bottom: 1rem;
+        }
+
+        .stakeholder-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-dark);
+        }
+
+        .stakeholder-card p {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        /* Activities Section */
+        .activities {
+            padding: 100px 5%;
+            background: white;
+        }
+
+        .activities-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .activity-card {
+            background: white;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             transition: transform 0.3s, box-shadow 0.3s;
@@ -236,7 +298,7 @@
             overflow: hidden;
         }
 
-        .service-card::before {
+        .activity-card::before {
             content: '';
             position: absolute;
             top: 0;
@@ -246,26 +308,76 @@
             background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
         }
 
-        .service-card:hover {
+        .activity-card:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 40px rgba(0,0,0,0.15);
         }
 
-        .service-icon {
-            font-size: 3rem;
+        .activity-image {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .activity-content {
+            padding: 2rem;
+        }
+
+        .activity-content h3 {
+            font-size: 1.5rem;
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .activity-content p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* Membership Section */
+        .membership {
+            padding: 100px 5%;
+            background: linear-gradient(135deg, #1a1a2e 0%, #2d3561 100%);
+            color: white;
+        }
+
+        .membership-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .membership-container h2 {
+            color: white;
+        }
+
+        .membership-container .title-line {
+            margin: 1rem auto 2rem;
+        }
+
+        .membership-benefits {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .benefit-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+
+        .benefit-item i {
+            font-size: 2.5rem;
             color: var(--primary-gold);
             margin-bottom: 1rem;
         }
 
-        .service-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--text-dark);
-        }
-
-        .service-card p {
-            color: #666;
-            line-height: 1.8;
+        .benefit-item h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
         }
 
         /* FAQ Section */
@@ -305,6 +417,8 @@
         .faq-icon {
             color: var(--primary-gold);
             transition: transform 0.3s;
+            flex-shrink: 0;
+            margin-left: 1rem;
         }
 
         .faq-item.active .faq-icon {
@@ -323,25 +437,6 @@
             padding: 0 1.5rem 1.5rem;
         }
 
-        /* CTA Section */
-        .cta-section {
-            padding: 100px 5%;
-            background: linear-gradient(135deg, #1a1a2e 0%, #2d3561 100%);
-            text-align: center;
-        }
-
-        .cta-section h2 {
-            color: white;
-            font-size: 2.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .cta-section p {
-            color: rgba(255, 255, 255, 0.8);
-            font-size: 1.2rem;
-            margin-bottom: 2rem;
-        }
-
         /* Contact Section */
         .contact {
             padding: 100px 5%;
@@ -358,21 +453,32 @@
             width: 100%;
             max-width: 400px;
             margin: 2rem auto;
+            display: block;
         }
 
         /* Footer */
         footer {
             background: var(--dark-bg);
             color: white;
-            padding: 3rem 5%;
+            padding: 3rem 5% 1rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
             text-align: center;
+        }
+
+        .footer-content p {
+            margin-bottom: 0.5rem;
+            opacity: 0.9;
         }
 
         .social-links {
             display: flex;
             justify-content: center;
             gap: 2rem;
-            margin-bottom: 2rem;
+            margin: 2rem 0;
         }
 
         .social-links a {
@@ -385,22 +491,42 @@
             color: var(--primary-gold);
         }
 
+        .copyright {
+            background: var(--primary-gold);
+            padding: 1rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .copyright a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .hero-content,
-            .about-content {
+            .about-grid {
                 grid-template-columns: 1fr;
+                gap: 2rem;
             }
 
             .hero-text h1 {
-                font-size: 2.5rem;
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
             }
 
             .nav-links {
                 display: none;
             }
 
-            .services-grid {
+            .activities-grid,
+            .stakeholders-grid,
+            .membership-benefits {
                 grid-template-columns: 1fr;
             }
         }
@@ -410,34 +536,32 @@
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <a href="#" class="logo">RAIN-INN</a>
+            <a href="index.html" class="logo">
+                <img src="assets/images/raininn gold text.png" alt="RAIN-INN Logo">
+            </a>
             <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
+                <li><a href="#top">Home</a></li>
                 <li><a href="#about">About</a></li>
-                <li><a href="#services">Services</a></li>
-                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#stakeholders">Community</a></li>
+                <li><a href="#activities">Activities</a></li>
+                <li><a href="#membership">Membership</a></li>
                 <li><a href="#contact">Contact</a></li>
-                <li><a href="https://rainigeria.com/" class="cta-btn">Apply to RAIN</a></li>
+                <li><a href="https://rainigeria.com/" class="cta-btn" target="_blank">Visit RAIN</a></li>
             </ul>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section class="hero" id="home">
+    <section class="hero" id="top">
         <div class="hero-content">
             <div class="hero-text">
                 <p class="subtitle">RAIN-INN COMMUNITY</p>
-                <h1>Research, Advance, Innovate & <span>Network</span></h1>
-                <p>Join a dynamic community of AI and Robotics enthusiasts. Gain real-life project experience, access mentorship, attend workshops, and participate in annual hackathons focused on solving real-world problems.</p>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLSd94XChPRDqdYdi2IjKuujPlc-H8nu_R_XesTpujvNpduWd4w/viewform?usp=header" class="hero-btn" target="_blank">Join the Community</a>
+                <h1>Robotics and Artificial Intelligence <span>INnovators Network</span></h1>
+                <p>A pan-African community connecting problem solvers, solution builders, funders, and stakeholders to develop AI and robotics solutions that improve lives, drive economic growth, and advance sustainable development across Africa and beyond.</p>
+                <a href="#membership" class="hero-btn">Join Our Community</a>
             </div>
             <div class="hero-image">
-                <svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="250" cy="250" r="200" fill="#D3AA3C" opacity="0.1"/>
-                    <circle cx="250" cy="250" r="150" fill="#F47B56" opacity="0.1"/>
-                    <circle cx="250" cy="250" r="100" fill="#D3AA3C" opacity="0.2"/>
-                    <text x="250" y="270" text-anchor="middle" fill="#D3AA3C" font-size="120" font-weight="bold">AI</text>
-                </svg>
+                <img src="assets/images/Pair programming-cuate2.png" alt="AI and Robotics Innovation">
             </div>
         </div>
     </section>
@@ -445,64 +569,158 @@
     <!-- About Section -->
     <section class="about" id="about">
         <div class="about-content">
-            <div>
-                <svg viewBox="0 0 500 400" xmlns="http://www.w3.org/2000/svg">
-                    <rect x="50" y="50" width="400" height="300" rx="20" fill="#D3AA3C" opacity="0.1"/>
-                    <circle cx="250" cy="150" r="50" fill="#F47B56" opacity="0.3"/>
-                    <rect x="100" y="250" width="300" height="10" rx="5" fill="#D3AA3C" opacity="0.5"/>
-                    <rect x="100" y="280" width="250" height="10" rx="5" fill="#F47B56" opacity="0.5"/>
-                    <rect x="100" y="310" width="200" height="10" rx="5" fill="#D3AA3C" opacity="0.5"/>
-                </svg>
+            <div style="text-align: center;">
+                <p class="section-subtitle">About RAIN-INN</p>
+                <h2 class="section-title">Building Solutions Through Community</h2>
+                <div class="title-line" style="margin: 1rem auto;"></div>
             </div>
-            <div>
-                <p class="section-subtitle">Leadership Opportunity</p>
-                <h2 class="section-title">Become a RAIN-INN Lead</h2>
-                <div class="title-line"></div>
-                <p>Are you an undergraduate with a passion for AI and Robotics? Apply to become a RAIN-INN Lead at your institution and help coordinate events while serving as a bridge between community members and RAIN.</p>
-                <a href="apply.html" class="hero-btn" target="_blank" style="margin-top: 2rem;">Apply Now</a>
+            <div class="about-grid">
+                <div class="about-image">
+                    <img src="assets/images/Digital transformation-cuate.png" alt="Digital Transformation">
+                </div>
+                <div>
+                    <p style="font-size: 1.1rem; line-height: 1.9; margin-bottom: 1.5rem;">RAIN-INN is convened by <strong>Dr. Olusola Ayoola</strong>, founder of Robotics and Artificial Intelligence Nigeria (RAIN), which operates training facilities, research centers, and product development programs.</p>
+                    
+                    <p style="font-size: 1.1rem; line-height: 1.9; margin-bottom: 1.5rem;">While RAIN offers paid professional training and certification, RAIN-INN was created to provide a <strong>community for those who wish to learn, collaborate, and build solutions</strong> but may not be able to access formal training programs.</p>
+                    
+                    <p style="font-size: 1.1rem; line-height: 1.9;">This community brings together Nigerians and Africans from universities, polytechnics, secondary schools, companies, government agencies, NGOs, and the diaspora—all interested in using AI and robotics to solve real-world problems.</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Services Section -->
-    <section class="services" id="services">
-        <div class="services-container">
-            <div style="text-align: center; margin-bottom: 3rem;">
-                <p class="section-subtitle">What We Offer</p>
-                <h2 class="section-title">Our Services</h2>
-                <div class="title-line" style="margin: 1rem auto 0;"></div>
+    <!-- Stakeholders Section -->
+    <section class="stakeholders" id="stakeholders">
+        <div class="stakeholders-container">
+            <div style="text-align: center;">
+                <p class="section-subtitle">Who We Bring Together</p>
+                <h2 class="section-title">Community Stakeholders</h2>
+                <div class="title-line" style="margin: 1rem auto;"></div>
             </div>
-            <div class="services-grid">
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-project-diagram"></i></div>
-                    <h3>Practical Projects</h3>
-                    <p>Engage in real-life projects to gain hands-on experience and build your portfolio.</p>
+            <div class="stakeholders-grid">
+                <div class="stakeholder-card">
+                    <div class="stakeholder-icon"><i class="fas fa-landmark"></i></div>
+                    <h3>Government</h3>
+                    <p>Identify problems requiring technological solutions</p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-chalkboard-teacher"></i></div>
-                    <h3>Mentorship</h3>
-                    <p>Receive personalized guidance from experienced mentors in AI and Robotics.</p>
+                <div class="stakeholder-card">
+                    <div class="stakeholder-icon"><i class="fas fa-building"></i></div>
+                    <h3>Private Sector</h3>
+                    <p>Organizations needing solutions to operational challenges</p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-book-open"></i></div>
-                    <h3>Learning Resources</h3>
-                    <p>Access curated materials for continuous education and skill development.</p>
+                <div class="stakeholder-card">
+                    <div class="stakeholder-icon"><i class="fas fa-hands-helping"></i></div>
+                    <h3>NGOs</h3>
+                    <p>Development partners seeking impact through technology</p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-laptop-code"></i></div>
-                    <h3>Workshops & Hackathons</h3>
-                    <p>Participate in virtual and physical workshops, plus annual themed hackathons.</p>
+                <div class="stakeholder-card">
+                    <div class="stakeholder-icon"><i class="fas fa-hand-holding-usd"></i></div>
+                    <h3>Funders</h3>
+                    <p>Investors and sponsors supporting solution development</p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-network-wired"></i></div>
-                    <h3>Networking</h3>
-                    <p>Connect with like-minded enthusiasts globally to share goals and collaborate.</p>
+                <div class="stakeholder-card">
+                    <div class="stakeholder-icon"><i class="fas fa-laptop-code"></i></div>
+                    <h3>Developers</h3>
+                    <p>Tech professionals building AI and robotics solutions</p>
                 </div>
-                <div class="service-card">
-                    <div class="service-icon"><i class="fas fa-lightbulb"></i></div>
-                    <h3>Innovation</h3>
-                    <p>Explore creative solutions to advance the fields of AI and Robotics.</p>
+                <div class="stakeholder-card">
+                    <div class="stakeholder-icon"><i class="fas fa-user-graduate"></i></div>
+                    <h3>Students & Researchers</h3>
+                    <p>Learners eager to develop skills and solve problems</p>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Activities Section -->
+    <section class="activities" id="activities">
+        <div class="activities-container">
+            <div style="text-align: center;">
+                <p class="section-subtitle">What We Do</p>
+                <h2 class="section-title">Community Activities</h2>
+                <div class="title-line" style="margin: 1rem auto;"></div>
+            </div>
+            <div class="activities-grid">
+                <div class="activity-card">
+                    <img src="assets/images/2.jpg" alt="Hackathons" class="activity-image">
+                    <div class="activity-content">
+                        <h3>Regular Hackathons</h3>
+                        <p>Organized events where community members collaborate to build solutions focused on real-world problems identified by stakeholders.</p>
+                    </div>
+                </div>
+
+                <div class="activity-card">
+                    <img src="assets/images/3.jpg" alt="Summits" class="activity-image">
+                    <div class="activity-content">
+                        <h3>Community Summits</h3>
+                        <p>Annual gatherings serving as a melting point for research agendas, achievements, networking, and setting quarterly or yearly focus areas.</p>
+                    </div>
+                </div>
+
+                <div class="activity-card">
+                    <img src="assets/images/5.jpg" alt="Clusters" class="activity-image">
+                    <div class="activity-content">
+                        <h3>Institutional Clusters</h3>
+                        <p>Silos organized by sector (universities, companies, healthcare, oil & gas, sports) where members discuss and identify solutions to sector-specific challenges.</p>
+                    </div>
+                </div>
+
+                <div class="activity-card">
+                    <img src="assets/images/1.jpg" alt="Training" class="activity-image">
+                    <div class="activity-content">
+                        <h3>Skill Development</h3>
+                        <p>When clusters identify skill gaps, members can access RAIN's professional training and certification programs to build required capabilities.</p>
+                    </div>
+                </div>
+
+                <div class="activity-card">
+                    <img src="assets/images/network.jpg" alt="Networking" class="activity-image">
+                    <div class="activity-content">
+                        <h3>Nationwide Network</h3>
+                        <p>Representatives across every institution of interest throughout Nigeria and Africa, ensuring local presence and engagement.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Membership Section -->
+    <section class="membership" id="membership">
+        <div class="membership-container">
+            <p class="section-subtitle" style="color: var(--primary-gold);">Join Us</p>
+            <h2 class="section-title">Become a RAIN-INN Member</h2>
+            <div class="title-line"></div>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem; opacity: 0.95;">RAIN-INN membership is open to individuals across all sectors, institutions, and demographics throughout Nigeria, Africa, and the diaspora.</p>
+            
+            <div class="membership-benefits">
+                <div class="benefit-item">
+                    <i class="fas fa-users"></i>
+                    <h3>Collaborative Network</h3>
+                    <p>Connect with like-minded innovators and problem solvers</p>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-lightbulb"></i>
+                    <h3>Real Solutions</h3>
+                    <p>Work on meaningful projects that impact communities</p>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Skill Building</h3>
+                    <p>Access to RAIN training when skill gaps are identified</p>
+                </div>
+                <div class="benefit-item">
+                    <i class="fas fa-trophy"></i>
+                    <h3>Recognition</h3>
+                    <p>Be part of Africa's leading AI and robotics initiative network</p>
+                </div>
+            </div>
+
+            <h3 style="font-size: 1.8rem; margin: 3rem 0 1.5rem;">Become a RAIN-INN Ambassador</h3>
+            <p style="font-size: 1.1rem; margin-bottom: 2rem; opacity: 0.95;">We seek ambassadors to represent RAIN-INN in their institutions, coordinate local activities, and serve as the bridge between community members and RAIN headquarters.</p>
+            
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-top: 2rem;">
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSd94XChPRDqdYdi2IjKuujPlc-H8nu_R_XesTpujvNpduWd4w/viewform?usp=header" class="hero-btn" target="_blank">Apply for Membership</a>
+                <a href="apply.html" class="hero-btn" target="_blank" style="background: linear-gradient(135deg, var(--accent-orange), #ff6b45);">Apply as Ambassador</a>
             </div>
         </div>
     </section>
@@ -518,71 +736,84 @@
 
             <div class="faq-item">
                 <div class="faq-question">
-                    <span>Is there a fee to join the community?</span>
+                    <span>What is the difference between RAIN and RAIN-INN?</span>
                     <i class="fas fa-chevron-down faq-icon"></i>
                 </div>
                 <div class="faq-answer">
-                    <p>No, joining RAIN-INN is completely free of charge.</p>
+                    <p>RAIN (Robotics and Artificial Intelligence Nigeria) is a training facility, research center, and product development organization founded by Dr. Olusola Ayoola that offers paid professional programs. RAIN-INN is a free community initiative under RAIN, created for those who want to learn, collaborate, and build solutions but may not be able to access formal training programs.</p>
                 </div>
             </div>
 
             <div class="faq-item">
                 <div class="faq-question">
-                    <span>Can non-undergraduates join the community?</span>
+                    <span>Who can join RAIN-INN?</span>
                     <i class="fas fa-chevron-down faq-icon"></i>
                 </div>
                 <div class="faq-answer">
-                    <p>Yes, the community is inclusive and open to everyone. Additionally, the graduate mentorship program will be launching soon.</p>
+                    <p>Anyone interested in AI and robotics solutions! Our community includes students from universities, polytechnics, and secondary schools; professionals from companies, government agencies, and NGOs; researchers; and diasporans across Nigeria, Africa, and worldwide.</p>
                 </div>
             </div>
 
             <div class="faq-item">
                 <div class="faq-question">
-                    <span>Can non-undergraduates apply to become a RAIN-INN Lead?</span>
+                    <span>Is there a membership fee?</span>
                     <i class="fas fa-chevron-down faq-icon"></i>
                 </div>
                 <div class="faq-answer">
-                    <p>No, eligibility for the role of RAIN-INN Lead requires being an undergraduate currently enrolled in a Nigerian tertiary institution with at least one year remaining before graduation.</p>
+                    <p>No, RAIN-INN membership is completely free. The community was specifically created to be accessible to everyone, regardless of their ability to pay for formal training programs.</p>
                 </div>
             </div>
 
             <div class="faq-item">
                 <div class="faq-question">
-                    <span>I lack experience in AI or Robotics; can I still join?</span>
+                    <span>What are institutional clusters?</span>
                     <i class="fas fa-chevron-down faq-icon"></i>
                 </div>
                 <div class="faq-answer">
-                    <p>Certainly! AI and Robotics have applications in various fields. You can learn how these technologies are applied in different domains.</p>
+                    <p>Clusters are sector-specific groups within RAIN-INN (e.g., healthcare, oil & gas, education, sports) where members discuss problems in their field and identify AI/robotics solutions. When skill gaps are identified, cluster members can access RAIN training to build the necessary capabilities.</p>
                 </div>
             </div>
 
             <div class="faq-item">
                 <div class="faq-question">
-                    <span>What is the duration of the program?</span>
+                    <span>How do hackathons and summits work?</span>
                     <i class="fas fa-chevron-down faq-icon"></i>
                 </div>
                 <div class="faq-answer">
-                    <p>The program is structured into three phases: the Learning Phase (6 months), the Hackathon (3 months for development), and the Selection and Presentation of the top 10 teams.</p>
+                    <p>Hackathons are regular collaborative events where community members work together to build solutions for real-world problems. Summits are annual gatherings where we showcase achievements, set research agendas, network, and establish focus areas for the coming quarter or year.</p>
                 </div>
             </div>
 
             <div class="faq-item">
                 <div class="faq-question">
-                    <span>Can I obtain certificates?</span>
+                    <span>What is a RAIN-INN Ambassador?</span>
                     <i class="fas fa-chevron-down faq-icon"></i>
                 </div>
                 <div class="faq-answer">
-                    <p>Yes, certificates can be earned by taking our exams and participating in other programs within the community.</p>
+                    <p>Ambassadors represent RAIN-INN in their institutions, coordinate local activities and events, and serve as the communication bridge between community members at their institution and RAIN headquarters. They help ensure the community thrives at the grassroots level.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Do I need technical experience to join?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>No! RAIN-INN welcomes people from all backgrounds and skill levels. Whether you're identifying problems that need solutions, funding development, or learning to build solutions yourself, there's a place for you in our community.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>How is RAIN-INN managed?</span>
+                    <i class="fas fa-chevron-down faq-icon"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>RAIN-INN is convened by Dr. Olusola Ayoola and managed by a dedicated community manager. Clusters are coordinated from RAIN headquarters, and ambassadors help manage activities at the institutional level across the country.</p>
                 </div>
             </div>
         </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="cta-section">
-        <h2>Ready to Join RAIN-INN?</h2>
-        <p>Start your journey in AI and Robotics today</p>
-        <a href="https://docs.google.com/forms/d/e/1FAIpQLSeElFOZqgB4bcqRV82vzRfQzu8zJLlLKTJGdS9jdhLOWNvHqw/viewform" class="hero-btn" target="_blank">Join Us Now</a>
     </section>
 
     <!-- Contact Section -->
@@ -591,24 +822,25 @@
             <p class="section-subtitle">Get In Touch</p>
             <h2 class="section-title">Contact Us</h2>
             <div class="title-line" style="margin: 1rem auto 2rem;"></div>
-            <svg class="contact-image" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
-                <rect x="50" y="50" width="300" height="200" rx="10" fill="#D3AA3C" opacity="0.1"/>
-                <circle cx="200" cy="120" r="40" fill="#F47B56" opacity="0.3"/>
-                <path d="M 100 180 Q 200 150 300 180" stroke="#D3AA3C" stroke-width="3" fill="none"/>
-                <circle cx="100" cy="180" r="5" fill="#D3AA3C"/>
-                <circle cx="300" cy="180" r="5" fill="#D3AA3C"/>
-            </svg>
+            <p style="font-size: 1.1rem; margin-bottom: 2rem;">Have questions about RAIN-INN membership, ambassadorship, or our activities? We'd love to hear from you.</p>
+            <img src="assets/images/undraw_Messages_re_qy9x.png" alt="Contact Us" class="contact-image">
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <div class="social-links">
-            <a href="https://twitter.com/rain_innetwork" target="_blank"><i class="fab fa-twitter"></i></a>
-            <a href="https://rainigeria.com/" target="_blank"><i class="fas fa-globe"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
+        <div class="footer-content">
+            <p style="font-size: 1.1rem; margin-bottom: 1rem;">Convened by Dr. Olusola Ayoola, Founder of RAIN</p>
+            <p>Robotics and Artificial Intelligence INnovators Network</p>
+            <div class="social-links">
+                <a href="https://twitter.com/rain_innetwork?t=IJjNoIEVwQzNQdUd5hDxgw&s=09" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://rainigeria.com/" target="_blank" aria-label="RAIN Website"><i class="fas fa-globe"></i></a>
+                <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
         </div>
-        <p>© 2025 RAIN-INN Community - A Subsidiary of RAIN Nigeria</p>
+        <div class="copyright">
+            © 2025 RAIN-INN Community - <a href="https://rainigeria.com/" target="_blank">A Subsidiary of RAIN Nigeria</a>
+        </div>
     </footer>
 
     <script>
