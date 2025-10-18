@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Event - RAIN-INN</title>
+    <link rel="icon" href="assets/images/inn gold.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-gold: #D3AA3C;
+            --dark-bg: #1a1a2e;
+            --light-bg: #f8f9fa;
+            --text-dark: #2c3e50;
+            --text-light: #ffffff;
+            --gradient-start: #D3AA3C;
+            --gradient-end: #F4D03F;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--light-bg);
+        }
+
+        nav {
+            position: fixed;
+            width: 100%;
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo img {
+            height: 50px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-gold);
+        }
+
+        .hero {
+            min-height: 40vh;
+            background: linear-gradient(135deg, #1a1a2e 0%, #2d3561 100%);
+            display: flex;
+            align-items: center;
+            padding: 120px 5% 50px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            color: var(--primary-gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .hero p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+        }
+
+        .main-content {
+            padding: 80px 5%;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .form-tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 1rem;
+            background: white;
+            border: 2px solid var(--primary-gold);
+            border-radius: 10px;
+            color: var(--primary-gold);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+        }
+
+        .tab-btn:hover,
+        .tab-btn.active {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            color: white;
+        }
+
+        .form-container {
+            background: white;
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.1);
+        }
+
+        .form-section {
+            display: none;
+        }
+
+        .form-section.active {
+            display: block;
+        }
+
+        .form-intro {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--light-bg);
+        }
+
+        .form-intro h2 {
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .form-intro p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .required {
+            color: #e74c3c;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-gold);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-group small {
+            display: block;
+            margin-top: 0.3rem;
+            color: #999;
+            font-size: 0.85rem;
+        }
+
+        .file-upload {
+            border: 2px dashed #e0e0e0;
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: border-color 0.3s, background 0.3s;
+        }
+
+        .file-upload:hover {
+            border-color: var(--primary-gold);
+            background: rgba(211, 170, 60, 0.05);
+        }
+
+        .file-upload i {
+            font-size: 2rem;
+            color: var(--primary-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .file-upload input[type="file"] {
+            display: none;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            color: white;
+            padding: 1rem 3rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 20px rgba(211, 170, 60, 0.3);
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(211, 170, 60, 0.5);
+        }
+
+        footer {
+            background: var(--dark-bg);
+            color: white;
+            padding: 2rem 5% 1rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .copyright {
+            background: var(--primary-gold);
+            padding: 1rem;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .copyright a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .nav-links {
+                display: none;
+            }
+            .form-container {
+                padding: 1.5rem;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            .form-tabs {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="assets/images/raininn gold text.png" alt="RAIN-INN Logo">
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="contribute.html">Contribute</a></li>
+                <li><a href="https://rainigeria.com/" target="_blank">Visit RAIN</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <p class="subtitle">Community Events</p>
+            <h1>Submit an <span>Event</span></h1>
+            <p>Share upcoming events or document completed activities</p>
+        </div>
+    </section>
+
+    <section class="main-content">
+        <div class="form-tabs">
+            <button class="tab-btn active" onclick="switchTab('upcoming')">
+                <i class="fas fa-calendar-plus"></i><br>Upcoming Event
+            </button>
+            <button class="tab-btn" onclick="switchTab('completed')">
+                <i class="fas fa-camera"></i><br>Completed Event Report
+            </button>
+        </div>
+
+        <div class="form-container">
+            <!-- Upcoming Event Form -->
+            <div id="upcoming" class="form-section active">
+                <div class="form-intro">
+                    <h2>Submit Upcoming Event</h2>
+                    <p>Ambassadors and cluster leads can submit upcoming events for the community calendar.</p>
+                </div>
+
+                <form action="#" method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label>Your Name <span class="required">*</span></label>
+                        <input type="text" name="organizer_name" required placeholder="Full Name">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email Address <span class="required">*</span></label>
+                        <input type="email" name="organizer_email" required placeholder="email@example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Your Role <span class="required">*</span></label>
+                        <select name="role" required>
+                            <option value="">Select your role</option>
+                            <option value="ambassador">Ambassador</option>
+                            <option value="cluster-lead">Cluster Lead</option>
+                            <option value="member">Community Member</option>
+                            <option value="partner">Partner Organization</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Institution/Organization</label>
+                        <input type="text" name="institution" placeholder="University, Company, or Organization name">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Event Title <span class="required">*</span></label>
+                        <input type="text" name="event_title" required placeholder="Name of the event">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Event Type <span class="required">*</span></label>
+                        <select name="event_type" required>
+                            <option value="">Select event type</option>
+                            <option value="hackathon">Hackathon</option>
+                            <option value="workshop">Workshop</option>
+                            <option value="webinar">Webinar</option>
+                            <option value="summit">Summit</option>
+                            <option value="cluster-meeting">Cluster Meeting</option>
+                            <option value="training">Training Session</option>
+                            <option value="networking">Networking Event</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Event Date <span class="required">*</span></label>
+                            <input type="date" name="event_date" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Event Time <span class="required">*</span></label>
+                            <input type="time" name="event_time" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Duration</label>
+                        <input type="text" name="duration" placeholder="e.g., 2 hours, 3 days">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Location/Venue <span class="required">*</span></label>
+                        <input type="text" name="location" required placeholder="Physical address or 'Virtual'">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Online Meeting Link</label>
+                        <input type="url" name="meeting_link" placeholder="Zoom, Google Meet, or other platform link">
+                        <small>For virtual or hybrid events</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Event Description <span class="required">*</span></label>
+                        <textarea name="description" required placeholder="Describe what the event is about, who should attend, and what they will gain..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Target Audience</label>
+                        <input type="text" name="audience" placeholder="e.g., Students, Researchers, Healthcare professionals">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Expected Number of Participants</label>
+                        <input type="number" name="expected_participants" placeholder="Approximate number">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Registration Required?</label>
+                        <select name="registration_required">
+                            <option value="no">No</option>
+                            <option value="yes">Yes</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Registration Link</label>
+                        <input type="url" name="registration_link" placeholder="Link to registration form">
+                        <small>If registration is required</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Event Flyer/Poster</label>
+                        <div class="file-upload" onclick="document.getElementById('event_flyer').click()">
+                            <i class="fas fa-image"></i>
+                            <p>Click to upload event flyer</p>
+                            <small>JPG, PNG (Max 5MB)</small>
+                            <input type="file" id="event_flyer" name="event_flyer" accept="image/*">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Additional Information</label>
+                        <textarea name="additional_info" placeholder="Any other important details..." rows="4"></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-calendar-check"></i> Submit Event
+                    </button>
+                </form>
+            </div>
+
+            <!-- Completed Event Form -->
+            <div id="completed" class="form-section">
+                <div class="form-intro">
+                    <h2>Submit Completed Event Report</h2>
+                    <p>Share photos, outcomes, and details of events that have already taken place.</p>
+                </div>
+
+                <form action="#" method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label>Your Name <span class="required">*</span></label>
+                        <input type="text" name="reporter_name" required placeholder="Full Name">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Email Address <span class="required">*</span></label>
+                        <input type="email" name="reporter_email" required placeholder="email@example.com">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Your Role <span class="required">*</span></label>
+                        <select name="role" required>
+                            <option value="">Select your role</option>
+                            <option value="ambassador">Ambassador</option>
+                            <option value="cluster-lead">Cluster Lead</option>
+                            <option value="organizer">Event Organizer</option>
+                            <option value="participant">Participant</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Event Title <span class="required">*</span></label>
+                        <input type="text" name="event_title" required placeholder="Name of the event">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Event Type <span class="required">*</span></label>
+                        <select name="event_type" required>
+                            <option value="">Select event type</option>
+                            <option value="hackathon">Hackathon</option>
+                            <option value="workshop">Workshop</option>
+                            <option value="webinar">Webinar</option>
+                            <option value="summit">Summit</option>
+                            <option value="cluster-meeting">Cluster Meeting</option>
+                            <option value="training">Training Session</option>
+                            <option value="networking">Networking Event</option>
+                            <option value="other">Other</option>
+                        </select>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Event Date <span class="required">*</span></label>
+                            <input type="date" name="event_date" required>
+                        </div>
+                        <div class="form-group">
+                            <label>Location <span class="required">*</span></label>
+                            <input type="text" name="location" required placeholder="Where it took place">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Number of Participants <span class="required">*</span></label>
+                        <input type="number" name="participants" required placeholder="How many people attended">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Event Summary <span class="required">*</span></label>
+                        <textarea name="summary" required placeholder="Provide a detailed summary of what happened at the event, key activities, discussions, and highlights..."></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Key Outcomes/Achievements</label>
+                        <textarea name="outcomes" placeholder="What were the main achievements, decisions made, or solutions developed?" rows="4"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Notable Speakers/Facilitators</label>
+                        <input type="text" name="speakers" placeholder="Names and titles of key speakers">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Event Photos <span class="required">*</span></label>
+                        <div class="file-upload" onclick="document.getElementById('event_photos').click()">
+                            <i class="fas fa-images"></i>
+                            <p>Click to upload photos</p>
+                            <small>Multiple photos allowed (Max 10 files, 5MB each)</small>
+                            <input type="file" id="event_photos" name="event_photos[]" multiple accept="image/*">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Video Link</label>
+                        <input type="url" name="video_link" placeholder="YouTube, Google Drive, or other video link">
+                        <small>If you have recorded video of the event</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Participant Feedback</label>
+                        <textarea name="feedback" placeholder="Share any feedback received from participants..." rows="4"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Social Media Links</label>
+                        <input type="url" name="social_media" placeholder="Twitter thread, Instagram post, etc.">
+                        <small>Links to social media coverage of the event</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label>Additional Notes</label>
+                        <textarea name="notes" placeholder="Any other information about the event..." rows="3"></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-upload"></i> Submit Event Report
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <p>Robotics and Artificial Intelligence INnovators Network</p>
+        </div>
+        <div class="copyright">
+            © 2025 RAIN-INN Community - <a href="https://rainigeria.com/" target="_blank">A Subsidiary of RAIN Nigeria</a>
+        </div>
+    </footer>
+
+    <script>
+        function switchTab(tab) {
+            // Update tab buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            event.target.closest('.tab-btn').classList.add('active');
+            
+            // Update form sections
+            document.querySelectorAll('.form-section').forEach(section => section.classList.remove('active'));
+            document.getElementById(tab).classList.add('active');
+        }
+    </script>
+</body>
+</html>
