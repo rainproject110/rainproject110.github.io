@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources - RAIN-INN Community</title>
+    <link rel="icon" href="assets/images/inn gold.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-gold: #D3AA3C;
+            --dark-bg: #1a1a2e;
+            --light-bg: #f8f9fa;
+            --text-dark: #2c3e50;
+            --text-light: #ffffff;
+            --accent-orange: #F47B56;
+            --gradient-start: #D3AA3C;
+            --gradient-end: #F4D03F;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
+
+        nav {
+            position: fixed;
+            width: 100%;
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-gold);
+        }
+
+        .hero {
+            min-height: 50vh;
+            background: linear-gradient(135deg, #1a1a2e 0%, #2d3561 100%);
+            display: flex;
+            align-items: center;
+            padding: 120px 5% 50px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            color: var(--primary-gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.2rem;
+        }
+
+        .main-content {
+            padding: 80px 5%;
+            background: white;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+            text-align: center;
+        }
+
+        .title-line {
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            margin: 1rem auto 3rem;
+        }
+
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 2rem;
+            margin-bottom: 5rem;
+        }
+
+        .resource-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-top: 4px solid var(--primary-gold);
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .resource-icon {
+            font-size: 2.5rem;
+            color: var(--primary-gold);
+            margin-bottom: 1rem;
+        }
+
+        .resource-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .resource-card p {
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .resource-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            color: white;
+            padding: 0.7rem 1.5rem;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: transform 0.3s;
+        }
+
+        .resource-btn:hover {
+            transform: translateX(5px);
+            color: white;
+        }
+
+        .cluster-section {
+            background: var(--light-bg);
+            padding: 80px 5%;
+            margin-top: 4rem;
+        }
+
+        .cluster-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .cluster-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.05);
+        }
+
+        .cluster-item i {
+            font-size: 2rem;
+            color: var(--primary-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .cluster-item h4 {
+            font-size: 1.1rem;
+            color: var(--text-dark);
+        }
+
+        footer {
+            background: var(--dark-bg);
+            color: white;
+            padding: 3rem 5% 1rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-gold);
+        }
+
+        .copyright {
+            background: var(--primary-gold);
+            padding: 1rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .copyright a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .nav-links {
+                display: none;
+            }
+            .resource-grid,
+            .cluster-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="assets/images/raininn gold text.png" alt="RAIN-INN Logo">
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="clusters.html">Clusters</a></li>
+                <li><a href="https://rainigeria.com/" target="_blank">Visit RAIN</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <p class="subtitle">Learning Hub</p>
+            <h1>Community <span>Resources</span></h1>
+            <p>Access learning materials, connect with clusters, and explore opportunities to build your skills in AI and robotics</p>
+        </div>
+    </section>
+
+    <section class="main-content">
+        <div class="container">
+            <h2 class="section-title">Available Resources</h2>
+            <div class="title-line"></div>
+
+            <div class="resource-grid">
+                <div class="resource-card">
+                    <div class="resource-icon"><i class="fas fa-book-reader"></i></div>
+                    <h3>Learning Materials</h3>
+                    <p>Curated resources to help you understand AI and robotics fundamentals and applications in various sectors.</p>
+                    <a href="#" class="resource-btn">Explore Materials <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-icon"><i class="fas fa-certificate"></i></div>
+                    <h3>RAIN Training Programs</h3>
+                    <p>When skill gaps are identified, access professional training and certification programs offered by RAIN.</p>
+                    <a href="https://rainigeria.com/" target="_blank" class="resource-btn">Learn More <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-icon"><i class="fas fa-video"></i></div>
+                    <h3>Webinars & Workshops</h3>
+                    <p>Join virtual sessions with industry experts, participate in hands-on workshops, and learn from experienced mentors.</p>
+                    <a href="events.html" class="resource-btn">View Schedule <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-icon"><i class="fas fa-project-diagram"></i></div>
+                    <h3>Project Templates</h3>
+                    <p>Access starter templates and frameworks for building AI and robotics solutions for real-world problems.</p>
+                    <a href="#" class="resource-btn">Browse Projects <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-icon"><i class="fas fa-users"></i></div>
+                    <h3>Mentorship Program</h3>
+                    <p>Connect with experienced professionals affiliated with RAIN for guidance on your learning journey.</p>
+                    <a href="#" class="resource-btn">Find a Mentor <i class="fas fa-arrow-right"></i></a>
+                </div>
+
+                <div class="resource-card">
+                    <div class="resource-icon"><i class="fas fa-comments"></i></div>
+                    <h3>Community Forums</h3>
+                    <p>Join discussions, ask questions, and collaborate with other community members on solving challenges.</p>
+                    <a href="#" class="resource-btn">Join Forums <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="cluster-section">
+        <div class="container">
+            <h2 class="section-title">Join a Cluster</h2>
+            <div class="title-line"></div>
+            <p style="text-align: center; font-size: 1.1rem; max-width: 700px; margin: 0 auto 3rem; color: #666;">
+                Connect with members in your sector to discuss problems, identify solutions, and collaborate on projects
+            </p>
+
+            <div class="cluster-list">
+                <div class="cluster-item">
+                    <i class="fas fa-hospital"></i>
+                    <h4>Healthcare</h4>
+                </div>
+                <div class="cluster-item">
+                    <i class="fas fa-industry"></i>
+                    <h4>Oil & Gas</h4>
+                </div>
+                <div class="cluster-item">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h4>Education</h4>
+                </div>
+                <div class="cluster-item">
+                    <i class="fas fa-building"></i>
+                    <h4>Banking & Finance</h4>
+                </div>
+                <div class="cluster-item">
+                    <i class="fas fa-tractor"></i>
+                    <h4>Agriculture</h4>
+                </div>
+                <div class="cluster-item">
+                    <i class="fas fa-futbol"></i>
+                    <h4>Sports</h4>
+                </div>
+                <div class="cluster-item">
+                    <i class="fas fa-landmark"></i>
+                    <h4>Government</h4>
+                </div>
+                <div class="cluster-item">
+                    <i class="fas fa-truck"></i>
+                    <h4>Logistics</h4>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <p style="font-size: 1.1rem; margin-bottom: 1rem;">Convened by Dr. Olusola Ayoola, Founder of RAIN</p>
+            <p>Robotics and Artificial Intelligence INnovators Network</p>
+            <div class="social-links">
+                <a href="https://twitter.com/rain_innetwork?t=IJjNoIEVwQzNQdUd5hDxgw&s=09" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://rainigeria.com/" target="_blank"><i class="fas fa-globe"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="copyright">
+            © 2025 RAIN-INN Community - <a href="https://rainigeria.com/" target="_blank">A Subsidiary of RAIN Nigeria</a>
+        </div>
+    </footer>
+</body>
+</html>
