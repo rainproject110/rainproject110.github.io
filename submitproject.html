@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submit Project - RAIN-INN</title>
+    <link rel="icon" href="assets/images/inn gold.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-gold: #D3AA3C;
+            --dark-bg: #1a1a2e;
+            --light-bg: #f8f9fa;
+            --text-dark: #2c3e50;
+            --text-light: #ffffff;
+            --gradient-start: #D3AA3C;
+            --gradient-end: #F4D03F;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--light-bg);
+        }
+
+        nav {
+            position: fixed;
+            width: 100%;
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo img {
+            height: 50px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-gold);
+        }
+
+        .hero {
+            min-height: 40vh;
+            background: linear-gradient(135deg, #1a1a2e 0%, #2d3561 100%);
+            display: flex;
+            align-items: center;
+            padding: 120px 5% 50px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            color: var(--primary-gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .hero p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+        }
+
+        .main-content {
+            padding: 80px 5%;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .form-container {
+            background: white;
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.1);
+        }
+
+        .form-intro {
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 2px solid var(--light-bg);
+        }
+
+        .form-intro h2 {
+            color: var(--text-dark);
+            margin-bottom: 1rem;
+        }
+
+        .form-intro p {
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: var(--text-dark);
+        }
+
+        .required {
+            color: #e74c3c;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-gold);
+        }
+
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-group small {
+            display: block;
+            margin-top: 0.3rem;
+            color: #999;
+            font-size: 0.85rem;
+        }
+
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .checkbox-item input[type="checkbox"] {
+            width: auto;
+        }
+
+        .file-upload {
+            border: 2px dashed #e0e0e0;
+            border-radius: 8px;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+            transition: border-color 0.3s, background 0.3s;
+        }
+
+        .file-upload:hover {
+            border-color: var(--primary-gold);
+            background: rgba(211, 170, 60, 0.05);
+        }
+
+        .file-upload i {
+            font-size: 2rem;
+            color: var(--primary-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .file-upload input[type="file"] {
+            display: none;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            color: white;
+            padding: 1rem 3rem;
+            border: none;
+            border-radius: 30px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 20px rgba(211, 170, 60, 0.3);
+            width: 100%;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(211, 170, 60, 0.5);
+        }
+
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 1rem;
+            margin-bottom: 2rem;
+            border-radius: 5px;
+        }
+
+        .info-box p {
+            margin: 0;
+            color: #1565c0;
+        }
+
+        footer {
+            background: var(--dark-bg);
+            color: white;
+            padding: 2rem 5% 1rem;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .copyright {
+            background: var(--primary-gold);
+            padding: 1rem;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .copyright a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .nav-links {
+                display: none;
+            }
+            .form-container {
+                padding: 1.5rem;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="assets/images/raininn gold text.png" alt="RAIN-INN Logo">
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="contribute.html">Contribute</a></li>
+                <li><a href="https://rainigeria.com/" target="_blank">Visit RAIN</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <p class="subtitle">Showcase Your Work</p>
+            <h1>Submit Your <span>Project</span></h1>
+            <p>Share your AI and robotics projects with the RAIN-INN community</p>
+        </div>
+    </section>
+
+    <section class="main-content">
+        <div class="form-container">
+            <div class="form-intro">
+                <h2>Project Submission</h2>
+                <p>Researchers, students, and developers can showcase completed projects or works-in-progress that use AI and robotics to solve real-world problems.</p>
+            </div>
+
+            <div class="info-box">
+                <p><i class="fas fa-info-circle"></i> <strong>Note:</strong> Your project will be reviewed before being published on our projects showcase page.</p>
+            </div>
+
+            <form action="#" method="POST" enctype="multipart/form-data">
+                <h3 style="margin-bottom: 1.5rem; color: var(--primary-gold);">Project Lead Information</h3>
+                
+                <div class="form-group">
+                    <label>Your Name <span class="required">*</span></label>
+                    <input type="text" name="lead_name" required placeholder="Full Name">
+                </div>
+
+                <div class="form-group">
+                    <label>Email Address <span class="required">*</span></label>
+                    <input type="email" name="lead_email" required placeholder="email@example.com">
+                </div>
+
+                <div class="form-group">
+                    <label>Your Role <span class="required">*</span></label>
+                    <select name="role" required>
+                        <option value="">Select your role</option>
+                        <option value="researcher">Researcher</option>
+                        <option value="student">Student</option>
+                        <option value="developer">Developer</option>
+                        <option value="faculty">Faculty/Lecturer</option>
+                        <option value="professional">Industry Professional</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Institution/Organization</label>
+                    <input type="text" name="institution" placeholder="University, Company, or Organization">
+                </div>
+
+                <div class="form-group">
+                    <label>Team Members</label>
+                    <textarea name="team_members" placeholder="List names and roles of all team members..." rows="4"></textarea>
+                    <small>Include names and roles of collaborators</small>
+                </div>
+
+                <hr style="margin: 2rem 0; border: none; border-top: 2px solid var(--light-bg);">
+
+                <h3 style="margin-bottom: 1.5rem; color: var(--primary-gold);">Project Details</h3>
+
+                <div class="form-group">
+                    <label>Project Title <span class="required">*</span></label>
+                    <input type="text" name="project_title" required placeholder="Name of your project">
+                </div>
+
+                <div class="form-group">
+                    <label>Project Sector/Category <span class="required">*</span></label>
+                    <select name="sector" required>
+                        <option value="">Select primary sector</option>
+                        <option value="healthcare">Healthcare</option>
+                        <option value="agriculture">Agriculture</option>
+                        <option value="education">Education</option>
+                        <option value="finance">Banking & Finance</option>
+                        <option value="oil-gas">Oil & Gas</option>
+                        <option value="logistics">Logistics & Transportation</option>
+                        <option value="government">Government & Public Sector</option>
+                        <option value="energy">Energy & Utilities</option>
+                        <option value="retail">Retail & E-Commerce</option>
+                        <option value="sports">Sports & Entertainment</option>
+                        <option value="manufacturing">Manufacturing</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label>Project Status <span class="required">*</span></label>
+                    <select name="status" required>
+                        <option value="">Select project status</option>
+                        <option value="completed">Completed</option>
+                        <option value="in-progress">In Progress</option>
+                        <option value="prototype">Prototype Stage</option>
+                        <option value="research">Research Phase</option>
+                    </select>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Start Date</label>
+                        <input type="date" name="start_date">
+                    </div>
+                    <div class="form-group">
+                        <label>Completion Date</label>
+                        <input type="date" name="completion_date">
+                        <small>Or expected completion date</small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Project Summary <span class="required">*</span></label>
+                    <textarea name="summary" required placeholder="Provide a brief overview of your project (200-300 words)..." rows="5"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Problem Statement <span class="required">*</span></label>
+                    <textarea name="problem" required placeholder="What problem does this project solve?" rows="4"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Solution/Approach <span class="required">*</span></label>
+                    <textarea name="solution" required placeholder="Describe your solution and how it works..." rows="5"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Technologies Used <span class="required">*</span></label>
+                    <input type="text" name="technologies" required placeholder="e.g., Python, TensorFlow, ROS, Computer Vision, NLP">
+                    <small>List the main technologies, tools, and frameworks used</small>
+                </div>
+
+                <div class="form-group">
+                    <label>Key Features</label>
+                    <textarea name="features" placeholder="List the main features and capabilities of your project..." rows="4"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Impact/Results</label>
+                    <textarea name="impact" placeholder="Describe the impact, results achieved, or expected outcomes..." rows="4"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Challenges Faced</label>
+                    <textarea name="challenges" placeholder="What were the main technical or other challenges?" rows="3"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label>Future Plans</label>
+                    <textarea name="future_plans" placeholder="What are the next steps for this project?" rows="3"></textarea>
+                </div>
+
+                <hr style="margin: 2rem 0; border: none; border-top: 2px solid var(--light-bg);">
+
+                <h3 style="margin-bottom: 1.5rem; color: var(--primary-gold);">Project Media & Links</h3>
+
+                <div class="form-group">
+                    <label>Project Images/Screenshots <span class="required">*</span></label>
+                    <div class="file-upload" onclick="document.getElementById('project_images').click()">
+                        <i class="fas fa-images"></i>
+                        <p>Click to upload images</p>
+                        <small>Upload photos, screenshots, or diagrams (Max 10 files, 5MB each)</small>
+                        <input type="file" id="project_images" name="project_images[]" multiple accept="image/*">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Project Demo Video</label>
+                    <input type="url" name="video_link" placeholder="YouTube, Vimeo, or Google Drive link">
+                    <small>Link to a demo or presentation video</small>
+                </div>
+
+                <div class="form-group">
+                    <label>GitHub Repository</label>
+                    <input type="url" name="github_link" placeholder="https://github.com/username/project">
+                </div>
+
+                <div class="form-group">
+                    <label>Project Website/Demo Link</label>
+                    <input type="url" name="website_link" placeholder="https://yourproject.com">
+                </div>
+
+                <div class="form-group">
+                    <label>Documentation/Paper</label>
+                    <div class="file-upload" onclick="document.getElementById('documentation').click()">
+                        <i class="fas fa-file-pdf"></i>
+                        <p>Click to upload documentation</p>
+                        <small>Research paper, technical documentation, or project report (PDF, Max 10MB)</small>
+                        <input type="file" id="documentation" name="documentation" accept=".pdf,.doc,.docx">
+                    </div>
+                </div>
+
+                <hr style="margin: 2rem 0; border: none; border-top: 2px solid var(--light-bg);">
+
+                <h3 style="margin-bottom: 1.5rem; color: var(--primary-gold);">Additional Information</h3>
+
+                <div class="form-group">
+                    <label>Funding/Support</label>
+                    <input type="text" name="funding" placeholder="Was this project funded or supported by any organization?">
+                </div>
+
+                <div class="form-group">
+                    <label>Awards/Recognition</label>
+                    <input type="text" name="awards" placeholder="Any awards, competitions won, or recognition received">
+                </div>
+
+                <div class="form-group">
+                    <label>Looking for Collaboration?</label>
+                    <div class="checkbox-group">
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="collab_dev" name="collaboration[]" value="developers">
+                            <label for="collab_dev" style="font-weight: normal; margin: 0;">Developers</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="collab_fund" name="collaboration[]" value="funding">
+                            <label for="collab_fund" style="font-weight: normal; margin: 0;">Funding</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="collab_test" name="collaboration[]" value="testing">
+                            <label for="collab_test" style="font-weight: normal; margin: 0;">Testing/Feedback</label>
+                        </div>
+                        <div class="checkbox-item">
+                            <input type="checkbox" id="collab_scale" name="collaboration[]" value="scaling">
+                            <label for="collab_scale" style="font-weight: normal; margin: 0;">Scaling/Deployment</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label>Additional Notes</label>
+                    <textarea name="notes" placeholder="Any other information you'd like to share..." rows="3"></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">
+                    <i class="fas fa-rocket"></i> Submit Project
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <p>Robotics and Artificial Intelligence INnovators Network</p>
+        </div>
+        <div class="copyright">
+            © 2025 RAIN-INN Community - <a href="https://rainigeria.com/" target="_blank">A Subsidiary of RAIN Nigeria</a>
+        </div>
+    </footer>
+</body>
+</html>
