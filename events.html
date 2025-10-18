@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Events - RAIN-INN Community</title>
+    <link rel="icon" href="assets/images/inn gold.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary-gold: #D3AA3C;
+            --dark-bg: #1a1a2e;
+            --light-bg: #f8f9fa;
+            --text-dark: #2c3e50;
+            --text-light: #ffffff;
+            --accent-orange: #F47B56;
+            --gradient-start: #D3AA3C;
+            --gradient-end: #F4D03F;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+        }
+
+        nav {
+            position: fixed;
+            width: 100%;
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo img {
+            height: 50px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-gold);
+        }
+
+        .hero {
+            min-height: 50vh;
+            background: linear-gradient(135deg, #1a1a2e 0%, #2d3561 100%);
+            display: flex;
+            align-items: center;
+            padding: 120px 5% 50px;
+            text-align: center;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: white;
+            margin-bottom: 1rem;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            color: var(--primary-gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.2rem;
+        }
+
+        .main-content {
+            padding: 80px 5%;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .section-subtitle {
+            color: var(--primary-gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        .title-line {
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            margin: 1rem 0 3rem;
+        }
+
+        .event-type-tabs {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            padding: 0.8rem 2rem;
+            background: white;
+            border: 2px solid var(--primary-gold);
+            border-radius: 25px;
+            color: var(--primary-gold);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .tab-btn:hover,
+        .tab-btn.active {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            color: white;
+            border-color: var(--gradient-end);
+        }
+
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .event-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .event-header {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            padding: 1.5rem;
+            color: white;
+            position: relative;
+        }
+
+        .event-type {
+            display: inline-block;
+            background: rgba(255,255,255,0.2);
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .event-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .event-body {
+            padding: 1.5rem;
+        }
+
+        .event-meta {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .meta-item i {
+            color: var(--primary-gold);
+        }
+
+        .event-description {
+            color: #666;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+        }
+
+        .event-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            color: white;
+            padding: 0.7rem 1.5rem;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: transform 0.3s;
+        }
+
+        .event-btn:hover {
+            transform: translateX(5px);
+            color: white;
+        }
+
+        .past-events {
+            background: var(--light-bg);
+            padding: 80px 5%;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            aspect-ratio: 16/10;
+            background: #ddd;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            padding: 1rem;
+            color: white;
+        }
+
+        footer {
+            background: var(--dark-bg);
+            color: white;
+            padding: 3rem 5% 1rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-gold);
+        }
+
+        .copyright {
+            background: var(--primary-gold);
+            padding: 1rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .copyright a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .nav-links {
+                display: none;
+            }
+            .events-grid,
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="assets/images/raininn gold text.png" alt="RAIN-INN Logo">
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="resources.html">Resources</a></li>
+                <li><a href="events.html">Events</a></li>
+                <li><a href="clusters.html">Clusters</a></li>
+                <li><a href="https://rainigeria.com/" target="_blank">Visit RAIN</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <div class="hero-content">
+            <p class="subtitle">Community Activities</p>
+            <h1>Events & <span>Hackathons</span></h1>
+            <p>Join us for hackathons, summits, workshops, and networking events that bring the RAIN-INN community together</p>
+        </div>
+    </section>
+
+    <section class="main-content">
+        <div class="container">
+            <p class="section-subtitle" style="text-align: center;">Upcoming</p>
+            <h2 class="section-title" style="text-align: center;">Featured Events</h2>
+            <div class="title-line" style="margin-left: auto; margin-right: auto;"></div>
+
+            <div class="event-type-tabs">
+                <button class="tab-btn active">All Events</button>
+                <button class="tab-btn">Hackathons</button>
+                <button class="tab-btn">Summits</button>
+                <button class="tab-btn">Workshops</button>
+                <button class="tab-btn">Webinars</button>
+            </div>
+
+            <div class="events-grid">
+                <div class="event-card">
+                    <div class="event-header">
+                        <span class="event-type">HACKATHON</span>
+                        <h3>RAIN-INN Annual Hackathon 2025</h3>
+                    </div>
+                    <div class="event-body">
+                        <div class="event-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-calendar"></i>
+                                <span>October 1-31, 2025</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Virtual & Physical</span>
+                            </div>
+                        </div>
+                        <p class="event-description">
+                            Join teams across Africa to build AI and robotics solutions for real-world problems. Three months of development, mentorship, and collaboration.
+                        </p>
+                        <a href="#" class="event-btn">Register Now <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="event-card">
+                    <div class="event-header">
+                        <span class="event-type">SUMMIT</span>
+                        <h3>Community Annual Summit</h3>
+                    </div>
+                    <div class="event-body">
+                        <div class="event-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-calendar"></i>
+                                <span>December 15, 2025</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Lagos, Nigeria</span>
+                            </div>
+                        </div>
+                        <p class="event-description">
+                            The melting point for all RAIN-INN achievements, research agendas, networking, and setting our focus for the coming year.
+                        </p>
+                        <a href="#" class="event-btn">Learn More <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="event-card">
+                    <div class="event-header">
+                        <span class="event-type">WORKSHOP</span>
+                        <h3>Healthcare AI Solutions Workshop</h3>
+                    </div>
+                    <div class="event-body">
+                        <div class="event-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-calendar"></i>
+                                <span>March 20, 2025</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Virtual</span>
+                            </div>
+                        </div>
+                        <p class="event-description">
+                            Hands-on workshop for healthcare cluster members to explore AI applications in diagnostics, patient care, and medical research.
+                        </p>
+                        <a href="#" class="event-btn">Register <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="event-card">
+                    <div class="event-header">
+                        <span class="event-type">WEBINAR</span>
+                        <h3>Introduction to Robotics</h3>
+                    </div>
+                    <div class="event-body">
+                        <div class="event-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-calendar"></i>
+                                <span>Every Saturday, 2PM WAT</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Online</span>
+                            </div>
+                        </div>
+                        <p class="event-description">
+                            Weekly webinar series covering robotics fundamentals, applications across sectors, and career pathways for beginners.
+                        </p>
+                        <a href="#" class="event-btn">Join Session <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="event-card">
+                    <div class="event-header">
+                        <span class="event-type">CLUSTER MEETING</span>
+                        <h3>Agriculture Cluster Discussion</h3>
+                    </div>
+                    <div class="event-body">
+                        <div class="event-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-calendar"></i>
+                                <span>April 5, 2025</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>Hybrid</span>
+                            </div>
+                        </div>
+                        <p class="event-description">
+                            Monthly cluster meeting to discuss AI/robotics solutions for agriculture challenges including crop monitoring and precision farming.
+                        </p>
+                        <a href="#" class="event-btn">Join Cluster <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <div class="event-card">
+                    <div class="event-header">
+                        <span class="event-type">TRAINING</span>
+                        <h3>Machine Learning Bootcamp</h3>
+                    </div>
+                    <div class="event-body">
+                        <div class="event-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-calendar"></i>
+                                <span>May 10-24, 2025</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span>RAIN Facility, Lagos</span>
+                            </div>
+                        </div>
+                        <p class="event-description">
+                            Intensive 2-week bootcamp by RAIN for community members who've identified skill gaps in their cluster projects.
+                        </p>
+                        <a href="https://rainigeria.com/" target="_blank" class="event-btn">Apply Now <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="past-events">
+        <div class="container">
+            <p class="section-subtitle" style="text-align: center;">Previous Events</p>
+            <h2 class="section-title" style="text-align: center;">Past Events Gallery</h2>
+            <div class="title-line" style="margin-left: auto; margin-right: auto;"></div>
+
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="assets/images/2.jpg" alt="Past Event">
+                    <div class="gallery-overlay">
+                        <h4>2024 Hackathon Finals</h4>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/images/3.jpg" alt="Past Event">
+                    <div class="gallery-overlay">
+                        <h4>Community Summit 2024</h4>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/images/5.jpg" alt="Past Event">
+                    <div class="gallery-overlay">
+                        <h4>AI Workshop Series</h4>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/images/1.jpg" alt="Past Event">
+                    <div class="gallery-overlay">
+                        <h4>Robotics Training Program</h4>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="assets/images/network.jpg" alt="Past Event">
+                    <div class="gallery-overlay">
+                        <h4>Networking Mixer</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <p style="font-size: 1.1rem; margin-bottom: 1rem;">Convened by Dr. Olusola Ayoola, Founder of RAIN</p>
+            <p>Robotics and Artificial Intelligence INnovators Network</p>
+            <div class="social-links">
+                <a href="https://twitter.com/rain_innetwork?t=IJjNoIEVwQzNQdUd5hDxgw&s=09" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="https://rainigeria.com/" target="_blank"><i class="fas fa-globe"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="copyright">
+            © 2025 RAIN-INN Community - <a href="https://rainigeria.com/" target="_blank">A Subsidiary of RAIN Nigeria</a>
+        </div>
+    </footer>
+
+    <script>
+        // Tab functionality
+        const tabs = document.querySelectorAll('.tab-btn');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                // Here you would filter events based on the selected tab
+            });
+        });
+    </script>
+</body>
+</html>
