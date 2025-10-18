@@ -1,207 +1,511 @@
 <!DOCTYPE html>
 <html lang="en">
-
-  <head> 
-
+<head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apply as RAIN-INN Ambassador</title>
     <link rel="icon" href="assets/images/inn gold.png" type="image/x-icon">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    <title>Application Details</title>
+        :root {
+            --primary-gold: #D3AA3C;
+            --dark-bg: #1a1a2e;
+            --light-bg: #f8f9fa;
+            --text-dark: #2c3e50;
+            --text-light: #ffffff;
+            --accent-orange: #F47B56;
+            --gradient-start: #D3AA3C;
+            --gradient-end: #F4D03F;
+        }
 
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            overflow-x: hidden;
+        }
 
+        /* Navigation */
+        nav {
+            position: fixed;
+            width: 100%;
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 5%;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
 
-    <!-- Additional CSS Files -->
-    <link rel="stylesheet" href="assets/css/fontawesome.css">
-    <link rel="stylesheet" href="assets/css/index.css">
-    <link rel="stylesheet" href="assets/css/animated.css">
-    <link rel="stylesheet" href="assets/css/owl.css">
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
 
-  </head>
+        .logo img {
+            height: 50px;
+            width: auto;
+        }
 
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: var(--text-light);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-gold);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 60vh;
+            background: linear-gradient(135deg, #1a1a2e 0%, #2d3561 100%);
+            display: flex;
+            align-items: center;
+            padding: 120px 5% 50px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(211, 170, 60, 0.15) 0%, transparent 70%);
+            border-radius: 50%;
+            top: -150px;
+            right: -150px;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            color: var(--text-light);
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero .subtitle {
+            color: var(--primary-gold);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Main Content Section */
+        .content-section {
+            padding: 80px 5%;
+            background: white;
+        }
+
+        .content-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            margin-bottom: 5rem;
+        }
+
+        .content-grid.reverse {
+            direction: rtl;
+        }
+
+        .content-grid.reverse > * {
+            direction: ltr;
+        }
+
+        .content-image {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--text-dark);
+        }
+
+        .section-subtitle {
+            color: var(--primary-gold);
+            font-size: 0.95rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+        }
+
+        .title-line {
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            margin: 0 0 2rem 0;
+        }
+
+        .content-text ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .content-text ul li {
+            padding: 0.8rem 0;
+            padding-left: 2rem;
+            position: relative;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+
+        .content-text ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary-gold);
+            font-weight: bold;
+            font-size: 1.3rem;
+        }
+
+        .apply-btn {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+            color: white;
+            padding: 1rem 2.5rem;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 20px rgba(211, 170, 60, 0.3);
+            margin-top: 1.5rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .apply-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(211, 170, 60, 0.5);
+            color: white;
+        }
+
+        /* Info Cards */
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .info-card {
+            background: var(--light-bg);
+            padding: 2.5rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        .info-card i {
+            font-size: 3rem;
+            color: var(--primary-gold);
+            margin-bottom: 1rem;
+        }
+
+        .info-card h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--text-dark);
+        }
+
+        .info-card p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 80px 5%;
+            background: linear-gradient(135deg, #1a1a2e 0%, #2d3561 100%);
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            color: white;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-bg);
+            color: white;
+            padding: 3rem 5% 1rem;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary-gold);
+        }
+
+        .copyright {
+            background: var(--primary-gold);
+            padding: 1rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        .copyright a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .content-grid.reverse {
+                direction: ltr;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .info-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
 <body>
-
-  <!-- ***** Preloader Start ***** -->
-  <!-- <div id="js-preloader" class="js-preloader">
-    <div class="preloader-inner">
-      <span class="dot"></span>
-      <div class="dots">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-    </div>
-  </div> -->
-  <!-- ***** Preloader End ***** -->
-
-
-  <!-- ***** Header Area Start ***** -->
-  <header class="header-area header-sticky wow slideInDown" data-wow-duration="0.75s" data-wow-delay="0s">
-    <div class="container">
-      <div class="row">
-        <div class="col-12">
-          <nav class="main-nav">
-            <!-- ***** Logo Start ***** -->
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
             <a href="index.html" class="logo">
-              <img src="assets/images/raininn gold text.png" alt="">
+                <img src="assets/images/raininn gold text.png" alt="RAIN-INN Logo">
             </a>
-            <!-- ***** Logo End ***** -->
-            <!-- ***** Menu Start ***** -->
-            <ul class="nav">
-              <li class="scroll-to-section"><a href="index.html">Home</a></li>
-              <!-- <li class="scroll-to-section"><a href="index.html">About</a></li> -->
-              <!-- <li class="scroll-to-section"><a href="index.html">Services</a></li> -->
-              <!-- <li class="scroll-to-section"><a href="#portfolio">Projects</a></li> -->
-              <!-- <li class="scroll-to-section"><a href="index.html">Blog</a></li> -->
-              <li</li> 
-            </ul>        
-            <a class='menu-trigger'>
-                <span>Menu</span>
-            </a>
-            <!-- ***** Menu End ***** -->
-          </nav>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#membership">Membership</a></li>
+                <li><a href="https://rainigeria.com/" target="_blank">Visit RAIN</a></li>
+            </ul>
         </div>
-      </div>
-    </div>
-  </header>
-  <!-- ***** Header Area End ***** -->
+    </nav>
 
-  <div class="main-banner wow fadeIn" id="top" data-wow-duration="1s" data-wow-delay="0.5s">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="row">
-            <div class="col-lg-6 align-self-center">
-              <div class="left-content show-up header-text wow fadeInLeft" data-wow-duration="1s" data-wow-delay="1s">
-                <div class="row">
-                  <div class="col-lg-12">
-                    <h6>APPLICATION TO RAIN-INN</h6>
-                    <h2>Eligibility Criteria</h2>
-                    <p>Are you an undergraduate in a tertiary institution with a strong enthusiasm for learning and contributing to the INnovators Network? Applications for the position of RAIN-INN Lead in your institution are now open. Don't miss the opportunity to apply before the deadline on March 15th, 2025. Ensure that you submit your application before the closing date. We welcome applications from passionate newcomers in tech and non-STEM students as well.</p>
-                    <p> 
-
-                      <ul>
-                        <li> - Enrollment in a tertiary institution is a prerequisite. </li><br>
-                        <li> - A minimum of one year until graduation is necessary. </li><br>
-                        <li> - Demonstrate sustained passion and commitment over the course of a year. </li><br>
-                        <li> - Showcase experience in team leadership and event planning. </li><br>
-                        <li> - Possess familiarity with technical tools. </li>
-
-                    <a target="_blank" href='https://forms.gle/MgLhaHqBSNytsWqe7'><button class="free-quote-button-join">Apply Here</button></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-              </ul>
-            <div class="col-lg-6">
-              <div class="right-image wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
-                <img src="assets/images/3 - Copy.jpg" alt="">
-              </div>
-            </div>
-          </div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <p class="subtitle">Join Our Leadership Team</p>
+            <h1>Become a <span>RAIN-INN Ambassador</span></h1>
+            <p>Represent RAIN-INN in your institution, coordinate local activities, and serve as the bridge between community members and RAIN headquarters.</p>
         </div>
-      </div>
-    </div>
-  </div>
+    </section>
 
-  <div id="about" class="about section">
-    <div class="container">
-      <div class="row">
-        <div class="col-lg-12">
-          <div class="row">
-            <div class="col-lg-6">
-              <div class="about-left-image  wow fadeInLeft" data-wow-duration="1s" data-wow-delay="0.5s">
-                <img src="assets/images/2 - Copy.jpg" alt="">
-              </div>
+    <!-- Main Content -->
+    <section class="content-section">
+        <div class="content-container">
+            <!-- What is an Ambassador -->
+            <div class="content-grid">
+                <div class="content-text">
+                    <p class="section-subtitle">The Role</p>
+                    <h2 class="section-title">What is a RAIN-INN Ambassador?</h2>
+                    <div class="title-line"></div>
+                    <p style="font-size: 1.1rem; line-height: 1.9; margin-bottom: 1.5rem;">
+                        RAIN-INN Ambassadors are key representatives who bring the community to life at the institutional level. As an ambassador, you will:
+                    </p>
+                    <ul>
+                        <li>Coordinate RAIN-INN activities and events at your institution</li>
+                        <li>Serve as the primary communication link between members and RAIN headquarters</li>
+                        <li>Help organize local cluster meetings focused on problem-solving</li>
+                        <li>Promote community initiatives and recruit new members</li>
+                        <li>Facilitate connections between stakeholders in your area</li>
+                    </ul>
+                </div>
+                <div>
+                    <img src="assets/images/3 - Copy.jpg" alt="Ambassador Role" class="content-image">
+                </div>
             </div>
-            <div class="col-lg-6 align-self-center  wow fadeInRight" data-wow-duration="1s" data-wow-delay="0.5s">
-              <div class="about-right-content">
-                <div class="section-heading">
-                  <h4>Benefits of being a Lead</h4>
-                  <div class="line-dec"></div>
-                </div>
-                <p>
-                  <ul>
-                   <li> - Access to specialized technical training sessions.</li> <br>
-                   <li> - Personal mentorship with experienced mentors affiliated with Robotics and Artificial Intelligence Nigeria. </li> <br>
-                   <li> - Opportunities for internships and collaboration through partnerships with RAIN.</li> <br>
-                   <li> - Exclusive networking opportunities with industry professionals.</li> <br>
-                   <li> - Exposure to cutting-edge technologies and trends in your field.</li> <br>
-                   <li> - Enhanced leadership and project management skills through hands-on experience.</li> <br>
-                   <li> - A chance to contribute actively to the INnovators Network community and shape its initiatives.</li><br>
-                   <li> - Recognition and visibility as a leader within your institution and the broader tech community.</li></p>
-                  <ul>
 
-                    <a target="_blank" href='https://forms.gle/MgLhaHqBSNytsWqe7'><button class="free-quote-button-join">Apply Here</button></a>
+            <!-- Eligibility Criteria -->
+            <div class="content-grid reverse">
+                <div>
+                    <img src="assets/images/2 - Copy.jpg" alt="Eligibility" class="content-image">
                 </div>
-                  </div>
-          </div>
+                <div class="content-text">
+                    <p class="section-subtitle">Requirements</p>
+                    <h2 class="section-title">Who Can Apply?</h2>
+                    <div class="title-line"></div>
+                    <p style="font-size: 1.1rem; line-height: 1.9; margin-bottom: 1.5rem;">
+                        We're looking for passionate individuals from institutions across Nigeria and Africa who are committed to building the RAIN-INN community. You should have:
+                    </p>
+                    <ul>
+                        <li>Active affiliation with a tertiary institution, company, government agency, or organization</li>
+                        <li>Strong passion for AI, robotics, and technology-driven solutions</li>
+                        <li>Demonstrated leadership experience in organizing events or managing teams</li>
+                        <li>Excellent communication and interpersonal skills</li>
+                        <li>Commitment to serving the community for at least one year</li>
+                        <li>Basic familiarity with digital communication tools</li>
+                    </ul>
+                    <a href="https://forms.gle/MgLhaHqBSNytsWqe7" class="apply-btn" target="_blank">Apply Now</a>
+                </div>
+            </div>
+
+            <!-- Benefits -->
+            <div style="text-align: center; margin: 5rem 0 3rem;">
+                <p class="section-subtitle">Why Become an Ambassador?</p>
+                <h2 class="section-title">Ambassador Benefits</h2>
+                <div class="title-line" style="margin: 1rem auto;"></div>
+            </div>
+
+            <div class="info-cards">
+                <div class="info-card">
+                    <i class="fas fa-graduation-cap"></i>
+                    <h3>Specialized Training</h3>
+                    <p>Access technical training sessions and skill development programs through RAIN</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-user-tie"></i>
+                    <h3>Personal Mentorship</h3>
+                    <p>Work directly with experienced mentors affiliated with RAIN and industry professionals</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-handshake"></i>
+                    <h3>Partnership Opportunities</h3>
+                    <p>Access internships and collaboration opportunities through RAIN's network</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-network-wired"></i>
+                    <h3>Exclusive Networking</h3>
+                    <p>Connect with industry leaders, government officials, and tech innovators</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-rocket"></i>
+                    <h3>Cutting-Edge Exposure</h3>
+                    <p>Stay ahead with latest technologies and trends in AI and robotics</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-trophy"></i>
+                    <h3>Leadership Development</h3>
+                    <p>Enhance your leadership and project management skills through hands-on experience</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-users"></i>
+                    <h3>Community Impact</h3>
+                    <p>Shape initiatives and contribute actively to the RAIN-INN community</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-award"></i>
+                    <h3>Recognition & Visibility</h3>
+                    <p>Gain recognition as a leader within your institution and the broader tech community</p>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </div>
+    </section>
 
-  <footer class="text-center text-white" style="background-color: #fff7f7;">
-    <!-- Grid container -->
-    <div class="container pt-4">
-      <!-- Section: Social media -->
-      <section class="mb-4">
-        <!-- Twitter -->
-        <a
-          class="btn btn-link btn-floating btn-lg text-dark m-1"
-          href="https://twitter.com/rain_innetwork?t=IJjNoIEVwQzNQdUd5hDxgw&s=09"
-          role="button"
-          data-mdb-ripple-color="dark"
-          ><i class="fab fa-twitter"></i
-        ></a>
-  
-        <!-- Mail -->
-        <a
-          class="btn btn-link btn-floating btn-lg text-dark m-1"
-          href="https://rainigeria.com/"
-          role="button"
-          data-mdb-ripple-color="dark"
-          >
-          <i class="fa-solid fa-globe"></i>
-          </a>
-  
-        <!-- Instagram -->
-        <a
-          class="btn btn-link btn-floating btn-lg text-dark m-1"
-          href="#!"
-          role="button"
-          data-mdb-ripple-color="dark"
-          ><i class="fab fa-instagram"></i
-        ></a>
-  
-      </section>
-    </div>
-  
-    <!-- Copyright -->
-    <div class="text-center fw-bold text-white p-1" style="background-color:#D3AA3C;">
-      © 2025 Copyright:
-      <a class="text-white fw-bold href="">A Subsidiary of RAIN Nigeria. Apply to become a RAIN certified developer at<a href="https://rainigeria.com/"> rainigeria.com.</a>
-    </div>
-    <!-- Copyright -->
-  </footer>
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2>Ready to Lead?</h2>
+        <p>Join us in building Africa's premier AI and robotics innovation network. Applications are reviewed on a rolling basis.</p>
+        <a href="https://forms.gle/MgLhaHqBSNytsWqe7" class="apply-btn" target="_blank">Submit Your Application</a>
+    </section>
 
-
-  <!-- Scripts -->
-  <script src="vendor/jquery/jquery.min.js"></script>
-  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/js/owl-carousel.js"></script>
-  <script src="assets/js/animation.js"></script>
-  <script src="assets/js/imagesloaded.js"></script>
-  <script src="assets/js/custom.js"></script>
-
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <p style="font-size: 1.1rem; margin-bottom: 1rem;">Convened by Dr. Olusola Ayoola, Founder of RAIN</p>
+            <p>Robotics and Artificial Intelligence INnovators Network</p>
+            <div class="social-links">
+                <a href="https://twitter.com/rain_innetwork?t=IJjNoIEVwQzNQdUd5hDxgw&s=09" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="https://rainigeria.com/" target="_blank" aria-label="RAIN Website"><i class="fas fa-globe"></i></a>
+                <a href="#" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+        <div class="copyright">
+            © 2025 RAIN-INN Community - <a href="https://rainigeria.com/" target="_blank">A Subsidiary of RAIN Nigeria</a>
+        </div>
+    </footer>
 </body>
 </html>
