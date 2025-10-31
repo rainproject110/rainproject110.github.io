@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meta AI Developer Academy - RAIN Nigeria</title>
+    <style>
+        @page {
+            size: A4;
+            margin: 0;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #1c1e21;
+            background: white;
+        }
+        
+        .page {
+            width: 210mm;
+            min-height: 297mm;
+            padding: 20mm;
+            margin: 0 auto;
+            background: white;
+            page-break-after: always;
+            position: relative;
+        }
+        
+        .cover {
+            background: linear-gradient(135deg, #0668E1 0%, #0a7cff 100%);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40mm 20mm;
+        }
+        
+        .logo-section {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+            margin-bottom: 40px;
+        }
+        
+        .logo-box {
+            background: white;
+            padding: 20px 40px;
+            border-radius: 10px;
+            font-weight: bold;
+            color: #0668E1;
+            font-size: 24px;
+        }
+        
+        .cover h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 700;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .cover .subtitle {
+            font-size: 24px;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+        
+        .cover .dates {
+            font-size: 20px;
+            background: rgba(255,255,255,0.2);
+            padding: 15px 30px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .cover .tagline {
+            font-size: 18px;
+            margin-top: 30px;
+            font-style: italic;
+            opacity: 0.9;
+        }
+        
+        h2 {
+            color: #0668E1;
+            font-size: 28px;
+            margin: 20px 0 15px 0;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #0668E1;
+        }
+        
+        h3 {
+            color: #0a7cff;
+            font-size: 20px;
+            margin: 15px 0 10px 0;
+        }
+        
+        h4 {
+            color: #333;
+            font-size: 16px;
+            margin: 10px 0 8px 0;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .info-box {
+            background: #f0f7ff;
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #0668E1;
+        }
+        
+        .info-box strong {
+            color: #0668E1;
+            display: block;
+            margin-bottom: 5px;
+        }
+        
+        .team-section {
+            margin: 20px 0;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            margin: 10px 0;
+        }
+        
+        .team-member {
+            background: #f8f9fa;
+            padding: 10px;
+            border-radius: 6px;
+            text-align: center;
+            font-size: 14px;
+        }
+        
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 14px;
+        }
+        
+        .schedule-table th {
+            background: #0668E1;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .schedule-table td {
+            padding: 10px 12px;
+            border: 1px solid #ddd;
+        }
+        
+        .schedule-table tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+        
+        .module-card {
+            background: white;
+            border: 2px solid #e3e8ef;
+            border-radius: 8px;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .module-header {
+            background: #0668E1;
+            color: white;
+            padding: 10px 15px;
+            border-radius: 6px 6px 0 0;
+            margin: -15px -15px 15px -15px;
+        }
+        
+        ul {
+            margin: 10px 0 10px 20px;
+        }
+        
+        li {
+            margin: 5px 0;
+        }
+        
+        .highlight-box {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .contact-section {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .social-handles {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 15px 0;
+        }
+        
+        .social-item {
+            background: white;
+            padding: 10px 20px;
+            border-radius: 6px;
+            border: 2px solid #0668E1;
+            font-weight: 500;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 2px solid #e3e8ef;
+            color: #666;
+            font-size: 12px;
+        }
+        
+        .print-button {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: #0668E1;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 16px;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+            z-index: 1000;
+        }
+        
+        .print-button:hover {
+            background: #0557c2;
+        }
+        
+        @media print {
+            .print-button {
+                display: none;
+            }
+            
+            .page {
+                margin: 0;
+                border: none;
+                box-shadow: none;
+            }
+        }
+        
+        .hackathon-box {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .hackathon-box h3 {
+            color: white;
+            font-size: 24px;
+        }
+    </style>
+</head>
+<body>
+    <button class="print-button" onclick="window.print()">🖨️ Print/Save as PDF</button>
+
+    <!-- COVER PAGE -->
+    <div class="page cover">
+        <div class="logo-section">
+            <div class="logo-box">META</div>
+            <div style="font-size: 40px;">×</div>
+            <div class="logo-box">RAIN</div>
+        </div>
+        
+        <h1>META AI DEVELOPER ACADEMY</h1>
+        <div class="subtitle">Building AI Agents & Agentic Systems for Business Intelligence</div>
+        
+        <div class="dates">
+            📅 November 1 - December 19, 2025
+        </div>
+        
+        <div class="tagline">
+            Empowering 300 Developers to Build the Future with Meta AI Tools
+        </div>
+        
+        <div style="margin-top: 40px; font-size: 14px; opacity: 0.8;">
+            Presented by: Robotics and Artificial Intelligence Nigeria (RAIN)<br>
+            In Partnership with: Meta Platforms
+        </div>
+    </div>
+
+    <!-- PAGE 2: PROGRAM OVERVIEW -->
+    <div class="page">
+        <h2>🎯 Program Overview</h2>
+        
+        <p style="font-size: 18px; margin: 20px 0; line-height: 1.8;">
+            The Meta AI Developer Academy is a comprehensive 7-week intensive training program designed to equip university undergraduates and early-stage developers with cutting-edge AI development skills using Meta's world-class AI tools and platforms.
+        </p>
+        
+        <div class="info-grid">
+            <div class="info-box">
+                <strong>📊 Program Duration</strong>
+                7 Weeks (Nov 1 - Dec 19, 2025)
+            </div>
+            <div class="info-box">
+                <strong>👥 Participants</strong>
+                300 Developers
+            </div>
+            <div class="info-box">
+                <strong>⏰ Total Hours</strong>
+                120+ Contact Hours
+            </div>
+            <div class="info-box">
+                <strong>🏆 Certification</strong>
+                RAIN-Meta AI Developer Certificate
+            </div>
+        </div>
+
+        <h3>🎓 What You'll Build</h3>
+        <ul style="font-size: 16px; line-height: 2;">
+            <li><strong>AI Agents</strong> for customer service and business automation</li>
+            <li><strong>Data Analytics Systems</strong> for business foresights and decision-making</li>
+            <li><strong>Intelligent Applications</strong> using Llama LLMs and PyTorch</li>
+            <li><strong>Computer Vision Solutions</strong> with Meta's SAM and Detectron2</li>
+            <li><strong>Social Impact Projects</strong> aligned with Meta's Data for Good initiative</li>
+        </ul>
+
+        <div class="hackathon-box">
+            <h3>🏆 GRAND HACKATHON CHALLENGE</h3>
+            <p style="font-size: 18px; margin: 10px 0;">
+                Launch: Day 1 | Semi-Finals: Judge Review | Finals: Social Media Engagement<br>
+                <strong>Build innovative AI solutions that make a difference!</strong>
+            </p>
+        </div>
+
+        <h3>🛠️ Meta AI Tools & Technologies Covered</h3>
+        <div class="info-grid">
+            <div class="info-box">
+                <strong>Llama Models</strong>
+                Llama 3, 3.1, 3.2, 3.3 - Advanced LLMs
+            </div>
+            <div class="info-box">
+                <strong>PyTorch</strong>
+                Meta's Deep Learning Framework
+            </div>
+            <div class="info-box">
+                <strong>Segment Anything (SAM)</strong>
+                Computer Vision & Image Segmentation
+            </div>
+            <div class="info-box">
+                <strong>Detectron2</strong>
+                Object Detection Platform
+            </div>
+            <div class="info-box">
+                <strong>Meta AI APIs</strong>
+                Llama API & WhatsApp Business API
+            </div>
+            <div class="info-box">
+                <strong>Data for Good Tools</strong>
+                Social Impact Data Analytics
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 3: SCHEDULE & STRUCTURE -->
+    <div class="page">
+        <h2>📅 Program Schedule</h2>
+        
+        <h3>Training Sessions</h3>
+        <table class="schedule-table">
+            <thead>
+                <tr>
+                    <th>Day</th>
+                    <th>Time</th>
+                    <th>Duration</th>
+                    <th>Focus</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Friday</strong></td>
+                    <td>5:00 PM - 6:00 PM</td>
+                    <td>1 hour</td>
+                    <td>Core Training & Workshops</td>
+                </tr>
+                <tr>
+                    <td><strong>Saturday</strong></td>
+                    <td>10:00 AM - 12:00 PM</td>
+                    <td>2 hours</td>
+                    <td>Intensive Hands-on Sessions</td>
+                </tr>
+                <tr>
+                    <td><strong>Sunday</strong></td>
+                    <td>8:00 PM - 10:00 PM</td>
+                    <td>2 hours</td>
+                    <td>Project Work & Mentorship</td>
+                </tr>
+                <tr>
+                    <td><strong>Mon-Thurs</strong></td>
+                    <td>RAIN Schedule</td>
+                    <td>Varies</td>
+                    <td>Regular RAIN Programs</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="highlight-box">
+            <strong>📍 Special Event: In-Person Gathering</strong><br>
+            Location: RAIN Headquarters<br>
+            Panel Discussion: Meta AI Tools & Real-World Applications<br>
+            All 300 participants invited for networking and knowledge sharing
+        </div>
+
+        <h3>Virtual Platform</h3>
+        <div class="info-box" style="margin: 15px 0;">
+            <strong>Platform Recommendation:</strong> Zoom<br>
+            <strong>Capacity:</strong> Supports up to 1,000 participants (Webinar plan recommended)<br>
+            <strong>Features:</strong> Breakout rooms for group activities, recording capabilities, screen sharing, chat<br>
+            <strong>Attendance Tracking:</strong> Built-in Zoom attendance reports + participant registration tracking<br>
+            <strong>Alternative:</strong> Google Meet (Enterprise plan for 500+ participants)
+        </div>
+
+        <h3>📝 Attendance System</h3>
+        <p><strong>How to Track Attendance in Zoom:</strong></p>
+        <ol>
+            <li>Enable registration for all sessions</li>
+            <li>Use Zoom's built-in attendance tracking (Host downloads report post-session)</li>
+            <li>Additional check: Live polling during sessions for verification</li>
+            <li>Automated attendance reports sent to admin team weekly</li>
+            <li>Integration with Google Sheets for real-time tracking dashboard</li>
+        </ol>
+
+        <h3>Assessment & Examinations</h3>
+        <div class="info-box" style="margin: 15px 0;">
+            <strong>Recommended Platform:</strong> Google Forms + Kahoot! + Custom Portal<br>
+            <strong>Features:</strong><br>
+            • Google Forms: For detailed assessments with auto-grading<br>
+            • Kahoot!: For interactive quizzes and engagement<br>
+            • Custom Portal: Using Gradio/Streamlit for coding assessments<br>
+            • Instant score feedback and leaderboard<br>
+            • Proctoring: Zoom monitoring during major exams
+        </div>
+    </div>
+
+    <!-- PAGE 4: CURRICULUM -->
+    <div class="page">
+        <h2>📚 Curriculum Structure (7 Weeks)</h2>
+
+        <div class="module-card">
+            <div class="module-header">
+                <strong>Week 1-2: Python Programming Foundations</strong><br>
+                Tutor: Mr. Victor Olufemi | 20 Hours
+            </div>
+            <ul>
+                <li>Python essentials & syntax</li>
+                <li>NumPy, Pandas for data manipulation</li>
+                <li>Environment setup for Meta AI tools</li>
+                <li>Data preprocessing pipelines</li>
+            </ul>
+        </div>
+
+        <div class="module-card">
+            <div class="module-header">
+                <strong>Week 3-4: AI Fundamentals & Machine Learning</strong><br>
+                Tutor: Mrs. Aminat Ayoola | 20 Hours
+            </div>
+            <ul>
+                <li>Introduction to AI, ML, Deep Learning</li>
+                <li>Meta's Responsible AI principles</li>
+                <li>ML algorithms & model evaluation</li>
+                <li>Introduction to PyTorch</li>
+            </ul>
+        </div>
+
+        <div class="module-card">
+            <div class="module-header">
+                <strong>Week 5-6: Deep Learning with PyTorch</strong><br>
+                Tutor: Mr. Israel Odeajo | 20 Hours
+            </div>
+            <ul>
+                <li>Neural networks architecture</li>
+                <li>CNNs and RNNs implementation</li>
+                <li>Advanced PyTorch techniques</li>
+                <li>Model optimization & deployment</li>
+            </ul>
+        </div>
+
+        <div class="module-card">
+            <div class="module-header">
+                <strong>Week 7-8: Llama Models & LLM Development</strong><br>
+                Tutor: Mr. Victor Olufemi | 20 Hours
+            </div>
+            <ul>
+                <li>Large Language Models fundamentals</li>
+                <li>Llama 3.x family overview</li>
+                <li>Prompt engineering & API integration</li>
+                <li>Building AI chatbots & assistants</li>
+            </ul>
+        </div>
+
+        <div class="module-card">
+            <div class="module-header">
+                <strong>Week 9-10: Data Science for Social Impact</strong><br>
+                Tutor: Mrs. Aminat Ayoola | 20 Hours
+            </div>
+            <ul>
+                <li>Meta's Data for Good initiative</li>
+                <li>Exploratory data analysis</li>
+                <li>Statistical methods & visualization</li>
+                <li>Social impact data applications</li>
+            </ul>
+        </div>
+
+        <div class="module-card">
+            <div class="module-header">
+                <strong>Week 11: Computer Vision & Specialized Tools</strong><br>
+                Tutor: Mr. Israel Odeajo | 10 Hours
+            </div>
+            <ul>
+                <li>Segment Anything Model (SAM)</li>
+                <li>Detectron2 for object detection</li>
+                <li>Computer vision applications</li>
+            </ul>
+        </div>
+
+        <div class="module-card">
+            <div class="module-header">
+                <strong>Week 12-14: Capstone Project</strong><br>
+                All Tutors | 30 Hours
+            </div>
+            <ul>
+                <li>Real-world AI application development</li>
+                <li>Integration of multiple Meta AI tools</li>
+                <li>Social impact focus projects</li>
+                <li>Final presentations & deployment</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- PAGE 5: TEAM & STRUCTURE -->
+    <div class="page">
+        <h2>👨‍🏫 Our Expert Team</h2>
+
+        <div class="team-section">
+            <h3>📖 Lead Instructors</h3>
+            <div class="team-grid">
+                <div class="team-member">
+                    <strong>Mrs. Aminat Ayoola</strong><br>
+                    AI & ML Specialist
+                </div>
+                <div class="team-member">
+                    <strong>Mr. Israel Odeajo</strong><br>
+                    Deep Learning Expert
+                </div>
+                <div class="team-member">
+                    <strong>Mr. Victor Olufemi</strong><br>
+                    LLM & PyTorch Instructor
+                </div>
+            </div>
+        </div>
+
+        <div class="team-section">
+            <h3>⚙️ Program Administration</h3>
+            <div class="team-grid">
+                <div class="team-member">
+                    <strong>Olusola Ayoola</strong><br>
+                    Program Director
+                </div>
+                <div class="team-member">
+                    <strong>Nurudeen Adesokan</strong><br>
+                    Operations Manager
+                </div>
+                <div class="team-member">
+                    <strong>James Abiasama</strong><br>
+                    Technical Coordinator
+                </div>
+            </div>
+        </div>
+
+        <div class="team-section">
+            <h3>👥 Participant Welfare Coordinators</h3>
+            <p style="margin: 10px 0;">300 participants divided into 11 groups (~27 per group)</p>
+            <div class="team-grid">
+                <div class="team-member">Olusola</div>
+                <div class="team-member">Adesokan</div>
+                <div class="team-member">Halim</div>
+                <div class="team-member">Ayomide</div>
+                <div class="team-member">Bamidele</div>
+                <div class="team-member">Joseph</div>
+                <div class="team-member">Tomiwa</div>
+                <div class="team-member">Qoyyum</div>
+                <div class="team-member">Triplea</div>
+                <div class="team-member">James</div>
+                <div class="team-member">Demilade</div>
+            </div>
+            <p style="margin: 10px 0; font-size: 14px; font-style: italic;">
+                Each coordinator monitors group welfare, tracks progress, and provides personalized support
+            </p>
+        </div>
+
+        <h2>🏆 Hackathon Structure</h2>
+        
+        <div class="info-grid">
+            <div class="info-box">
+                <strong>Launch</strong>
+                Day 1: November 1, 2025<br>
+                Challenge announcement + orientation
+            </div>
+            <div class="info-box">
+                <strong>Development Phase</strong>
+                7 weeks of guided building<br>
+                Weekly checkpoint reviews
+            </div>
+            <div class="info-box">
+                <strong>Semi-Finals</strong>
+                Week 12: Judge Review<br>
+                Technical evaluation & scoring
+            </div>
+            <div class="info-box">
+                <strong>Grand Finals</strong>
+                Week 14: Social Media Vote<br>
+                Public engagement determines winner
+            </div>
+        </div>
+
+        <h3>🎁 Prizes & Recognition</h3>
+        <ul>
+            <li><strong>1st Place:</strong> Cash prize + Premium mentorship + Feature on RAIN/Meta platforms</li>
+            <li><strong>2nd Place:</strong> Cash prize + Advanced training resources</li>
+            <li><strong>3rd Place:</strong> Cash prize + Professional development package</li>
+            <li><strong>All Finalists:</strong> Certificate of Excellence + LinkedIn recognition</li>
+            <li><strong>Best Social Impact Project:</strong> Special Data for Good Award</li>
+        </ul>
+    </div>
+
+    <!-- PAGE 6: COMMUNICATIONS & PLATFORMS -->
+    <div class="page">
+        <h2>📱 Communications & Platforms</h2>
+
+        <h3>💌 Communication Channels</h3>
+        <div class="info-grid">
+            <div class="info-box">
+                <strong>Email Platform</strong>
+                Brevo (formerly Sendinblue)<br>
+                • Bulk email campaigns<br>
+                • Automated reminders<br>
+                • Newsletter updates
+            </div>
+            <div class="info-box">
+                <strong>SMS Platform</strong>
+                Brevo SMS / Termii<br>
+                • Class reminders<br>
+                • Important announcements<br>
+                • Attendance confirmations
+            </div>
+            <div class="info-box">
+                <strong>Learning Management</strong>
+                Google Classroom<br>
+                • Course materials<br>
+                • Assignment submissions<br>
+                • Resource sharing
+            </div>
+            <div class="info-box">
+                <strong>Collaboration</strong>
+                Slack / Discord Channel<br>
+                • Real-time discussions<br>
+                • Peer-to-peer support<br>
+                • Tutor office hours
+            </div>
+        </div>
+
+        <h3>☁️ Cloud Storage & Resources</h3>
+        <div class="info-box" style="margin: 15px 0;">
+            <strong>Google Drive Structure:</strong><br>
+            • Course Materials Folder (organized by week)<br>
+            • Recordings Archive (all session recordings)<br>
+            • Project Templates & Resources<br>
+            • Shared Datasets for Data for Good projects<br>
+            • Hackathon Submission Portal
+        </div>
+
+        <h2>📢 Social Media & Marketing</h2>
+
+        <h3>Official Handles</h3>
+        <div class="social-handles">
+            <div class="social-item">Twitter/X: @MetaAIDevNG</div>
+            <div class="social-item">Instagram: @metaaidev_ng</div>
+            <div class="social-item">LinkedIn: Meta AI Developer Academy Nigeria</div>
+            <div class="social-item">Facebook: @MetaAIDeveloperAcademyNigeria</div>
+            <div class="social-item">YouTube: Meta AI Dev Academy RAIN</div>
+        </div>
+
+        <h3>Campaign Hashtags</h3>
+        <div class="social-handles">
+            <div class="social-item">#MetaAIDevNG</div>
+            <div class="social-item">#BuildWithMeta</div>
+            <div class="social-item">#LlamaNigeria</div>
+            <div class="social-item">#AIForGoodNG</div>
+            <div class="social-item">#RAINxMeta</div>
+            <div class="social-item">#MetaAIAcademy2025</div>
+            <div class="social-item">#NigeriaAIDevelopers</div>
+        </div>
+
+        <h3>👤 Social Media Management</h3>
+        <div class="info-box" style="margin: 15px 0;">
+            <strong>Social Media Manager:</strong> [To be assigned]<br>
+            <strong>Responsibilities:</strong><br>
+            • Daily content posting & engagement<br>
+            • Live-tweeting during sessions<br>
+            • Participant success stories<br>
+            • Hackathon updates & voting campaigns<br>
+            • Photography & videography coordination
+        </div>
+
+        <h3>📸 Media & Documentation</h3>
+        <ul>
+            <li><strong>Photography:</strong> Professional photos of in-person gathering & key moments</li>
+            <li><strong>Video Recording:</strong> All Zoom sessions recorded and archived</li>
+            <li><strong>Testimonials:</strong> Video interviews with participants</li>
+            <li><strong>Highlight Reels:</strong> Weekly compilation videos for social media</li>
+            <li><strong>Live Streaming:</strong> Special events broadcast on YouTube Live</li>
+        </ul>
+
+        <h3>🎁 Souvenirs & Merchandise</h3>
+        <div class="info-grid">
+            <div class="info-box">
+                <strong>Participant Kit</strong>
+                • Branded notebook<br>
+                • Meta x RAIN T-shirt<br>
+                • Sticker pack<br>
+                • Certificate of Completion
+            </div>
+            <div class="info-box">
+                <strong>Digital Assets</strong>
+                • LinkedIn certificate badge<br>
+                • Digital completion badge<br>
+                • Portfolio showcase template<br>
+                • GitHub repository access
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 7: ASSESSMENTS & REQUIREMENTS -->
+    <div class="page">
+        <h2>📊 Assessments & Evaluation</h2>
+
+        <h3>Pre & Post Assessments</h3>
+        <div class="info-grid">
+            <div class="info-box">
+                <strong>Pre-Assessment</strong>
+                Week 0 (Before Nov 1)<br>
+                • Baseline skills evaluation<br>
+                • Python proficiency test<br>
+                • AI knowledge survey<br>
+                <em>Platform: Google Forms</em>
+            </div>
+            <div class="info-box">
+                <strong>Post-Assessment</strong>
+                Week 14 (Dec 19)<br>
+                • Comprehensive final exam<br>
+                • Practical coding test<br>
+                • Portfolio evaluation<br>
+                <em>Platform: Custom Portal + Zoom</em>
+            </div>
+        </div>
+
+        <h3>Continuous Assessment Breakdown</h3>
+        <table class="schedule-table">
+            <thead>
+                <tr>
+                    <th>Component</th>
+                    <th>Weight</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Weekly Assignments</td>
+                    <td>30%</td>
+                    <td>Practical coding tasks</td>
+                </tr>
+                <tr>
+                    <td>Module Quizzes</td>
+                    <td>20%</td>
+                    <td>Knowledge checks after each module</td>
+                </tr>
+                <tr>
+                    <td>Mid-term Project</td>
+                    <td>20%</td>
+                    <td>Individual AI application (Week 7)</td>
+                </tr>
+                <tr>
+                    <td>Capstone Project</td>
+                    <td>30%</td>
+                    <td>Final hackathon submission</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>🎓 Certification Requirements</h3>
+        <ul>
+            <li>Minimum 70% overall score</li>
+            <li>80% attendance rate</li>
+            <li>Complete capstone project submission</li>
+            <li>Participation in hackathon</li>
+            <li>Submit all weekly assignments</li>
+        </ul>
+
+        <h2>💻 Technical Requirements</h2>
+
+        <h3>Participant Requirements</h3>
+        <div class="info-box" style="margin: 15px 0;">
+            <strong>Hardware:</strong><br>
+            • Laptop/Desktop with minimum 8GB RAM<br>
+            • Stable internet connection (minimum 5 Mbps)<br>
+            • Webcam and microphone for Zoom sessions<br>
+            <br>
+            <strong>Software:</strong><br>
+            • Python 3.8+ installed<br>
+            • Google account (for Drive, Classroom)<br>
+            • Zoom client installed<br>
+            • GitHub account<br>
+            <br>
+            <strong>Prerequisites:</strong><br>
+            • Basic Python knowledge (preferred)<br>
+            • University undergraduate or equivalent<br>
+            • Passion for AI and technology
+        </div>
+
+        <h3>Resources Provided</h3>
+        <ul>
+            <li>Access to cloud computing credits for model training</li>
+            <li>All course materials and recordings</li>
+            <li>Meta AI API keys for projects</li>
+            <li>Datasets for Data for Good projects</li>
+            <li>GitHub repository templates</li>
+        </ul>
+    </div>
+
+    <!-- PAGE 8: DAILY BREAKDOWN -->
+    <div class="page">
+        <h2>📅 Detailed Day-by-Day Breakdown</h2>
+
+        <div class="module-card">
+            <div class="module-header">
+                <strong>DAY 1 (Nov 1): Orientation & Hackathon Launch</strong><br>
+                Duration: 3 hours | All Tutors + Admin
+            </div>
+            <ul>
+                <li><strong>Part 1 (1 hour):</strong> Program orientation, introductions, platform walkthrough</li>
+                <li><strong>Part 2 (1 hour):</strong> Review Llama Case Studies from https://www.llama.com/resources/case-studies/</li>
+                <li><strong>Part 3 (1 hour):</strong> Hackathon challenge reveal and team formation</li>
+                <li><strong>Assessment:</strong> Pre-program assessment distributed</li>
+            </ul>
+        </div>
+
+        <div class="module-card">
+            <div class="module-header">
+                <strong>DAY 2 (Nov 2): Introduction to Llama</strong><br>
+                Duration: 2 hours | Mr. Victor Olufemi
+            </div>
+            <ul>
+                <li><strong>Topic:</strong> What is Llama? Model evolution and architecture</li>
+                <li><strong>Resource:</strong> https://www.datacamp.com/blog/introduction-to-meta-ai-llama</li>
+                <li><strong>Activities:</strong> Understanding LLMs, Llama 1 to Llama 4 evolution, key technical concepts</li>
+                <li><strong>Assignment:</strong> Write a 500-word summary on Llama's evolution</li>
+            </ul>
+        </div>
+
+        <div class="module-card">
+            <div class="module-header">
+                <strong>WEEK 1 (Nov 3-9): Python Foundations</strong><br>
+                Tutor: Mr. Victor Olufemi | 10 hours
+            </div>
+            <ul>
+                <li><strong>Sessions:</strong> Fri 5-6pm, Sat 10am-12pm, Sun 8-10pm</li>
+                <li><strong>Topics:</strong> Python syntax, data structures, functions, OOP basics</li>
+                <li><strong>Lab Work:</strong> Setting up development environment, basic Python exercises</li>
+                <li><strong>Integration:</strong> Environment setup for PyTorch and Meta AI libraries</li>
+            </ul>
+        </div>
+
+        <div class="module-card">
+            <div class="module-header">
+                <strong>WEEK 2 (Nov 10-16): Advanced Python for AI</strong><br>
+                Tutor: Mr. Victor Olufemi | 10 hours
+            </div>
+            <ul>
+                <li><strong>Topics:</strong> NumPy, Pandas, data manipulation, API calls</li>
+                <li><strong>Lab Work:</strong> Data preprocessing pipelines, building data loaders</li>
+                <li><strong>Assessment:</strong> Module 1 Quiz (20 points)</li>
+            </ul>
+        </div>
+
+        <div class="module-card">
+            <div class="module-header">
+                <strong>WEEK 3 (Nov 17-23): AI Fundamentals</strong><br>
+                Tutor: Mrs. Aminat Ayoola | 10 hours
+            </div>
+            <ul>
+                <li><strong>Course Content:</strong> Foundations of LLMs and Llama Development (DataCamp)</li>
+                <li><strong>Topics:</strong> What is AI? ML vs DL, Meta's AI ethics framework</li>
+                <li><strong>Activities:</strong> Case study analysis of Meta AI applications</li>
+                <li><strong>Lab:</strong> Introduction to Llama models and terminology</li>
+            </ul>
+        </div>
+
+        <div class="module-card">
+            <div class="module-header">
+                <strong>WEEK 4 (Nov 24-30): Machine Learning Basics</strong><br>
+                Tutor: Mrs. Aminat Ayoola | 10 hours
+            </div>
+            <ul>
+                <li><strong>Course Content:</strong> Getting Started with Llama Development</li>
+                <li><strong>Topics:</strong> ML algorithms, model evaluation, PyTorch introduction</li>
+                <li><strong>Lab:</strong> First ML model with PyTorch, API authentication</li>
+                <li><strong>Assignment:</strong> Build simple classifier with PyTorch</li>
+            </ul>
+        </div>
+
+        <div class="module-card">
+            <div class="module-header">
+                <strong>WEEK 5 (Dec 1-7): Deep Learning with PyTorch</strong><br>
+                Tutor: Mr. Israel Odeajo | 10 hours
+            </div>
+            <ul>
+                <li><strong>Topics:</strong> Neural networks, CNNs, RNNs architecture</li>
+                <li><strong>Lab:</strong> Building CNNs for image classification</li>
+                <li><strong>Mid-term Project:</strong> Assigned (Due Week 7)</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- PAGE 9: CONTINUED BREAKDOWN -->
+    <div class="page">
+        <div class="module-card">
+            <div class="module-header">
+                <strong>WEEK 6 (Dec 8-14): Advanced PyTorch & Optimization</strong><br>
+                Tutor: Mr. Israel Odeajo | 10 hours
+            </div>
+            <ul>
+                <li><strong>Topics:</strong> Advanced PyTorch features, distributed training</li>
+                <li><strong>Lab:</strong> Model optimization, GPU acceleration</li>
+                <li><strong>Assessment:</strong> Mid-term project presentations</li>
+            </ul>
+        </div>
+
+        <div class="module-card">
+            <div class="module-header">
+                <strong>WEEK 7 (Dec 15-17): Llama & Prompt Engineering</strong><br>
+                Tutor: Mr. Victor Olufemi | 10 hours (Intensive)
+            </div>
+            <ul>
+                <li><strong>Course Content:</strong> Introduction to Prompt Engineering & Building Your First Assistant</li>
+                <li><strong>Topics:</strong> LLM architecture, Llama API integration, prompt engineering</li>
+                <li><strong>Lab:</strong> Building AI chatbot with Llama, creating Gradio interfaces</li>
+                <li><strong>Activities:</strong> 
+                    <ul>
+                        <li>Understanding prompt roles (system, user, assistant)</li>
+                        <li>Multi-turn conversation management</li>
+                        <li>Building conversational UI with Gradio/Streamlit</li>
+                        <li>Assistant personality design</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="module-card">
+            <div class="module-header">
+                <strong>WEEK 8 (Dec 18): Data for Good Intensive</strong><br>
+                Tutor: Mrs. Aminat Ayoola | 5 hours (Special Session)
+            </div>
+            <ul>
+                <li><strong>Resource:</strong> https://dataforgood.facebook.com/dfg/tools</li>
+                <li><strong>Topics:</strong> Data science for social impact, Meta's Data for Good tools</li>
+                <li><strong>Activities:</strong> 
+                    <ul>
+                        <li>Exploratory data analysis with real datasets</li>
+                        <li>Statistical methods for social science</li>
+                        <li>Privacy-preserving analytics</li>
+                        <li>Case studies: Disaster response, public health, climate change</li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+        <div class="module-card">
+            <div class="module-header">
+                <strong>WEEK 9 (Dec 19): Computer Vision & Capstone Kickoff</strong><br>
+                Tutor: Mr. Israel Odeajo | 5 hours + Final Presentations
+            </div>
+            <ul>
+                <li><strong>Morning:</strong> Computer vision with SAM and Detectron2</li>
+                <li><strong>Afternoon:</strong> Capstone project work session</li>
+                <li><strong>Evening:</strong> Hackathon semi-finals (Judge review)</li>
+                <li><strong>Final Event:</strong> Hackathon grand finals (Social media winners announced)</li>
+                <li><strong>Closing:</strong> Graduation ceremony and certificate distribution</li>
+            </ul>
+        </div>
+
+        <h2>🎯 Learning Outcomes</h2>
+        <div class="info-grid">
+            <div class="info-box">
+                <strong>Technical Skills</strong>
+                • Python mastery<br>
+                • PyTorch proficiency<br>
+                • Llama API integration<br>
+                • Computer vision basics
+            </div>
+            <div class="info-box">
+                <strong>AI Development</strong>
+                • Build LLM applications<br>
+                • Create AI agents<br>
+                • Deploy ML models<br>
+                • Prompt engineering
+            </div>
+            <div class="info-box">
+                <strong>Data Science</strong>
+                • Data analysis<br>
+                • Statistical methods<br>
+                • Visualization<br>
+                • Impact measurement
+            </div>
+            <div class="info-box">
+                <strong>Professional Skills</strong>
+                • Project management<br>
+                • Collaboration<br>
+                • Presentation skills<br>
+                • Ethics & responsibility
+            </div>
+        </div>
+    </div>
+
+    <!-- PAGE 10: CONTACT & REGISTRATION -->
+    <div class="page">
+        <h2>📞 Contact Information</h2>
+
+        <div class="contact-section">
+            <h3>Program Management</h3>
+            <div class="info-grid">
+                <div class="info-box">
+                    <strong>Program Director</strong><br>
+                    Olusola Ayoola<br>
+                    📧 olusola.ayoola@rainigeria.com
+                </div>
+                <div class="info-box">
+                    <strong>Operations Manager</strong><br>
+                    Nurudeen Adesokan<br>
+                    📧 operations@rainigeria.com
+                </div>
+                <div class="info-box">
+                    <strong>Technical Coordinator</strong><br>
+                    James Abiasama<br>
+                    📧 technical@rainigeria.com
+                </div>
+                <div class="info-box">
+                    <strong>Meta Project Manager</strong><br>
+                    Chinny Francis<br>
+                    📧 chinnyfrancis@meta.com
+                </div>
+            </div>
+        </div>
+
+        <div class="contact-section">
+            <h3>RAIN Headquarters</h3>
+            <p style="font-size: 16px; line-height: 2;">
+                <strong>Robotics and Artificial Intelligence Nigeria (RAIN)</strong><br>
+                📍 [Insert Physical Address]<br>
+                📞 [Insert Phone Number]<br>
+                📧 info@rainigeria.com<br>
+                🌐 www.rainigeria.com
+            </p>
+        </div>
+
+        <h2>🎓 Registration & Eligibility</h2>
+
+        <div class="highlight-box">
+            <h3 style="color: #856404; margin-bottom: 10px;">Who Should Apply?</h3>
+            <ul style="color: #856404;">
+                <li>University undergraduates (all years)</li>
+                <li>Recent graduates interested in AI development</li>
+                <li>Early-stage developers looking to upskill</li>
+                <li>Tech enthusiasts passionate about AI and social impact</li>
+                <li>Anyone committed to completing the 7-week program</li>
+            </ul>
+        </div>
+
+        <h3>Application Process</h3>
+        <ol style="font-size: 16px; line-height: 2;">
+            <li><strong>Submit Application:</strong> Online form with basic information and motivation statement</li>
+            <li><strong>Pre-Assessment:</strong> Complete baseline skills evaluation</li>
+            <li><strong>Review:</strong> Applications reviewed on rolling basis</li>
+            <li><strong>Acceptance:</strong> Notification via email and SMS</li>
+            <li><strong>Orientation:</strong> Attend mandatory Day 1 orientation</li>
+        </ol>
+
+        <h2>💰 Program Investment</h2>
+
+        <div class="info-box" style="background: #d4edda; border-left-color: #28a745; margin: 20px 0;">
+            <strong style="color: #155724; font-size: 24px;">FREE for Selected Participants!</strong><br>
+            <p style="color: #155724; margin-top: 10px;">
+                This program is fully sponsored by Meta and RAIN. Selected participants receive:
+            </p>
+            <ul style="color: #155724; margin-top: 10px;">
+                <li>Full access to all training sessions</li>
+                <li>Course materials and resources</li>
+                <li>Cloud computing credits</li>
+                <li>Certificate upon completion</li>
+                <li>Networking opportunities</li>
+                <li>Career guidance and mentorship</li>
+            </ul>
+        </div>
+
+        <h2>🌟 Why Join This Program?</h2>
+        <div class="info-grid">
+            <div class="info-box">
+                <strong>🚀 Career Acceleration</strong>
+                Gain skills in the fastest-growing tech sector
+            </div>
+            <div class="info-box">
+                <strong>🤝 Industry Connection</strong>
+                Direct exposure to Meta's AI ecosystem
+            </div>
+            <div class="info-box">
+                <strong>💼 Portfolio Building</strong>
+                Real projects for your developer portfolio
+            </div>
+            <div class="info-box">
+                <strong>🌍 Social Impact</strong>
+                Use AI to solve real-world problems
+            </div>
+            <div class="info-box">
+                <strong>🏆 Competition Experience</strong>
+                Hackathon participation and prizes
+            </div>
+            <div class="info-box">
+                <strong>📜 Recognized Certification</strong>
+                Meta-aligned certificate for your CV
+            </div>
+        </div>
+
+        <div class="footer">
+            <p><strong>Meta AI Developer Academy</strong></p>
+            <p>A Partnership between Meta Platforms and RAIN Nigeria</p>
+            <p style="margin-top: 10px;">© 2025 Robotics and Artificial Intelligence Nigeria (RAIN)</p>
+            <p style="margin-top: 5px; font-size: 11px;">
+                Program ID: INB3680265 | SOW Effective Date: October 17, 2025
+            </p>
+        </div>
+    </div>
+
+    <!-- PAGE 11: QUICK REFERENCE -->
+    <div class="page">
+        <h2>📋 Quick Reference Guide</h2>
+
+        <h3>Important Dates</h3>
+        <table class="schedule-table">
+            <tbody>
+                <tr>
+                    <td><strong>Program Launch</strong></td>
+                    <td>November 1, 2025</td>
+                </tr>
+                <tr>
+                    <td><strong>Hackathon Launch</strong></td>
+                    <td>November 1, 2025</td>
+                </tr>
+                <tr>
+                    <td><strong>Mid-term Project Due</strong></td>
+                    <td>December 7, 2025</td>
+                </tr>
+                <tr>
+                    <td><strong>In-Person Gathering</strong></td>
+                    <td>TBA (Week 8-9)</td>
+                </tr>
+                <tr>
+                    <td><strong>Hackathon Semi-Finals</strong></td>
+                    <td>December 17, 2025</td>
+                </tr>
+                <tr>
+                    <td><strong>Grand Finale & Graduation</strong></td>
+                    <td>December 19, 2025</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Platform Access</h3>
+        <div class="info-grid">
+            <div class="info-box">
+                <strong>Zoom Classes</strong>
+                Meeting ID: [Provided on Day 1]<br>
+                Password: [Provided on Day 1]
+            </div>
+            <div class="info-box">
+                <strong>Google Classroom</strong>
+                Class Code: [Provided on Day 1]<br>
+                Join link in welcome email
+            </div>
+            <div class="info-box">
+                <strong>Slack/Discord</strong>
+                Invite link: [Sent via email]<br>
+                Active 24/7 for support
+            </div>
+            <div class="info-box">
+                <strong>Google Drive</strong>
+                Shared folder access<br>
+                All materials centralized
+            </div>
+        </div>
+
+        <h3>Weekly Checklist</h3>
+        <div class="module-card">
+            <ul style="list-style: none;">
+                <li>☐ Attend all 3 weekly sessions (Fri, Sat, Sun)</li>
+                <li>☐ Complete weekly assignment</li>
+                <li>☐ Review recorded sessions if missed</li>
+                <li>☐ Participate in group discussions</li>
+                <li>☐ Update hackathon project progress</li>
+                <li>☐ Check Slack/email for announcements</li>
+                <li>☐ Office hours with tutors (if needed)</li>
+            </ul>
+        </div>
+
+        <h3>Success Tips</h3>
+        <div class="highlight-box">
+            <ul>
+                <li><strong>Stay Consistent:</strong> Attend all sessions, don't fall behind</li>
+                <li><strong>Practice Daily:</strong> Code every day, even if just 30 minutes</li>
+                <li><strong>Ask Questions:</strong> Use Slack channel actively</li>
+                <li><strong>Collaborate:</strong> Form study groups with peers</li>
+                <li><strong>Build Portfolio:</strong> Document all your projects</li>
+                <li><strong>Network:</strong> Connect with fellow participants on LinkedIn</li>
+                <li><strong>Think Impact:</strong> Always consider social good applications</li>
+            </ul>
+        </div>
+
+        <h3>Support Resources</h3>
+        <ul style="font-size: 15px; line-height: 2;">
+            <li><strong>Technical Support:</strong> technical@rainigeria.com</li>
+            <li><strong>Academic Support:</strong> Tutor office hours (Schedule in Classroom)</li>
+            <li><strong>Welfare Issues:</strong> Contact your group coordinator</li>
+            <li><strong>Administrative:</strong> operations@rainigeria.com</li>
+            <li><strong>Emergency:</strong> [Phone number to be provided]</li>
+        </ul>
+
+        <div style="background: linear-gradient(135deg, #0668E1 0%, #0a7cff 100%); color: white; padding: 30px; border-radius: 10px; text-align: center; margin-top: 40px;">
+            <h2 style="color: white; border: none; padding: 0; margin-bottom: 15px;">Ready to Build the Future with AI?</h2>
+            <p style="font-size: 18px; margin: 15px 0;">Join 300 developers transforming ideas into intelligent solutions</p>
+            <p style="font-size: 16px; margin-top: 20px;">
+                <strong>Applications Open Now!</strong><br>
+                Visit: www.rainigeria.com/meta-ai-academy<br>
+                Email: admissions@rainigeria.com
+            </p>
+        </div>
+
+        <div class="footer" style="margin-top: 40px;">
+            <p style="font-size: 14px;"><strong>#BuildWithMeta #MetaAIDevNG #AIForGoodNG</strong></p>
+            <p style="margin-top: 15px;">Follow us on social media for updates and announcements</p>
+        </div>
+    </div>
+
+</body>
+</html>
