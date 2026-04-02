@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>St Macrina Hospital Ltd — Ibadan</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Nunito:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --teal: #1B5C6B; --teal-dark: #0F3C47; --teal-mid: #276E80; --teal-light: #3D8A9E;
+    --teal-pale: #E8F4F7; --coral: #D4624A; --coral-light: #F0806A; --gold: #C9962A;
+    --warm: #FDF8F2; --ivory: #FFFFFF; --slate: #2C3E45; --mid: #526872; --muted: #8AABB5; --line: #E2EEF1;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Nunito', sans-serif; background: var(--ivory); color: var(--slate); overflow-x: hidden; }
+
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 56px; height: 72px; background: var(--ivory); border-bottom: 1px solid var(--line); box-shadow: 0 2px 24px rgba(27,92,107,0.07); }
+  .nav-brand { display: flex; align-items: center; gap: 14px; }
+  .nav-cross { width: 38px; height: 38px; background: var(--teal); border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
+  .brand-text { display: flex; flex-direction: column; line-height: 1.2; }
+  .brand-name { font-family: 'Lora', serif; font-size: 1.1rem; font-weight: 700; color: var(--teal-dark); }
+  .brand-sub { font-size: 0.6rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--muted); }
+  .nav-links { display: flex; gap: 32px; list-style: none; }
+  .nav-links a { color: var(--mid); text-decoration: none; font-size: 0.82rem; font-weight: 600; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--teal); }
+  .nav-emergency { background: var(--coral); color: var(--ivory); border: none; padding: 10px 22px; border-radius: 6px; font-family: 'Nunito', sans-serif; font-size: 0.78rem; font-weight: 700; cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 8px; }
+  .nav-emergency:hover { background: var(--coral-light); transform: translateY(-1px); }
+  .pulse-dot { width: 8px; height: 8px; background: white; border-radius: 50%; animation: pulse 1.5s ease infinite; }
+  @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.3)} }
+
+  #hero { min-height: 100vh; padding-top: 72px; display: grid; grid-template-columns: 1fr 1fr; background: var(--warm); position: relative; overflow: hidden; }
+  .hero-left { display: flex; flex-direction: column; justify-content: center; padding: 80px 56px; position: relative; z-index: 1; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(27,92,107,0.08); border: 1px solid rgba(27,92,107,0.15); color: var(--teal); padding: 6px 14px; border-radius: 100px; margin-bottom: 28px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; align-self: flex-start; }
+  .badge-star { color: var(--gold); font-size: 0.9rem; }
+  .hero-h1 { font-family: 'Lora', serif; font-size: clamp(2.2rem, 4vw, 3.6rem); font-weight: 700; line-height: 1.15; color: var(--teal-dark); margin-bottom: 24px; }
+  .hero-h1 em { font-style: italic; color: var(--teal); }
+  .hero-desc { font-size: 1rem; color: var(--mid); line-height: 1.8; max-width: 440px; font-weight: 400; margin-bottom: 40px; }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-primary { background: var(--teal); color: white; border: none; padding: 14px 32px; border-radius: 8px; font-family: 'Nunito', sans-serif; font-size: 0.85rem; font-weight: 700; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-block; }
+  .btn-primary:hover { background: var(--teal-mid); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(27,92,107,0.3); }
+  .btn-outline { background: transparent; color: var(--teal); border: 2px solid var(--teal); padding: 12px 32px; border-radius: 8px; font-family: 'Nunito', sans-serif; font-size: 0.85rem; font-weight: 700; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-block; }
+  .btn-outline:hover { background: var(--teal-pale); }
+  .hero-trust { display: flex; gap: 28px; margin-top: 48px; padding-top: 40px; border-top: 1px solid var(--line); }
+  .trust-item { display: flex; flex-direction: column; gap: 2px; }
+  .trust-num { font-family: 'Lora', serif; font-size: 1.8rem; font-weight: 700; color: var(--teal); }
+  .trust-label { font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+  .hero-right { background: linear-gradient(135deg, var(--teal-dark) 0%, var(--teal) 60%, var(--teal-light) 100%); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+  .hero-right::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 70% at 60% 40%, rgba(255,255,255,0.08) 0%, transparent 70%); }
+  .hero-visual-card { background: rgba(255,255,255,0.1); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.2); border-radius: 20px; padding: 40px; text-align: center; max-width: 340px; position: relative; z-index: 1; box-shadow: 0 20px 60px rgba(0,0,0,0.2); }
+  .hcard-icon { font-size: 4rem; margin-bottom: 20px; display: block; }
+  .hcard-title { font-family: 'Lora', serif; font-size: 1.4rem; font-weight: 700; color: white; margin-bottom: 12px; }
+  .hcard-text { font-size: 0.85rem; color: rgba(255,255,255,0.75); line-height: 1.7; margin-bottom: 24px; }
+  .hcard-rating { display: flex; align-items: center; justify-content: center; gap: 6px; font-size: 0.8rem; color: rgba(255,255,255,0.9); font-weight: 600; }
+  .stars { color: var(--gold); letter-spacing: 2px; }
+  .hero-floating { position: absolute; background: white; border-radius: 12px; padding: 12px 18px; box-shadow: 0 8px 32px rgba(0,0,0,0.15); display: flex; align-items: center; gap: 10px; font-size: 0.78rem; font-weight: 600; color: var(--slate); }
+  .hf1 { bottom: 80px; left: 40px; animation: floatA 3s ease infinite; }
+  .hf2 { top: 100px; right: 30px; animation: floatB 3s ease infinite 1s; }
+  .hf-icon { font-size: 1.3rem; }
+  @keyframes floatA { 0%,100%{transform:translateY(0)} 50%{transform:translateY(-8px)} }
+  @keyframes floatB { 0%,100%{transform:translateY(0)} 50%{transform:translateY(8px)} }
+
+  .services-strip { background: var(--teal-dark); padding: 24px 56px; }
+  .services-row { display: flex; gap: 0; max-width: 1160px; margin: 0 auto; }
+  .sstrip-item { flex: 1; display: flex; align-items: center; gap: 14px; padding: 0 32px; border-right: 1px solid rgba(255,255,255,0.1); cursor: default; }
+  .sstrip-item:first-child { padding-left: 0; }
+  .sstrip-item:last-child { border-right: none; }
+  .sstrip-icon { font-size: 1.5rem; }
+  .sstrip-text h4 { font-size: 0.82rem; font-weight: 700; color: white; }
+  .sstrip-text p { font-size: 0.7rem; color: rgba(255,255,255,0.55); margin-top: 2px; }
+
+  section { padding: 96px 56px; }
+  .container { max-width: 1160px; margin: 0 auto; }
+  .section-tag { display: inline-flex; align-items: center; gap: 8px; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.25em; text-transform: uppercase; color: var(--teal); margin-bottom: 16px; }
+  .section-tag::before { content: ''; width: 24px; height: 2px; background: var(--teal); }
+  .section-h2 { font-family: 'Lora', serif; font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 700; line-height: 1.2; color: var(--teal-dark); }
+  .section-h2 em { font-style: italic; color: var(--teal); }
+
+  #about { background: var(--ivory); }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .about-img { background: linear-gradient(135deg, var(--teal-pale) 0%, var(--teal-light) 100%); border-radius: 16px; aspect-ratio: 4/5; position: relative; overflow: hidden; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; }
+  .about-img::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at center, rgba(27,92,107,0.3) 0%, transparent 70%); }
+  .about-em { font-size: 5rem; z-index: 1; }
+  .about-quote-box { position: absolute; bottom: 0; left: 0; right: 0; background: rgba(15,60,71,0.9); padding: 24px 28px; backdrop-filter: blur(8px); }
+  .about-quote { font-family: 'Lora', serif; font-style: italic; font-size: 0.9rem; color: white; line-height: 1.6; }
+  .about-text { display: flex; flex-direction: column; gap: 20px; }
+  .about-p { font-size: 0.95rem; color: var(--mid); line-height: 1.8; }
+  .about-list { display: flex; flex-direction: column; gap: 14px; margin-top: 8px; }
+  .about-check { display: flex; align-items: flex-start; gap: 12px; }
+  .check-icon { width: 22px; height: 22px; background: var(--teal-pale); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.7rem; flex-shrink: 0; margin-top: 2px; }
+  .check-text { font-size: 0.88rem; color: var(--mid); line-height: 1.6; }
+  .check-text strong { color: var(--slate); font-weight: 700; }
+
+  #services { background: var(--warm); }
+  .services-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; margin-top: 56px; }
+  .scard { background: var(--ivory); border: 1px solid var(--line); border-radius: 12px; padding: 32px 28px; transition: all 0.3s; cursor: default; }
+  .scard:hover { border-color: var(--teal); transform: translateY(-6px); box-shadow: 0 16px 48px rgba(27,92,107,0.12); }
+  .scard-icon { width: 56px; height: 56px; background: var(--teal-pale); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; margin-bottom: 20px; }
+  .scard:hover .scard-icon { background: var(--teal); }
+  .scard-name { font-family: 'Lora', serif; font-size: 1.1rem; font-weight: 700; color: var(--teal-dark); margin-bottom: 10px; }
+  .scard-desc { font-size: 0.82rem; color: var(--mid); line-height: 1.7; }
+
+  #reviews { background: var(--teal-dark); }
+  #reviews .section-tag { color: var(--gold); }
+  #reviews .section-tag::before { background: var(--gold); }
+  #reviews .section-h2 { color: white; }
+  #reviews .section-h2 em { color: var(--muted); }
+  .reviews-overall { display: flex; align-items: center; gap: 24px; margin: 32px 0 56px; }
+  .rating-big { font-family: 'Lora', serif; font-size: 4rem; font-weight: 700; color: var(--gold); line-height: 1; }
+  .rating-info { display: flex; flex-direction: column; gap: 4px; }
+  .rating-stars { color: var(--gold); font-size: 1.3rem; letter-spacing: 3px; }
+  .rating-count { font-size: 0.8rem; color: var(--muted); }
+  .reviews-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+  .rcard { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 28px; transition: all 0.3s; }
+  .rcard:hover { background: rgba(255,255,255,0.09); transform: translateY(-4px); }
+  .rcard-stars { color: var(--gold); font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 14px; }
+  .rcard-text { font-size: 0.85rem; color: rgba(255,255,255,0.8); line-height: 1.7; margin-bottom: 20px; font-style: italic; }
+  .rcard-author { display: flex; align-items: center; gap: 12px; }
+  .rcard-avatar { width: 36px; height: 36px; background: var(--teal-light); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.85rem; font-weight: 700; color: white; }
+  .rcard-name { font-size: 0.82rem; font-weight: 700; color: white; }
+  .rcard-meta { font-size: 0.7rem; color: var(--muted); }
+
+  #why { background: var(--ivory); }
+  .why-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 32px; margin-top: 56px; }
+  .wcard { background: var(--warm); border: 1px solid var(--line); border-radius: 12px; padding: 32px; display: flex; gap: 24px; align-items: flex-start; transition: all 0.3s; }
+  .wcard:hover { border-color: var(--teal); box-shadow: 0 8px 32px rgba(27,92,107,0.08); }
+  .wcard-num { font-family: 'Lora', serif; font-size: 1.6rem; font-weight: 700; color: rgba(27,92,107,0.15); line-height: 1; min-width: 36px; }
+  .wcard-body h4 { font-family: 'Lora', serif; font-size: 1rem; font-weight: 700; color: var(--teal-dark); margin-bottom: 8px; }
+  .wcard-body p { font-size: 0.82rem; color: var(--mid); line-height: 1.7; }
+
+  #emergency { background: var(--coral); padding: 64px 56px; text-align: center; }
+  .em-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.3em; text-transform: uppercase; color: rgba(255,255,255,0.7); margin-bottom: 12px; }
+  .em-h2 { font-family: 'Lora', serif; font-size: clamp(1.8rem, 4vw, 3rem); font-weight: 700; color: white; margin-bottom: 16px; }
+  .em-sub { font-size: 1rem; color: rgba(255,255,255,0.8); max-width: 500px; margin: 0 auto 40px; line-height: 1.7; }
+  .em-phone { display: inline-flex; align-items: center; gap: 12px; background: white; color: var(--coral); padding: 18px 40px; border-radius: 100px; font-family: 'Lora', serif; font-size: 1.4rem; font-weight: 700; text-decoration: none; transition: all 0.2s; box-shadow: 0 8px 32px rgba(0,0,0,0.15); }
+  .em-phone:hover { transform: translateY(-3px); box-shadow: 0 16px 48px rgba(0,0,0,0.2); }
+
+  #contact { background: var(--warm); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+  .info-list { display: flex; flex-direction: column; gap: 24px; margin-top: 40px; }
+  .info-row { display: flex; gap: 16px; }
+  .info-icon-box { width: 48px; height: 48px; background: var(--teal-pale); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
+  .info-lbl { font-size: 0.62rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--teal); margin-bottom: 4px; }
+  .info-val { font-size: 0.9rem; color: var(--slate); line-height: 1.6; }
+  .contact-right { display: flex; flex-direction: column; gap: 20px; }
+  .hours-card { background: var(--ivory); border: 1px solid var(--line); border-radius: 12px; padding: 32px; }
+  .hours-title { font-family: 'Lora', serif; font-size: 1.2rem; font-weight: 700; color: var(--teal-dark); margin-bottom: 20px; display: flex; align-items: center; gap: 10px; }
+  .open-badge { background: #22C55E; color: white; font-size: 0.62rem; font-weight: 700; padding: 3px 10px; border-radius: 100px; letter-spacing: 0.1em; }
+  .hours-row { display: flex; justify-content: space-between; padding: 10px 0; border-bottom: 1px solid var(--line); }
+  .hours-day { font-size: 0.82rem; color: var(--mid); font-weight: 500; }
+  .hours-time { font-size: 0.82rem; color: var(--teal); font-weight: 700; }
+  .map-card { background: var(--ivory); border: 1px solid var(--line); border-radius: 12px; padding: 32px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px; min-height: 180px; position: relative; overflow: hidden; }
+  .map-teal { position: absolute; inset: 0; background: linear-gradient(135deg, var(--teal-pale) 0%, rgba(61,138,158,0.1) 100%); }
+  .map-pin-box { width: 52px; height: 52px; background: var(--teal); border-radius: 50% 50% 50% 0; transform: rotate(-45deg); position: relative; z-index:1; box-shadow: 0 8px 24px rgba(27,92,107,0.3); animation: pinBob 2s ease infinite; }
+  .map-pin-box::after { content:''; position:absolute; width:20px; height:20px; background: white; border-radius: 50%; top:50%; left:50%; transform:translate(-50%,-50%); }
+  @keyframes pinBob { 0%,100%{transform:rotate(-45deg) translateY(0)} 50%{transform:rotate(-45deg) translateY(-4px)} }
+  .map-addr { z-index:1; text-align:center; font-size:0.82rem; color:var(--mid); line-height:1.6; }
+  .map-addr strong { display:block; font-family:'Lora',serif; font-size:1rem; color:var(--teal-dark); margin-bottom:4px; }
+
+  footer { background: var(--teal-dark); padding: 48px 56px; }
+  .footer-inner { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 24px; max-width: 1160px; margin: 0 auto; }
+  .footer-brand { display: flex; align-items: center; gap: 12px; }
+  .footer-cross { width: 32px; height: 32px; background: rgba(255,255,255,0.15); border-radius: 6px; display: flex; align-items: center; justify-content: center; }
+  .footer-name { font-family: 'Lora', serif; font-size: 1rem; font-weight: 700; color: white; }
+  .footer-links { display: flex; gap: 24px; }
+  .footer-links a { color: rgba(255,255,255,0.5); text-decoration: none; font-size: 0.75rem; transition: color 0.2s; }
+  .footer-links a:hover { color: white; }
+  .footer-copy { font-size: 0.7rem; color: rgba(255,255,255,0.35); }
+
+  @media(max-width: 960px) {
+    nav { padding: 0 24px; }
+    .nav-links { display: none; }
+    section { padding: 72px 24px; }
+    #hero { grid-template-columns: 1fr; }
+    .hero-left { padding: 48px 24px; }
+    .hero-right { min-height: 360px; }
+    .services-strip { padding: 16px 24px; }
+    .services-row { flex-wrap: wrap; gap: 16px; }
+    .sstrip-item { flex: 1 1 calc(50% - 8px); border-right: none; padding: 0; }
+    .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+    .services-grid { grid-template-columns: repeat(2,1fr); }
+    .reviews-grid { grid-template-columns: 1fr; }
+    .why-grid { grid-template-columns: 1fr; }
+    footer { padding: 40px 24px; }
+    .footer-inner { flex-direction: column; text-align: center; }
+  }
+  @media(max-width:560px) {
+    .services-grid { grid-template-columns: 1fr; }
+    .hero-trust { flex-wrap: wrap; gap: 16px; }
+    .sstrip-item { flex: 1 1 100%; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-brand">
+    <div class="nav-cross">
+      <svg viewBox="0 0 24 24" fill="none" width="20" height="20"><rect x="10" y="2" width="4" height="20" rx="1" fill="white"/><rect x="2" y="10" width="20" height="4" rx="1" fill="white"/></svg>
+    </div>
+    <div class="brand-text">
+      <span class="brand-name">St Macrina Hospital</span>
+      <span class="brand-sub">Your Health, Our Priority</span>
+    </div>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#reviews">Reviews</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-emergency" onclick="window.location.href='tel:08120325500'">
+    <div class="pulse-dot"></div>
+    Emergency: 0812 032 5500
+  </button>
+</nav>
+
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-badge"><span class="badge-star">★</span> Rated 4.6 · Trusted by Ibadan Families</div>
+    <h1 class="hero-h1">A haven of healing.<br>A beacon of <em>hope.</em></h1>
+    <p class="hero-desc">St Macrina Hospital Ltd is a world-class private hospital in Ibadan, offering compassionate, 24-hour care with state-of-the-art equipment and highly skilled healthcare professionals.</p>
+    <div class="hero-btns">
+      <a href="#services" class="btn-primary">Our Services</a>
+      <a href="#contact" class="btn-outline">Find Us</a>
+    </div>
+    <div class="hero-trust">
+      <div class="trust-item"><span class="trust-num">24/7</span><span class="trust-label">Always Open</span></div>
+      <div class="trust-item"><span class="trust-num">4.6★</span><span class="trust-label">Patient Rating</span></div>
+      <div class="trust-item"><span class="trust-num">10+</span><span class="trust-label">Years of Care</span></div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-visual-card">
+      <span class="hcard-icon">🏥</span>
+      <h3 class="hcard-title">World-Class Private Care</h3>
+      <p class="hcard-text">State-of-the-art equipment, skilled doctors, and friendly nurses — all committed to your well-being.</p>
+      <div class="hcard-rating"><span class="stars">★★★★★</span> 4.6 / 5 · 25 Reviews</div>
+    </div>
+    <div class="hero-floating hf1"><span class="hf-icon">🕐</span><span>Open 24 Hours</span></div>
+    <div class="hero-floating hf2"><span class="hf-icon">📞</span><span>0812 032 5500</span></div>
+  </div>
+</section>
+
+<div class="services-strip">
+  <div class="services-row">
+    <div class="sstrip-item"><span class="sstrip-icon">🩺</span><div class="sstrip-text"><h4>General Medicine</h4><p>Comprehensive medical care</p></div></div>
+    <div class="sstrip-item"><span class="sstrip-icon">👶</span><div class="sstrip-text"><h4>Maternity & Paeds</h4><p>Safe delivery & child health</p></div></div>
+    <div class="sstrip-item"><span class="sstrip-icon">🔬</span><div class="sstrip-text"><h4>Laboratory</h4><p>Accurate diagnostics</p></div></div>
+    <div class="sstrip-item"><span class="sstrip-icon">🚑</span><div class="sstrip-text"><h4>Emergency Care</h4><p>24/7 emergency response</p></div></div>
+    <div class="sstrip-item"><span class="sstrip-icon">💊</span><div class="sstrip-text"><h4>Pharmacy</h4><p>Full dispensary on-site</p></div></div>
+  </div>
+</div>
+
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img">
+        <div class="about-em">⚕️</div>
+        <div class="about-quote-box">
+          <p class="about-quote">"In our halls, your story becomes our story. Your struggles become our challenges. Your victories become our celebrations."</p>
+        </div>
+      </div>
+      <div class="about-text">
+        <div>
+          <div class="section-tag">Who We Are</div>
+          <h2 class="section-h2">Compassionate care,<br><em>exceptional medicine.</em></h2>
+        </div>
+        <p class="about-p">St Macrina Hospital Ltd is an established world-class private hospital located in the heart of Ibadan. We provide exceptional healthcare with state-of-the-art equipment and a team of skilled, warm-hearted professionals dedicated to your well-being.</p>
+        <p class="about-p">From the warmth of our smiles to the precision of our procedures, every moment reflects our unwavering commitment to excellence and compassionate patient care.</p>
+        <div class="about-list">
+          <div class="about-check"><div class="check-icon">✓</div><span class="check-text"><strong>State-of-the-art equipment</strong> — modern medical technology for accurate diagnosis and effective treatment.</span></div>
+          <div class="about-check"><div class="check-icon">✓</div><span class="check-text"><strong>Skilled, caring personnel</strong> — doctors and nurses praised for their friendliness and professionalism.</span></div>
+          <div class="about-check"><div class="check-icon">✓</div><span class="check-text"><strong>Spotless, well-maintained environment</strong> — a clean, serene space that promotes healing and comfort.</span></div>
+          <div class="about-check"><div class="check-icon">✓</div><span class="check-text"><strong>Personalized care plans</strong> — tailored treatment that honors every patient's unique health journey.</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="container">
+    <div class="section-tag">What We Offer</div>
+    <h2 class="section-h2">Healthcare services for<br><em>every need.</em></h2>
+    <div class="services-grid">
+      <div class="scard"><div class="scard-icon">🩺</div><h3 class="scard-name">General & Family Medicine</h3><p class="scard-desc">Comprehensive outpatient care for adults and families, including consultations, routine check-ups, and management of common illnesses.</p></div>
+      <div class="scard"><div class="scard-icon">🚨</div><h3 class="scard-name">Emergency & Urgent Care</h3><p class="scard-desc">24-hour emergency response for accidents, acute illnesses, and life-threatening conditions. Our team is always ready.</p></div>
+      <div class="scard"><div class="scard-icon">👶</div><h3 class="scard-name">Maternity & Obstetrics</h3><p class="scard-desc">Antenatal care, safe delivery services, and postnatal support by experienced midwives and obstetricians.</p></div>
+      <div class="scard"><div class="scard-icon">🧒</div><h3 class="scard-name">Paediatrics</h3><p class="scard-desc">Dedicated child health care from newborn check-ups to treatment of childhood illnesses with gentle, expert hands.</p></div>
+      <div class="scard"><div class="scard-icon">🔬</div><h3 class="scard-name">Laboratory & Diagnostics</h3><p class="scard-desc">Full in-house laboratory services for blood tests, cultures, and diagnostic screening with accurate, timely results.</p></div>
+      <div class="scard"><div class="scard-icon">💊</div><h3 class="scard-name">Pharmacy</h3><p class="scard-desc">On-site pharmacy dispensing prescribed medications and providing professional drug counseling for all patients.</p></div>
+      <div class="scard"><div class="scard-icon">🩸</div><h3 class="scard-name">Minor Surgery</h3><p class="scard-desc">Safe, sterile environment for minor surgical procedures performed by experienced medical practitioners.</p></div>
+      <div class="scard"><div class="scard-icon">🌡️</div><h3 class="scard-name">Inpatient & Ward Care</h3><p class="scard-desc">Comfortable inpatient wards for patients requiring overnight monitoring, recovery, or extended treatment.</p></div>
+      <div class="scard"><div class="scard-icon">❤️</div><h3 class="scard-name">Preventive Healthcare</h3><p class="scard-desc">Health screenings, immunizations, and wellness programs designed to help you stay ahead of illness.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="reviews">
+  <div class="container">
+    <div class="section-tag">Patient Reviews</div>
+    <h2 class="section-h2">What our patients<br><em>say about us.</em></h2>
+    <div class="reviews-overall">
+      <div class="rating-big">4.6</div>
+      <div class="rating-info">
+        <div class="rating-stars">★★★★★</div>
+        <div style="font-size:0.82rem;color:white;font-weight:600;margin-top:4px;">Based on 25 Google Reviews</div>
+        <div class="rating-count">Patients consistently rate us for environment, atmosphere & care quality</div>
+      </div>
+    </div>
+    <div class="reviews-grid">
+      <div class="rcard"><div class="rcard-stars">★★★★★</div><p class="rcard-text">"St Macrina is my family hospital and trust me my experience here was outstanding. I rate the overall experience a perfect 10/10. The nurses and doctors were exceptionally friendly and provided excellent care."</p><div class="rcard-author"><div class="rcard-avatar">T</div><div><div class="rcard-name">Taiwo Hassanat</div><div class="rcard-meta">5 months ago · Google Review</div></div></div></div>
+      <div class="rcard"><div class="rcard-stars">★★★★★</div><p class="rcard-text">"This hospital truly sets the benchmark for quality healthcare. From the moment I walked in, I was impressed by the spotless environment. The doctor took time to explain everything clearly."</p><div class="rcard-author"><div class="rcard-avatar">T</div><div><div class="rcard-name">Toby Oris</div><div class="rcard-meta">7 months ago · Google Review</div></div></div></div>
+      <div class="rcard"><div class="rcard-stars">★★★★☆</div><p class="rcard-text">"A clean, welcoming environment with friendly staff. The nurses are attentive and genuinely caring. The facility is well-maintained and I felt comfortable throughout my visit."</p><div class="rcard-author"><div class="rcard-avatar">P</div><div><div class="rcard-name">Satisfied Patient</div><div class="rcard-meta">Recent · Google Review</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="why">
+  <div class="container">
+    <div class="section-tag">Why Choose Us</div>
+    <h2 class="section-h2">A hospital built on<br><em>trust and compassion.</em></h2>
+    <div class="why-grid">
+      <div class="wcard"><div class="wcard-num">01</div><div class="wcard-body"><h4>Open 24 Hours, Every Day</h4><p>Healthcare emergencies don't follow schedules. St Macrina is always open — ready to receive you whenever you need us.</p></div></div>
+      <div class="wcard"><div class="wcard-num">02</div><div class="wcard-body"><h4>Friendly, Professional Team</h4><p>Our nurses and doctors are consistently praised for being warm, attentive, and communicative. You'll always feel heard and respected.</p></div></div>
+      <div class="wcard"><div class="wcard-num">03</div><div class="wcard-body"><h4>Spotless, Serene Environment</h4><p>We take pride in maintaining a clean, well-organized facility. The environment itself promotes healing — calm, sanitary, and thoughtfully designed.</p></div></div>
+      <div class="wcard"><div class="wcard-num">04</div><div class="wcard-body"><h4>State-of-the-Art Equipment</h4><p>Modern diagnostic tools and medical technology ensure that your care is accurate, efficient, and guided by the latest advances in medicine.</p></div></div>
+      <div class="wcard"><div class="wcard-num">05</div><div class="wcard-body"><h4>HMO & Insurance Accepted</h4><p>We partner with major health insurance and HMO providers, making quality care accessible and affordable for you and your family.</p></div></div>
+      <div class="wcard"><div class="wcard-num">06</div><div class="wcard-body"><h4>Personalized, Whole-Person Care</h4><p>We treat the whole person — body, mind, and spirit. Our care plans are tailored to your unique journey, not just your symptoms.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="emergency">
+  <div class="container" style="text-align:center;">
+    <div class="em-label">⚡ Emergency Line</div>
+    <h2 class="em-h2">Need urgent care?<br>We're available right now.</h2>
+    <p class="em-sub">St Macrina Hospital is open 24 hours a day, 7 days a week. If you or a loved one needs immediate medical attention, don't hesitate — call us now.</p>
+    <a href="tel:08120325500" class="em-phone">📞 0812 032 5500</a>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div>
+        <div class="section-tag">Visit Us</div>
+        <h2 class="section-h2">Come in anytime —<br><em>we're always here.</em></h2>
+        <div class="info-list">
+          <div class="info-row"><div class="info-icon-box">📍</div><div><div class="info-lbl">Address</div><div class="info-val">11, Temidire Street, Off Ososami Road<br>MKO Abiola Way, Ibadan, Oyo State</div></div></div>
+          <div class="info-row"><div class="info-icon-box">📞</div><div><div class="info-lbl">Phone</div><div class="info-val">0812 032 5500</div></div></div>
+          <div class="info-row"><div class="info-icon-box">🕐</div><div><div class="info-lbl">Opening Hours</div><div class="info-val">Open 24 hours · 7 days a week</div></div></div>
+          <div class="info-row"><div class="info-icon-box">🏥</div><div><div class="info-lbl">Type</div><div class="info-val">World-Class Private Hospital<br>HMO & Insurance Accepted</div></div></div>
+        </div>
+      </div>
+      <div class="contact-right">
+        <div class="hours-card">
+          <div class="hours-title">Hours of Operation <span class="open-badge">OPEN NOW</span></div>
+          <div class="hours-row"><span class="hours-day">Monday</span><span class="hours-time">Open 24 Hours</span></div>
+          <div class="hours-row"><span class="hours-day">Tuesday</span><span class="hours-time">Open 24 Hours</span></div>
+          <div class="hours-row"><span class="hours-day">Wednesday</span><span class="hours-time">Open 24 Hours</span></div>
+          <div class="hours-row"><span class="hours-day">Thursday</span><span class="hours-time">Open 24 Hours</span></div>
+          <div class="hours-row"><span class="hours-day">Friday</span><span class="hours-time">Open 24 Hours</span></div>
+          <div class="hours-row"><span class="hours-day">Saturday</span><span class="hours-time">Open 24 Hours</span></div>
+          <div class="hours-row" style="border:none"><span class="hours-day">Sunday</span><span class="hours-time">Open 24 Hours</span></div>
+        </div>
+        <div class="map-card">
+          <div class="map-teal"></div>
+          <div class="map-pin-box"></div>
+          <div class="map-addr"><strong>St Macrina Hospital Ltd</strong>11 Temidire Street, Off Ososami Road<br>MKO Abiola Way, Ibadan</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="footer-cross">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><rect x="10" y="2" width="4" height="20" rx="1" fill="white"/><rect x="2" y="10" width="20" height="4" rx="1" fill="white"/></svg>
+      </div>
+      <span class="footer-name">St Macrina Hospital Ltd — Ibadan</span>
+    </div>
+    <div class="footer-links">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <p class="footer-copy">© 2025 St Macrina Hospital Ltd. Your Health, Our Priority.</p>
+  </div>
+</footer>
+
+<script>
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.style.opacity = '1';
+        e.target.style.transform = 'translateY(0)';
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.scard, .rcard, .wcard, .info-row, .about-check').forEach(el => {
+    el.style.opacity = '0';
+    el.style.transform = 'translateY(24px)';
+    el.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+    io.observe(el);
+  });
+</script>
+</body>
+</html>
