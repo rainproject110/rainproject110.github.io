@@ -7,677 +7,346 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
   :root {
-    --fire: #C8401A;
-    --ember: #E8621A;
-    --gold: #D4A24C;
-    --cream: #F5ECD7;
-    --smoke: #1A1210;
-    --ash: #2C1F1A;
-    --mid: #4A3228;
-    --muted: #8C7060;
-    --white: #FDFAF5;
+    --fire: #C8401A; --ember: #E8621A; --gold: #D4A24C; --cream: #F5ECD7;
+    --smoke: #1A1210; --ash: #2C1F1A; --mid: #4A3228; --muted: #8C7060; --white: #FDFAF5;
   }
-
   html { scroll-behavior: smooth; }
+  body { font-family: 'Jost', sans-serif; background: var(--smoke); color: var(--cream); overflow-x: hidden; }
 
-  body {
-    font-family: 'Jost', sans-serif;
-    background: var(--smoke);
-    color: var(--cream);
-    overflow-x: hidden;
-  }
-
-  /* NAV */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 20px 48px;
-    background: linear-gradient(to bottom, rgba(26,18,16,0.97) 0%, transparent 100%);
-    backdrop-filter: blur(4px);
-    transition: background 0.3s;
-  }
-  .nav-logo {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.5rem; font-weight: 900;
-    color: var(--gold);
-    letter-spacing: 0.02em;
-  }
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 20px 48px; background: linear-gradient(to bottom, rgba(26,18,16,0.97) 0%, transparent 100%); backdrop-filter: blur(4px); }
+  .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 900; color: var(--gold); }
   .nav-logo span { color: var(--fire); }
   .nav-links { display: flex; gap: 36px; list-style: none; }
-  .nav-links a {
-    color: var(--cream); text-decoration: none;
-    font-size: 0.8rem; font-weight: 500; letter-spacing: 0.15em;
-    text-transform: uppercase; transition: color 0.2s;
-  }
+  .nav-links a { color: var(--cream); text-decoration: none; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.15em; text-transform: uppercase; transition: color 0.2s; }
   .nav-links a:hover { color: var(--gold); }
-  .nav-cta {
-    background: var(--fire); color: var(--white);
-    border: none; padding: 10px 24px; border-radius: 2px;
-    font-family: 'Jost', sans-serif; font-size: 0.75rem;
-    font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
-    cursor: pointer; transition: background 0.2s;
-  }
+  .nav-cta { background: var(--fire); color: var(--white); border: none; padding: 10px 24px; border-radius: 2px; font-family: 'Jost', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: background 0.2s; }
   .nav-cta:hover { background: var(--ember); }
 
-  /* HERO */
-  #hero {
-    min-height: 100vh;
-    display: grid; place-items: center;
-    position: relative; overflow: hidden;
-    background: var(--smoke);
-  }
-  .hero-bg {
-    position: absolute; inset: 0;
-    background:
-      radial-gradient(ellipse 60% 50% at 70% 50%, rgba(200,64,26,0.18) 0%, transparent 70%),
-      radial-gradient(ellipse 40% 40% at 20% 30%, rgba(212,162,76,0.10) 0%, transparent 60%),
-      radial-gradient(ellipse 80% 80% at 50% 100%, rgba(44,31,26,0.8) 0%, transparent 70%);
-  }
-  .hero-grain {
-    position: absolute; inset: 0; opacity: 0.04;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
-  }
-  .hero-decor-line {
-    position: absolute; top: 0; bottom: 0; left: 50%;
-    width: 1px; background: linear-gradient(to bottom, transparent, rgba(212,162,76,0.2), transparent);
-    transform: translateX(-50%);
-  }
-  .hero-content {
-    position: relative; text-align: center;
-    padding: 0 24px; max-width: 900px;
-    animation: heroReveal 1.2s ease both;
-  }
-  @keyframes heroReveal {
-    from { opacity: 0; transform: translateY(40px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-  .hero-tag {
-    display: inline-block;
-    font-size: 0.7rem; font-weight: 600; letter-spacing: 0.3em;
-    text-transform: uppercase; color: var(--gold);
-    border: 1px solid rgba(212,162,76,0.4);
-    padding: 6px 20px; border-radius: 100px; margin-bottom: 28px;
-  }
-  .hero-h1 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(3rem, 8vw, 7rem);
-    font-weight: 900; line-height: 0.95;
-    color: var(--white); margin-bottom: 8px;
-  }
-  .hero-h1 em {
-    font-style: italic; color: var(--fire);
-    display: block;
-  }
-  .hero-sub {
-    font-size: 1rem; color: var(--muted); font-weight: 300;
-    max-width: 480px; margin: 24px auto 48px;
-    line-height: 1.7; letter-spacing: 0.01em;
-  }
-  .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
-  .btn-primary {
-    background: var(--fire); color: var(--white);
-    border: none; padding: 16px 36px; border-radius: 2px;
-    font-family: 'Jost', sans-serif; font-size: 0.8rem;
-    font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
-    cursor: pointer; transition: all 0.2s; text-decoration: none;
-    display: inline-block;
-  }
+  #hero { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; position: relative; overflow: hidden; }
+  .hero-bg-abs { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.2); z-index: 0; }
+  .hero-left { display: flex; flex-direction: column; justify-content: center; padding: 120px 56px 80px; position: relative; z-index: 1; }
+  .hero-tag { display: inline-block; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(212,162,76,0.4); padding: 6px 20px; border-radius: 100px; margin-bottom: 28px; }
+  .hero-h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 7vw, 6rem); font-weight: 900; line-height: 0.95; color: var(--white); margin-bottom: 8px; }
+  .hero-h1 em { font-style: italic; color: var(--fire); display: block; }
+  .hero-sub { font-size: 1rem; color: var(--muted); font-weight: 300; max-width: 440px; margin: 24px 0 48px; line-height: 1.7; }
+  .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-primary { background: var(--fire); color: var(--white); border: none; padding: 16px 36px; border-radius: 2px; font-family: 'Jost', sans-serif; font-size: 0.8rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-block; }
   .btn-primary:hover { background: var(--ember); transform: translateY(-2px); }
-  .btn-outline {
-    background: transparent; color: var(--cream);
-    border: 1px solid rgba(245,236,215,0.3); padding: 16px 36px; border-radius: 2px;
-    font-family: 'Jost', sans-serif; font-size: 0.8rem;
-    font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
-    cursor: pointer; transition: all 0.2s; text-decoration: none;
-    display: inline-block;
-  }
+  .btn-outline { background: transparent; color: var(--cream); border: 1px solid rgba(245,236,215,0.3); padding: 16px 36px; border-radius: 2px; font-family: 'Jost', sans-serif; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-block; }
   .btn-outline:hover { border-color: var(--gold); color: var(--gold); }
-  .hero-scroll {
-    position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%);
-    display: flex; flex-direction: column; align-items: center; gap: 8px;
-    color: var(--muted); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
-    animation: bounce 2s ease infinite;
-  }
+  .hero-right { position: relative; overflow: hidden; z-index: 1; }
+  .hero-right img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; filter: brightness(0.45) saturate(0.7); }
+  .hero-right-grad { position: absolute; inset: 0; background: linear-gradient(to right, rgba(26,18,16,0.9) 0%, transparent 50%); }
+  .hero-scroll { position: absolute; bottom: 40px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 8px; color: var(--muted); font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; z-index: 2; animation: bob 2s ease infinite; }
   .scroll-line { width: 1px; height: 40px; background: linear-gradient(to bottom, var(--muted), transparent); }
-  @keyframes bounce { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(8px)} }
+  @keyframes bob { 0%,100%{transform:translateX(-50%) translateY(0)} 50%{transform:translateX(-50%) translateY(8px)} }
 
-  /* STRIP */
-  .strip {
-    background: var(--fire); padding: 14px 0; overflow: hidden;
-    white-space: nowrap;
-  }
-  .strip-inner {
-    display: inline-block; animation: marquee 20s linear infinite;
-    font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em;
-    text-transform: uppercase; color: var(--white);
-  }
+  .strip { background: var(--fire); padding: 14px 0; overflow: hidden; white-space: nowrap; }
+  .strip-inner { display: inline-block; animation: marquee 20s linear infinite; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--white); }
   .strip-inner span { margin: 0 40px; }
-  .strip-dot { color: rgba(255,255,255,0.5); }
+  .sdot { color: rgba(255,255,255,0.5); }
   @keyframes marquee { from{transform:translateX(0)} to{transform:translateX(-50%)} }
 
-  /* SECTIONS */
   section { padding: 100px 48px; }
   .container { max-width: 1160px; margin: 0 auto; }
-  .section-label {
-    font-size: 0.65rem; font-weight: 600; letter-spacing: 0.3em;
-    text-transform: uppercase; color: var(--fire); margin-bottom: 16px;
-    display: flex; align-items: center; gap: 12px;
-  }
-  .section-label::after { content:''; flex:1; height:1px; background:rgba(200,64,26,0.3); max-width:60px; }
-  .section-h2 {
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2rem, 5vw, 3.5rem);
-    font-weight: 700; line-height: 1.1; color: var(--white);
-  }
-  .section-h2 em { font-style: italic; color: var(--gold); }
+  .s-label { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.3em; text-transform: uppercase; color: var(--fire); margin-bottom: 16px; display: flex; align-items: center; gap: 12px; }
+  .s-label::after { content:''; flex:1; height:1px; background:rgba(200,64,26,0.3); max-width:60px; }
+  .s-h2 { font-family: 'Playfair Display', serif; font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 700; line-height: 1.1; color: var(--white); }
+  .s-h2 em { font-style: italic; color: var(--gold); }
 
-  /* ABOUT */
   #about { background: var(--ash); }
-  .about-grid {
-    display: grid; grid-template-columns: 1fr 1fr;
-    gap: 80px; align-items: center;
-  }
-  .about-visual {
-    position: relative; aspect-ratio: 4/5;
-    border-radius: 4px; overflow: hidden;
-    background: linear-gradient(135deg, var(--mid) 0%, var(--smoke) 100%);
-  }
-  .about-visual-inner {
-    position: absolute; inset: 0;
-    background:
-      radial-gradient(ellipse 60% 60% at 50% 40%, rgba(200,64,26,0.25) 0%, transparent 70%),
-      radial-gradient(ellipse 40% 40% at 80% 80%, rgba(212,162,76,0.15) 0%, transparent 60%);
-    display: flex; flex-direction: column; align-items: center; justify-content: center;
-    gap: 20px;
-  }
-  .about-icon { font-size: 5rem; opacity: 0.6; }
-  .about-badge {
-    position: absolute; bottom: 24px; right: -20px;
-    background: var(--fire); color: var(--white);
-    padding: 20px 24px; border-radius: 4px;
-    text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.4);
-  }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+  .about-visual { position: relative; aspect-ratio: 4/5; border-radius: 4px; overflow: hidden; }
+  .about-visual img { width: 100%; height: 100%; object-fit: cover; }
+  .about-visual::after { content:''; position:absolute; inset:0; background: linear-gradient(to top, rgba(26,18,16,0.6) 0%, transparent 50%); }
+  .about-badge { position: absolute; bottom: 24px; right: -20px; background: var(--fire); color: var(--white); padding: 20px 24px; border-radius: 4px; text-align: center; box-shadow: 0 20px 60px rgba(0,0,0,0.4); z-index: 2; }
   .badge-num { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 900; display: block; }
   .badge-txt { font-size: 0.65rem; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.8; }
   .about-text { display: flex; flex-direction: column; gap: 24px; }
-  .about-body { font-size: 1rem; line-height: 1.8; color: rgba(245,236,215,0.75); font-weight: 300; }
+  .about-p { font-size: 1rem; line-height: 1.8; color: rgba(245,236,215,0.75); font-weight: 300; }
   .about-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 16px; }
   .stat { border-left: 2px solid var(--fire); padding-left: 16px; }
   .stat-num { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; color: var(--gold); display: block; }
-  .stat-label { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
+  .stat-lbl { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); }
 
-  /* WHY */
   #why { background: var(--smoke); }
   .why-grid { display: grid; grid-template-columns: repeat(5,1fr); gap: 24px; margin-top: 64px; }
-  .why-card {
-    background: var(--ash); border: 1px solid rgba(212,162,76,0.12);
-    border-radius: 4px; padding: 32px 24px;
-    transition: all 0.3s; cursor: default;
-  }
-  .why-card:hover {
-    border-color: rgba(200,64,26,0.4);
-    transform: translateY(-8px);
-    box-shadow: 0 24px 60px rgba(0,0,0,0.3);
-  }
-  .why-icon { font-size: 2rem; margin-bottom: 16px; display: block; }
-  .why-title { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 10px; }
-  .why-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.7; }
+  .wcard { background: var(--ash); border: 1px solid rgba(212,162,76,0.12); border-radius: 4px; padding: 32px 24px; transition: all 0.3s; }
+  .wcard:hover { border-color: rgba(200,64,26,0.4); transform: translateY(-8px); box-shadow: 0 24px 60px rgba(0,0,0,0.3); }
+  .wcard-icon { font-size: 2rem; margin-bottom: 16px; display: block; }
+  .wcard-title { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: var(--white); margin-bottom: 10px; }
+  .wcard-desc { font-size: 0.82rem; color: var(--muted); line-height: 1.7; }
 
-  /* MENU */
   #menu { background: var(--ash); }
-  .menu-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 64px; flex-wrap: wrap; gap: 24px; }
-  .menu-tabs { display: flex; gap: 4px; background: var(--smoke); border-radius: 4px; padding: 4px; }
-  .tab-btn {
-    background: transparent; border: none; color: var(--muted);
-    font-family: 'Jost', sans-serif; font-size: 0.75rem;
-    font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase;
-    padding: 10px 20px; border-radius: 2px; cursor: pointer;
-    transition: all 0.2s;
-  }
-  .tab-btn.active { background: var(--fire); color: var(--white); }
-  .tab-btn:hover:not(.active) { color: var(--cream); }
-  .menu-panel { display: none; }
-  .menu-panel.active { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
-  .dish-card {
-    background: var(--smoke); border: 1px solid rgba(255,255,255,0.05);
-    border-radius: 4px; overflow: hidden; transition: all 0.3s;
-    display: flex; flex-direction: column;
-  }
-  .dish-card:hover { border-color: rgba(200,64,26,0.3); transform: translateY(-4px); }
-  .dish-img {
-    height: 140px; position: relative; overflow: hidden;
-    background: linear-gradient(135deg, var(--mid) 0%, var(--ash) 100%);
-    display: flex; align-items: center; justify-content: center;
-    font-size: 3.5rem;
-  }
-  .dish-img::after {
-    content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 40px;
-    background: linear-gradient(to top, var(--smoke), transparent);
-  }
-  .dish-body { padding: 20px; flex: 1; display: flex; flex-direction: column; gap: 8px; }
-  .dish-name { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: var(--white); }
-  .dish-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.6; flex: 1; }
-  .dish-tag {
-    display: inline-block; background: rgba(200,64,26,0.15);
-    color: var(--fire); font-size: 0.65rem; font-weight: 600;
-    letter-spacing: 0.1em; text-transform: uppercase;
-    padding: 4px 10px; border-radius: 100px; align-self: flex-start;
-  }
+  .menu-hdr { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 64px; flex-wrap: wrap; gap: 24px; }
+  .m-tabs { display: flex; gap: 4px; background: var(--smoke); border-radius: 4px; padding: 4px; }
+  .m-tab { background: transparent; border: none; color: var(--muted); font-family: 'Jost', sans-serif; font-size: 0.75rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 10px 20px; border-radius: 2px; cursor: pointer; transition: all 0.2s; }
+  .m-tab.active { background: var(--fire); color: var(--white); }
+  .m-tab:hover:not(.active) { color: var(--cream); }
+  .m-panel { display: none; }
+  .m-panel.active { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+  .dcard { background: var(--smoke); border: 1px solid rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden; transition: all 0.3s; display: flex; flex-direction: column; }
+  .dcard:hover { border-color: rgba(200,64,26,0.3); transform: translateY(-4px); }
+  .dcard-img { height: 160px; overflow: hidden; position: relative; background: linear-gradient(135deg, var(--mid), var(--ash)); }
+  .dcard-img img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.4s; display: block; }
+  .dcard:hover .dcard-img img { transform: scale(1.06); }
+  .dcard-img::after { content:''; position:absolute; bottom:0; left:0; right:0; height:40px; background: linear-gradient(to top, var(--smoke), transparent); }
+  .dcard-ico { height: 140px; display: flex; align-items: center; justify-content: center; font-size: 3.5rem; background: linear-gradient(135deg, var(--mid), var(--ash)); position: relative; }
+  .dcard-ico::after { content:''; position:absolute; bottom:0; left:0; right:0; height:40px; background: linear-gradient(to top, var(--smoke), transparent); }
+  .dcard-body { padding: 20px; flex: 1; display: flex; flex-direction: column; gap: 8px; }
+  .dcard-name { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 700; color: var(--white); }
+  .dcard-desc { font-size: 0.78rem; color: var(--muted); line-height: 1.6; flex: 1; }
+  .dcard-tag { display: inline-block; background: rgba(200,64,26,0.15); color: var(--fire); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 10px; border-radius: 100px; align-self: flex-start; }
 
-  /* EXPERIENCE */
-  #experience {
-    background: linear-gradient(135deg, var(--smoke) 0%, var(--ash) 100%);
-    position: relative; overflow: hidden;
-  }
-  #experience::before {
-    content: '';position:absolute;inset:0;
-    background: radial-gradient(ellipse 70% 70% at 80% 50%, rgba(200,64,26,0.10) 0%, transparent 70%);
-  }
-  .exp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; position: relative; }
+  #experience { background: linear-gradient(135deg, var(--smoke), var(--ash)); }
+  .exp-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
   .exp-list { display: flex; flex-direction: column; gap: 28px; margin-top: 40px; }
   .exp-item { display: flex; gap: 20px; align-items: flex-start; }
-  .exp-num {
-    font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 900;
-    color: rgba(200,64,26,0.2); line-height: 1; min-width: 48px;
-  }
-  .exp-text h4 { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); margin-bottom: 6px; }
-  .exp-text p { font-size: 0.85rem; color: var(--muted); line-height: 1.7; }
-  .exp-visual {
-    background: var(--mid); border-radius: 4px;
-    aspect-ratio: 1; display: flex; flex-direction: column;
-    align-items: center; justify-content: center; gap: 16px;
-    position: relative; overflow: hidden;
-  }
-  .exp-visual::before {
-    content:''; position:absolute; inset:0;
-    background: radial-gradient(ellipse at center, rgba(200,64,26,0.3) 0%, transparent 70%);
-  }
-  .exp-main-icon { font-size: 6rem; z-index: 1; }
-  .exp-caption { font-family: 'Playfair Display', serif; font-style:italic; font-size: 1.1rem; color: var(--gold); z-index:1; text-align:center; padding: 0 24px; }
+  .exp-num { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 900; color: rgba(200,64,26,0.2); line-height: 1; min-width: 48px; }
+  .exp-txt h4 { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); margin-bottom: 6px; }
+  .exp-txt p { font-size: 0.85rem; color: var(--muted); line-height: 1.7; }
+  .exp-visual { border-radius: 4px; aspect-ratio: 1; overflow: hidden; position: relative; }
+  .exp-visual img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.55); }
+  .exp-visual-ov { position: absolute; inset: 0; display: flex; align-items: flex-end; padding: 32px; background: linear-gradient(to top, rgba(26,18,16,0.8), transparent 60%); }
+  .exp-cap { font-family: 'Playfair Display', serif; font-style: italic; font-size: 1.1rem; color: var(--gold); }
 
-  /* CATERING */
-  #catering {
-    background: var(--fire);
-    text-align: center;
-  }
-  #catering .section-label { justify-content: center; color: rgba(255,255,255,0.7); }
-  #catering .section-label::after { background: rgba(255,255,255,0.3); }
-  #catering .section-h2 { color: var(--white); }
-  #catering .section-h2 em { color: rgba(255,255,255,0.6); }
-  .catering-body { font-size: 1rem; color: rgba(255,255,255,0.8); max-width: 560px; margin: 24px auto 48px; line-height: 1.8; }
-  .catering-tags { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 48px; }
+  #catering { background: var(--fire); text-align: center; }
+  #catering .s-label { justify-content: center; color: rgba(255,255,255,0.7); }
+  #catering .s-label::after { background: rgba(255,255,255,0.3); }
+  #catering .s-h2 { color: var(--white); }
+  #catering .s-h2 em { color: rgba(255,255,255,0.6); }
+  .cat-body { font-size: 1rem; color: rgba(255,255,255,0.8); max-width: 560px; margin: 24px auto 48px; line-height: 1.8; }
+  .cat-tags { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 48px; }
   .ctag { background: rgba(255,255,255,0.15); color: var(--white); border: 1px solid rgba(255,255,255,0.25); padding: 8px 20px; border-radius: 100px; font-size: 0.8rem; font-weight: 500; }
   .btn-white { background: var(--white); color: var(--fire); border: none; padding: 16px 40px; border-radius: 2px; font-family: 'Jost', sans-serif; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; cursor: pointer; transition: all 0.2s; text-decoration: none; display: inline-block; }
   .btn-white:hover { background: var(--cream); transform: translateY(-2px); }
 
-  /* CONTACT */
   #contact { background: var(--smoke); }
-  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
-  .contact-info { display: flex; flex-direction: column; gap: 32px; margin-top: 40px; }
-  .contact-item { display: flex; gap: 20px; align-items: flex-start; }
-  .c-icon { font-size: 1.5rem; min-width: 40px; }
-  .c-label { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
-  .c-value { font-size: 0.95rem; color: var(--cream); line-height: 1.6; }
-  .contact-map {
-    background: var(--ash); border-radius: 4px; overflow: hidden;
-    border: 1px solid rgba(212,162,76,0.15); min-height: 360px;
-    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px;
-    position: relative;
-  }
-  .map-bg {
-    position: absolute; inset: 0;
-    background: linear-gradient(135deg, var(--mid) 0%, var(--smoke) 100%);
-    opacity: 0.5;
-  }
-  .map-icon { font-size: 3rem; z-index: 1; }
-  .map-text { z-index:1; text-align:center; }
-  .map-text strong { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); display: block; margin-bottom: 6px; }
-  .map-text span { font-size: 0.82rem; color: var(--muted); }
-  .map-pin {
-    width: 60px; height: 60px; background: var(--fire); border-radius: 50% 50% 50% 0;
-    transform: rotate(-45deg); position: relative; z-index:1;
-    box-shadow: 0 8px 30px rgba(200,64,26,0.5);
-    animation: pinPulse 2s ease infinite;
-  }
+  .con-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; }
+  .con-info { display: flex; flex-direction: column; gap: 32px; margin-top: 40px; }
+  .con-item { display: flex; gap: 20px; }
+  .con-icon { font-size: 1.5rem; min-width: 40px; }
+  .con-lbl { font-size: 0.65rem; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 6px; }
+  .con-val { font-size: 0.95rem; color: var(--cream); line-height: 1.6; }
+  .con-map { background: var(--ash); border-radius: 4px; border: 1px solid rgba(212,162,76,0.15); min-height: 360px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 16px; position: relative; overflow: hidden; }
+  .map-bg { position: absolute; inset: 0; background: linear-gradient(135deg, var(--mid), var(--smoke)); opacity: 0.5; }
+  .map-pin { width: 60px; height: 60px; background: var(--fire); border-radius: 50% 50% 50% 0; transform: rotate(-45deg); position: relative; z-index:1; box-shadow: 0 8px 30px rgba(200,64,26,0.5); animation: pp 2s ease infinite; }
   .map-pin::after { content:''; position:absolute; width:24px; height:24px; background: var(--smoke); border-radius: 50%; top:50%; left:50%; transform: translate(-50%,-50%); }
-  @keyframes pinPulse { 0%,100%{box-shadow:0 8px 30px rgba(200,64,26,0.5)} 50%{box-shadow:0 8px 50px rgba(200,64,26,0.8)} }
+  @keyframes pp { 0%,100%{box-shadow:0 8px 30px rgba(200,64,26,0.5)} 50%{box-shadow:0 8px 50px rgba(200,64,26,0.9)} }
+  .map-txt { z-index:1; text-align:center; }
+  .map-txt strong { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--white); display: block; margin-bottom: 6px; }
+  .map-txt span { font-size: 0.82rem; color: var(--muted); }
 
-  /* FOOTER */
-  footer {
-    background: var(--ash); border-top: 1px solid rgba(212,162,76,0.1);
-    padding: 48px; text-align: center;
-  }
-  .footer-logo { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 900; color: var(--gold); margin-bottom: 16px; }
-  .footer-logo span { color: var(--fire); }
-  .footer-tagline { font-size: 0.8rem; color: var(--muted); letter-spacing: 0.1em; margin-bottom: 32px; }
-  .footer-links { display: flex; gap: 32px; justify-content: center; margin-bottom: 32px; }
-  .footer-links a { color: var(--muted); text-decoration: none; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
-  .footer-links a:hover { color: var(--gold); }
-  .footer-copy { font-size: 0.72rem; color: rgba(140,112,96,0.5); }
+  footer { background: var(--ash); border-top: 1px solid rgba(212,162,76,0.1); padding: 48px; text-align: center; }
+  .fl { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 900; color: var(--gold); margin-bottom: 16px; }
+  .fl span { color: var(--fire); }
+  .ft { font-size: 0.8rem; color: var(--muted); letter-spacing: 0.1em; margin-bottom: 32px; }
+  .flinks { display: flex; gap: 32px; justify-content: center; margin-bottom: 32px; }
+  .flinks a { color: var(--muted); text-decoration: none; font-size: 0.75rem; letter-spacing: 0.1em; text-transform: uppercase; transition: color 0.2s; }
+  .flinks a:hover { color: var(--gold); }
+  .fc { font-size: 0.72rem; color: rgba(140,112,96,0.5); }
 
-  /* RESPONSIVE */
-  @media(max-width: 900px) {
-    nav { padding: 16px 24px; }
-    .nav-links { display: none; }
-    section { padding: 72px 24px; }
-    .about-grid, .exp-grid, .contact-grid { grid-template-columns: 1fr; gap: 48px; }
-    .why-grid { grid-template-columns: repeat(2,1fr); }
-    .menu-panel.active { grid-template-columns: repeat(2,1fr); }
-    .about-badge { right: 0; }
-    footer { padding: 40px 24px; }
-    .footer-links { flex-wrap: wrap; gap: 20px; }
+  @media(max-width:900px) {
+    nav { padding: 16px 24px; } .nav-links { display: none; } section { padding: 72px 24px; }
+    #hero { grid-template-columns: 1fr; } .hero-left { padding: 100px 24px 60px; } .hero-right { height: 300px; }
+    .about-grid, .exp-grid, .con-grid { grid-template-columns: 1fr; gap: 48px; }
+    .why-grid { grid-template-columns: repeat(2,1fr); } .m-panel.active { grid-template-columns: repeat(2,1fr); }
+    .about-badge { right: 0; } footer { padding: 40px 24px; }
   }
-  @media(max-width: 560px) {
-    .why-grid { grid-template-columns: 1fr; }
-    .menu-panel.active { grid-template-columns: 1fr; }
-    .hero-btns { flex-direction: column; align-items: center; }
-    .about-stats { grid-template-columns: repeat(2,1fr); }
-    .menu-tabs { flex-wrap: wrap; }
+  @media(max-width:560px) {
+    .why-grid { grid-template-columns: 1fr; } .m-panel.active { grid-template-columns: 1fr; }
+    .hero-btns { flex-direction: column; } .about-stats { grid-template-columns: repeat(2,1fr); }
+    .m-tabs { flex-wrap: wrap; }
   }
 </style>
 </head>
 <body>
-
-<!-- NAV -->
 <nav>
   <div class="nav-logo">Chilis<span>.</span></div>
   <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#menu">Menu</a></li>
-    <li><a href="#experience">Dining</a></li>
-    <li><a href="#catering">Events</a></li>
-    <li><a href="#contact">Contact</a></li>
+    <li><a href="#about">About</a></li><li><a href="#menu">Menu</a></li>
+    <li><a href="#experience">Dining</a></li><li><a href="#catering">Events</a></li><li><a href="#contact">Contact</a></li>
   </ul>
   <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Reserve a Table</button>
 </nav>
 
-<!-- HERO -->
+<!-- HERO: real restaurant photo as full bleed background -->
 <section id="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-grain"></div>
-  <div class="hero-decor-line"></div>
-  <div class="hero-content">
+  <img class="hero-bg-abs" src="https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg?auto=compress&cs=tinysrgb&w=1600" alt="restaurant ambiance">
+  <div class="hero-left">
     <div class="hero-tag">✦ Ibadan's Finest Table ✦</div>
-    <h1 class="hero-h1">
-      Good Food.<br><em>Great Memories.</em>
-    </h1>
+    <h1 class="hero-h1">Good Food.<br><em>Great Memories.</em></h1>
     <p class="hero-sub">From smoky jollof rice and spiced asun to grilled proteins and continental favourites — every plate at Chilis is made to delight.</p>
     <div class="hero-btns">
       <a href="#menu" class="btn-primary">Explore Menu</a>
       <a href="#contact" class="btn-outline">Reserve a Table</a>
     </div>
   </div>
-  <div class="hero-scroll">
-    <div class="scroll-line"></div>
-    <span>Scroll</span>
+  <div class="hero-right">
+    <img src="https://images.pexels.com/photos/34686219/pexels-photo-34686219.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Chilis dining room">
+    <div class="hero-right-grad"></div>
   </div>
+  <div class="hero-scroll"><div class="scroll-line"></div><span>Scroll</span></div>
 </section>
 
-<!-- MARQUEE STRIP -->
 <div class="strip">
   <div class="strip-inner">
-    <span>Jollof Rice</span><span class="strip-dot">◆</span>
-    <span>Asun Rice</span><span class="strip-dot">◆</span>
-    <span>Grilled Chicken</span><span class="strip-dot">◆</span>
-    <span>Seafood Rice</span><span class="strip-dot">◆</span>
-    <span>Peppered Turkey</span><span class="strip-dot">◆</span>
-    <span>Egusi Soup</span><span class="strip-dot">◆</span>
-    <span>Suya Spaghetti</span><span class="strip-dot">◆</span>
-    <span>Jambalaya</span><span class="strip-dot">◆</span>
-    <span>Jollof Rice</span><span class="strip-dot">◆</span>
-    <span>Asun Rice</span><span class="strip-dot">◆</span>
-    <span>Grilled Chicken</span><span class="strip-dot">◆</span>
-    <span>Seafood Rice</span><span class="strip-dot">◆</span>
-    <span>Peppered Turkey</span><span class="strip-dot">◆</span>
-    <span>Egusi Soup</span><span class="strip-dot">◆</span>
-    <span>Suya Spaghetti</span><span class="strip-dot">◆</span>
-    <span>Jambalaya</span><span class="strip-dot">◆</span>
+    <span>Jollof Rice</span><span class="sdot">◆</span><span>Asun Rice</span><span class="sdot">◆</span><span>Grilled Chicken</span><span class="sdot">◆</span><span>Seafood Rice</span><span class="sdot">◆</span><span>Peppered Turkey</span><span class="sdot">◆</span><span>Egusi Soup</span><span class="sdot">◆</span><span>Suya Spaghetti</span><span class="sdot">◆</span><span>Jambalaya</span><span class="sdot">◆</span>
+    <span>Jollof Rice</span><span class="sdot">◆</span><span>Asun Rice</span><span class="sdot">◆</span><span>Grilled Chicken</span><span class="sdot">◆</span><span>Seafood Rice</span><span class="sdot">◆</span><span>Peppered Turkey</span><span class="sdot">◆</span><span>Egusi Soup</span><span class="sdot">◆</span><span>Suya Spaghetti</span><span class="sdot">◆</span><span>Jambalaya</span><span class="sdot">◆</span>
   </div>
 </div>
 
-<!-- ABOUT -->
 <section id="about">
   <div class="container">
     <div class="about-grid">
       <div class="about-visual">
-        <div class="about-visual-inner">
-          <div class="about-icon">🍽️</div>
-          <p style="font-family:'Playfair Display',serif;font-style:italic;font-size:1.2rem;color:var(--gold);text-align:center;padding:0 24px;opacity:0.8;">"Where flavour meets memory"</p>
-        </div>
-        <div class="about-badge">
-          <span class="badge-num">10+</span>
-          <span class="badge-txt">Signature Dishes</span>
-        </div>
+        <!-- Real food photo: fried chicken & rice dish -->
+        <img src="https://images.pexels.com/photos/6249394/pexels-photo-6249394.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Nigerian meal at Chilis">
+        <div class="about-badge"><span class="badge-num">10+</span><span class="badge-txt">Signature Dishes</span></div>
       </div>
       <div class="about-text">
-        <div>
-          <div class="section-label">Our Story</div>
-          <h2 class="section-h2">More than a meal.<br><em>An experience.</em></h2>
-        </div>
-        <p class="about-body">At Chilis Restaurant, we believe great food should do more than satisfy hunger — it should create memories. Our kitchen serves a wide variety of meals made with carefully selected ingredients, bold flavours, and a commitment to consistency.</p>
-        <p class="about-body">Our menu blends local Nigerian favourites with continental options, giving guests plenty of choices for lunch, dinner, events, and quick bites.</p>
+        <div><div class="s-label">Our Story</div><h2 class="s-h2">More than a meal.<br><em>An experience.</em></h2></div>
+        <p class="about-p">At Chilis Restaurant, we believe great food should do more than satisfy hunger — it should create memories. Our kitchen serves a wide variety of meals made with carefully selected ingredients, bold flavours, and a commitment to consistency.</p>
+        <p class="about-p">Our menu blends local Nigerian favourites with continental options, giving guests plenty of choices for lunch, dinner, events, and quick bites.</p>
         <div class="about-stats">
-          <div class="stat"><span class="stat-num">7+</span><span class="stat-label">Rice Dishes</span></div>
-          <div class="stat"><span class="stat-num">6+</span><span class="stat-label">Proteins</span></div>
-          <div class="stat"><span class="stat-num">24h</span><span class="stat-label">Open Daily</span></div>
+          <div class="stat"><span class="stat-num">7+</span><span class="stat-lbl">Rice Dishes</span></div>
+          <div class="stat"><span class="stat-num">6+</span><span class="stat-lbl">Proteins</span></div>
+          <div class="stat"><span class="stat-num">24h</span><span class="stat-lbl">Open Daily</span></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- WHY -->
 <section id="why">
   <div class="container">
-    <div class="section-label">Why Chilis</div>
-    <h2 class="section-h2">What makes us<br><em>different.</em></h2>
+    <div class="s-label">Why Chilis</div>
+    <h2 class="s-h2">What makes us<br><em>different.</em></h2>
     <div class="why-grid">
-      <div class="why-card">
-        <span class="why-icon">🇳🇬</span>
-        <div class="why-title">Nigerian & Continental</div>
-        <p class="why-desc">A wide variety of local and international dishes under one roof.</p>
-      </div>
-      <div class="why-card">
-        <span class="why-icon">💎</span>
-        <div class="why-title">Premium Quality</div>
-        <p class="why-desc">Carefully selected ingredients with bold flavours and consistent quality.</p>
-      </div>
-      <div class="why-card">
-        <span class="why-icon">🌿</span>
-        <div class="why-title">Serene Atmosphere</div>
-        <p class="why-desc">A beautiful, relaxed dining environment perfect for every occasion.</p>
-      </div>
-      <div class="why-card">
-        <span class="why-icon">🎉</span>
-        <div class="why-title">Every Occasion</div>
-        <p class="why-desc">Family outings, dates, celebrations, and business lunches — all welcome.</p>
-      </div>
-      <div class="why-card">
-        <span class="why-icon">🛵</span>
-        <div class="why-title">Dine-in & Takeaway</div>
-        <p class="why-desc">Enjoy in our space or take your favourites home. We also cater events.</p>
-      </div>
+      <div class="wcard"><span class="wcard-icon">🇳🇬</span><div class="wcard-title">Nigerian & Continental</div><p class="wcard-desc">A wide variety of local and international dishes under one roof.</p></div>
+      <div class="wcard"><span class="wcard-icon">💎</span><div class="wcard-title">Premium Quality</div><p class="wcard-desc">Carefully selected ingredients with bold flavours and consistent quality.</p></div>
+      <div class="wcard"><span class="wcard-icon">🌿</span><div class="wcard-title">Serene Atmosphere</div><p class="wcard-desc">A beautiful, relaxed dining environment perfect for every occasion.</p></div>
+      <div class="wcard"><span class="wcard-icon">🎉</span><div class="wcard-title">Every Occasion</div><p class="wcard-desc">Family outings, dates, celebrations, and business lunches — all welcome.</p></div>
+      <div class="wcard"><span class="wcard-icon">🛵</span><div class="wcard-title">Dine-in & Takeaway</div><p class="wcard-desc">Enjoy in our space or take your favourites home. We also cater events.</p></div>
     </div>
   </div>
 </section>
 
-<!-- MENU -->
 <section id="menu">
   <div class="container">
-    <div class="menu-header">
-      <div>
-        <div class="section-label">Our Menu</div>
-        <h2 class="section-h2">Made for every<br><em>craving.</em></h2>
-      </div>
-      <div class="menu-tabs">
-        <button class="tab-btn active" onclick="switchTab('rice', this)">Rice & Pasta</button>
-        <button class="tab-btn" onclick="switchTab('protein', this)">Proteins</button>
-        <button class="tab-btn" onclick="switchTab('soups', this)">Soups</button>
-        <button class="tab-btn" onclick="switchTab('snacks', this)">Snacks</button>
+    <div class="menu-hdr">
+      <div><div class="s-label">Our Menu</div><h2 class="s-h2">Made for every<br><em>craving.</em></h2></div>
+      <div class="m-tabs">
+        <button class="m-tab active" onclick="switchTab('rice',this)">Rice & Pasta</button>
+        <button class="m-tab" onclick="switchTab('protein',this)">Proteins</button>
+        <button class="m-tab" onclick="switchTab('soups',this)">Soups</button>
+        <button class="m-tab" onclick="switchTab('snacks',this)">Snacks</button>
       </div>
     </div>
-
-    <div id="tab-rice" class="menu-panel active">
-      <div class="dish-card"><div class="dish-img">🍚</div><div class="dish-body"><div class="dish-name">Asun Rice</div><p class="dish-desc">Smoky jollof rice paired with spicy grilled goat meat. A Chilis signature.</p><span class="dish-tag">Signature</span></div></div>
-      <div class="dish-card"><div class="dish-img">🦐</div><div class="dish-body"><div class="dish-name">Seafood Rice</div><p class="dish-desc">Luxury rice stir-fried with fresh, premium seafood flavours.</p><span class="dish-tag">Premium</span></div></div>
-      <div class="dish-card"><div class="dish-img">🌶️</div><div class="dish-body"><div class="dish-name">Suya Rice</div><p class="dish-desc">Fragrant rice infused with bold suya seasoning for a smoky kick.</p><span class="dish-tag">Spicy</span></div></div>
-      <div class="dish-card"><div class="dish-img">🍛</div><div class="dish-body"><div class="dish-name">Special Jollof Rice</div><p class="dish-desc">Rich, well-seasoned jollof rice cooked to perfection in the Nigerian tradition.</p><span class="dish-tag">Favourite</span></div></div>
-      <div class="dish-card"><div class="dish-img">🌾</div><div class="dish-body"><div class="dish-name">Village Rice (Basmati)</div><p class="dish-desc">Premium basmati rice prepared in a traditional, flavour-forward style.</p><span class="dish-tag">Classic</span></div></div>
-      <div class="dish-card"><div class="dish-img">🥘</div><div class="dish-body"><div class="dish-name">Jambalaya</div><p class="dish-desc">A rich one-pot rice dish loaded with savory, slow-cooked flavour.</p><span class="dish-tag">Continental</span></div></div>
-      <div class="dish-card"><div class="dish-img">🍝</div><div class="dish-body"><div class="dish-name">Suya Spaghetti</div><p class="dish-desc">Spaghetti with a bold suya twist — a Chilis take on an Italian staple.</p><span class="dish-tag">Fusion</span></div></div>
-      <div class="dish-card"><div class="dish-img">🍜</div><div class="dish-body"><div class="dish-name">Village Spaghetti</div><p class="dish-desc">Classic spaghetti prepared with a rustic, home-style Nigerian touch.</p><span class="dish-tag">Classic</span></div></div>
-      <div class="dish-card"><div class="dish-img">🍚</div><div class="dish-body"><div class="dish-name">Fried Rice</div><p class="dish-desc">Colorful, flavorful rice stir-fried with vegetables and our signature spices.</p><span class="dish-tag">Favourite</span></div></div>
+    <div id="tab-rice" class="m-panel active">
+      <div class="dcard"><div class="dcard-img"><img src="https://images.pexels.com/photos/6249394/pexels-photo-6249394.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Asun Rice"></div><div class="dcard-body"><div class="dcard-name">Asun Rice</div><p class="dcard-desc">Smoky jollof rice paired with spicy grilled goat meat. A Chilis signature.</p><span class="dcard-tag">Signature</span></div></div>
+      <div class="dcard"><div class="dcard-img"><img src="https://images.pexels.com/photos/29617469/pexels-photo-29617469.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Seafood Rice"></div><div class="dcard-body"><div class="dcard-name">Seafood Rice</div><p class="dcard-desc">Luxury rice stir-fried with fresh, premium seafood flavours.</p><span class="dcard-tag">Premium</span></div></div>
+      <div class="dcard"><div class="dcard-ico">🌶️</div><div class="dcard-body"><div class="dcard-name">Suya Rice</div><p class="dcard-desc">Fragrant rice infused with bold suya seasoning for a smoky kick.</p><span class="dcard-tag">Spicy</span></div></div>
+      <div class="dcard"><div class="dcard-img"><img src="https://images.pexels.com/photos/9324621/pexels-photo-9324621.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Jollof Rice"></div><div class="dcard-body"><div class="dcard-name">Special Jollof Rice</div><p class="dcard-desc">Rich, well-seasoned jollof rice cooked to perfection in the Nigerian tradition.</p><span class="dcard-tag">Favourite</span></div></div>
+      <div class="dcard"><div class="dcard-ico">🌾</div><div class="dcard-body"><div class="dcard-name">Village Rice (Basmati)</div><p class="dcard-desc">Premium basmati rice prepared in a traditional, flavour-forward style.</p><span class="dcard-tag">Classic</span></div></div>
+      <div class="dcard"><div class="dcard-ico">🥘</div><div class="dcard-body"><div class="dcard-name">Jambalaya</div><p class="dcard-desc">A rich one-pot rice dish loaded with savory, slow-cooked flavour.</p><span class="dcard-tag">Continental</span></div></div>
+      <div class="dcard"><div class="dcard-ico">🍝</div><div class="dcard-body"><div class="dcard-name">Suya Spaghetti</div><p class="dcard-desc">Spaghetti with a bold suya twist — a Chilis take on an Italian staple.</p><span class="dcard-tag">Fusion</span></div></div>
+      <div class="dcard"><div class="dcard-ico">🍜</div><div class="dcard-body"><div class="dcard-name">Village Spaghetti</div><p class="dcard-desc">Classic spaghetti prepared with a rustic, home-style Nigerian touch.</p><span class="dcard-tag">Classic</span></div></div>
+      <div class="dcard"><div class="dcard-img"><img src="https://images.pexels.com/photos/24738519/pexels-photo-24738519.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Fried Rice"></div><div class="dcard-body"><div class="dcard-name">Fried Rice</div><p class="dcard-desc">Colorful, flavorful rice stir-fried with vegetables and our signature spices.</p><span class="dcard-tag">Favourite</span></div></div>
     </div>
-
-    <div id="tab-protein" class="menu-panel">
-      <div class="dish-card"><div class="dish-img">🍗</div><div class="dish-body"><div class="dish-name">Peppered Chicken</div><p class="dish-desc">Grilled chicken coated in our rich, fiery pepper sauce. Boldly flavoured.</p><span class="dish-tag">Spicy</span></div></div>
-      <div class="dish-card"><div class="dish-img">🍯</div><div class="dish-body"><div class="dish-name">Honey BBQ Chicken</div><p class="dish-desc">Grilled chicken finished with a sweet, sticky honey BBQ glaze.</p><span class="dish-tag">Signature</span></div></div>
-      <div class="dish-card"><div class="dish-img">🦃</div><div class="dish-body"><div class="dish-name">Grilled Turkey</div><p class="dish-desc">A large, boldly seasoned turkey portion grilled to smoky perfection.</p><span class="dish-tag">Premium</span></div></div>
-      <div class="dish-card"><div class="dish-img">🔥</div><div class="dish-body"><div class="dish-name">Barbeque Turkey</div><p class="dish-desc">Slow-cooked turkey bathed in rich BBQ sauce. A crowd favourite.</p><span class="dish-tag">Favourite</span></div></div>
-      <div class="dish-card"><div class="dish-img">🐟</div><div class="dish-body"><div class="dish-name">Titus Fish</div><p class="dish-desc">Freshly prepared mackerel, seasoned and served the Chilis way.</p><span class="dish-tag">Local</span></div></div>
-      <div class="dish-card"><div class="dish-img">🐠</div><div class="dish-body"><div class="dish-name">Panla Fish</div><p class="dish-desc">Hake fish prepared with aromatic spices and paired with your choice of side.</p><span class="dish-tag">Local</span></div></div>
+    <div id="tab-protein" class="m-panel">
+      <div class="dcard"><div class="dcard-img"><img src="https://images.pexels.com/photos/616353/pexels-photo-616353.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Grilled Chicken"></div><div class="dcard-body"><div class="dcard-name">Peppered Chicken</div><p class="dcard-desc">Grilled chicken coated in our rich, fiery pepper sauce. Boldly flavoured.</p><span class="dcard-tag">Spicy</span></div></div>
+      <div class="dcard"><div class="dcard-ico">🍯</div><div class="dcard-body"><div class="dcard-name">Honey BBQ Chicken</div><p class="dcard-desc">Grilled chicken finished with a sweet, sticky honey BBQ glaze.</p><span class="dcard-tag">Signature</span></div></div>
+      <div class="dcard"><div class="dcard-ico">🦃</div><div class="dcard-body"><div class="dcard-name">Grilled Turkey</div><p class="dcard-desc">A large, boldly seasoned turkey portion grilled to smoky perfection.</p><span class="dcard-tag">Premium</span></div></div>
+      <div class="dcard"><div class="dcard-ico">🔥</div><div class="dcard-body"><div class="dcard-name">Barbeque Turkey</div><p class="dcard-desc">Slow-cooked turkey bathed in rich BBQ sauce. A crowd favourite.</p><span class="dcard-tag">Favourite</span></div></div>
+      <div class="dcard"><div class="dcard-img"><img src="https://images.pexels.com/photos/11653557/pexels-photo-11653557.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Titus Fish"></div><div class="dcard-body"><div class="dcard-name">Titus Fish</div><p class="dcard-desc">Freshly prepared mackerel, seasoned and served the Chilis way.</p><span class="dcard-tag">Local</span></div></div>
+      <div class="dcard"><div class="dcard-img"><img src="https://images.pexels.com/photos/8352799/pexels-photo-8352799.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Panla Fish"></div><div class="dcard-body"><div class="dcard-name">Panla Fish</div><p class="dcard-desc">Hake fish prepared with aromatic spices and paired with your choice of side.</p><span class="dcard-tag">Local</span></div></div>
     </div>
-
-    <div id="tab-soups" class="menu-panel">
-      <div class="dish-card"><div class="dish-img">🥣</div><div class="dish-body"><div class="dish-name">Egusi Soup</div><p class="dish-desc">Rich, hearty egusi soup made with ground melon seeds and assorted proteins.</p><span class="dish-tag">Nigerian</span></div></div>
-      <div class="dish-card"><div class="dish-img">🍲</div><div class="dish-body"><div class="dish-name">Porridge Dishes</div><p class="dish-desc">Warm, comforting porridge preparations made with premium local produce.</p><span class="dish-tag">Comfort</span></div></div>
-      <div class="dish-card"><div class="dish-img">🫕</div><div class="dish-body"><div class="dish-name">Swallow & Soup</div><p class="dish-desc">Classic Nigerian swallow served with your choice of flavourful soup.</p><span class="dish-tag">Classic</span></div></div>
+    <div id="tab-soups" class="m-panel">
+      <div class="dcard"><div class="dcard-ico">🥣</div><div class="dcard-body"><div class="dcard-name">Egusi Soup</div><p class="dcard-desc">Rich, hearty egusi soup made with ground melon seeds and assorted proteins.</p><span class="dcard-tag">Nigerian</span></div></div>
+      <div class="dcard"><div class="dcard-ico">🍲</div><div class="dcard-body"><div class="dcard-name">Porridge Dishes</div><p class="dcard-desc">Warm, comforting porridge preparations made with premium local produce.</p><span class="dcard-tag">Comfort</span></div></div>
+      <div class="dcard"><div class="dcard-ico">🫕</div><div class="dcard-body"><div class="dcard-name">Swallow & Soup</div><p class="dcard-desc">Classic Nigerian swallow served with your choice of flavourful soup.</p><span class="dcard-tag">Classic</span></div></div>
     </div>
-
-    <div id="tab-snacks" class="menu-panel">
-      <div class="dish-card"><div class="dish-img">🥧</div><div class="dish-body"><div class="dish-name">Chicken Pie</div><p class="dish-desc">Flaky, golden pastry filled with well-seasoned chicken. Perfect for a quick bite.</p><span class="dish-tag">Snack</span></div></div>
-      <div class="dish-card"><div class="dish-img">🥩</div><div class="dish-body"><div class="dish-name">Meat Pie</div><p class="dish-desc">A Nigerian classic — buttery crust encasing a savoury meat filling.</p><span class="dish-tag">Classic</span></div></div>
-      <div class="dish-card"><div class="dish-img">🥗</div><div class="dish-body"><div class="dish-name">Chicken Salad</div><p class="dish-desc">Fresh, crisp salad topped with grilled chicken strips and house dressing.</p><span class="dish-tag">Light</span></div></div>
-      <div class="dish-card"><div class="dish-img">🥙</div><div class="dish-body"><div class="dish-name">Coleslaw</div><p class="dish-desc">Creamy, house-made coleslaw — a refreshing side or standalone light bite.</p><span class="dish-tag">Side</span></div></div>
+    <div id="tab-snacks" class="m-panel">
+      <div class="dcard"><div class="dcard-ico">🥧</div><div class="dcard-body"><div class="dcard-name">Chicken Pie</div><p class="dcard-desc">Flaky, golden pastry filled with well-seasoned chicken. Perfect for a quick bite.</p><span class="dcard-tag">Snack</span></div></div>
+      <div class="dcard"><div class="dcard-ico">🥩</div><div class="dcard-body"><div class="dcard-name">Meat Pie</div><p class="dcard-desc">A Nigerian classic — buttery crust encasing a savoury meat filling.</p><span class="dcard-tag">Classic</span></div></div>
+      <div class="dcard"><div class="dcard-ico">🥗</div><div class="dcard-body"><div class="dcard-name">Chicken Salad</div><p class="dcard-desc">Fresh, crisp salad topped with grilled chicken strips and house dressing.</p><span class="dcard-tag">Light</span></div></div>
     </div>
   </div>
 </section>
 
-<!-- EXPERIENCE -->
 <section id="experience">
   <div class="container">
     <div class="exp-grid">
       <div>
-        <div class="section-label">The Dining Experience</div>
-        <h2 class="section-h2">A space made<br>for <em>moments.</em></h2>
+        <div class="s-label">The Dining Experience</div>
+        <h2 class="s-h2">A space made<br>for <em>moments.</em></h2>
         <div class="exp-list">
-          <div class="exp-item">
-            <div class="exp-num">01</div>
-            <div class="exp-text"><h4>Serene & Aesthetic</h4><p>Our dining space is designed to be beautiful, relaxed, and perfect for photographs, conversations, and celebrations.</p></div>
-          </div>
-          <div class="exp-item">
-            <div class="exp-num">02</div>
-            <div class="exp-text"><h4>Warm, Attentive Service</h4><p>Our team is here to ensure every visit feels welcoming — from your first meal to your last sip.</p></div>
-          </div>
-          <div class="exp-item">
-            <div class="exp-num">03</div>
-            <div class="exp-text"><h4>Every Occasion Welcome</h4><p>Family lunches, romantic dinners, business meetings, or milestone celebrations — Chilis is ready for them all.</p></div>
-          </div>
+          <div class="exp-item"><div class="exp-num">01</div><div class="exp-txt"><h4>Serene & Aesthetic</h4><p>Our dining space is designed to be beautiful, relaxed, and perfect for photographs, conversations, and celebrations.</p></div></div>
+          <div class="exp-item"><div class="exp-num">02</div><div class="exp-txt"><h4>Warm, Attentive Service</h4><p>Our team is here to ensure every visit feels welcoming — from your first meal to your last sip.</p></div></div>
+          <div class="exp-item"><div class="exp-num">03</div><div class="exp-txt"><h4>Every Occasion Welcome</h4><p>Family lunches, romantic dinners, business meetings, or milestone celebrations — Chilis is ready for them all.</p></div></div>
         </div>
       </div>
       <div class="exp-visual">
-        <div class="exp-main-icon">🕯️</div>
-        <p class="exp-caption">"Great food should create memories."</p>
+        <!-- Real restaurant night atmosphere photo -->
+        <img src="https://images.pexels.com/photos/5366568/pexels-photo-5366568.jpeg?auto=compress&cs=tinysrgb&w=800" alt="Chilis restaurant atmosphere">
+        <div class="exp-visual-ov"><span class="exp-cap">"Great food should create memories."</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- CATERING -->
 <section id="catering">
   <div class="container">
-    <div class="section-label">Events & Catering</div>
-    <h2 class="section-h2">We bring the feast<br><em>to you.</em></h2>
-    <p class="catering-body">Planning a birthday, office lunch, private dinner, or special gathering? Chilis offers catering and event support — flavorful meals, elegant presentation, and a dining experience that fits both intimate gatherings and larger celebrations.</p>
-    <div class="catering-tags">
-      <span class="ctag">🎂 Birthdays</span>
-      <span class="ctag">💼 Office Lunches</span>
-      <span class="ctag">🥂 Private Dinners</span>
-      <span class="ctag">🎊 Celebrations</span>
-      <span class="ctag">🍽️ Corporate Events</span>
+    <div class="s-label">Events & Catering</div>
+    <h2 class="s-h2">We bring the feast<br><em>to you.</em></h2>
+    <p class="cat-body">Planning a birthday, office lunch, private dinner, or special gathering? Chilis offers catering and event support — flavorful meals, elegant presentation, and a dining experience that fits both intimate gatherings and larger celebrations.</p>
+    <div class="cat-tags">
+      <span class="ctag">🎂 Birthdays</span><span class="ctag">💼 Office Lunches</span><span class="ctag">🥂 Private Dinners</span><span class="ctag">🎊 Celebrations</span><span class="ctag">🍽️ Corporate Events</span>
     </div>
     <a href="#contact" class="btn-white">Get in Touch</a>
   </div>
 </section>
 
-<!-- CONTACT -->
 <section id="contact">
   <div class="container">
-    <div class="contact-grid">
+    <div class="con-grid">
       <div>
-        <div class="section-label">Find Us</div>
-        <h2 class="section-h2">Come dine<br><em>with us.</em></h2>
-        <div class="contact-info">
-          <div class="contact-item">
-            <div class="c-icon">📍</div>
-            <div><div class="c-label">Location</div><div class="c-value">76 MKO Abiola Way, Oluyole<br>Ibadan, Oyo State</div></div>
-          </div>
-          <div class="contact-item">
-            <div class="c-icon">📞</div>
-            <div><div class="c-label">Phone</div><div class="c-value">08115399071<br>08055205558</div></div>
-          </div>
-          <div class="contact-item">
-            <div class="c-icon">🕐</div>
-            <div><div class="c-label">Hours</div><div class="c-value">Monday – Sunday<br>Open 24 Hours</div></div>
-          </div>
-          <div class="contact-item">
-            <div class="c-icon">🛵</div>
-            <div><div class="c-label">Order Online</div><div class="c-value">Also available on Glovo<br>for delivery & pickup</div></div>
-          </div>
+        <div class="s-label">Find Us</div>
+        <h2 class="s-h2">Come dine<br><em>with us.</em></h2>
+        <div class="con-info">
+          <div class="con-item"><div class="con-icon">📍</div><div><div class="con-lbl">Location</div><div class="con-val">76 MKO Abiola Way, Oluyole<br>Ibadan, Oyo State</div></div></div>
+          <div class="con-item"><div class="con-icon">📞</div><div><div class="con-lbl">Phone</div><div class="con-val">08115399071 / 08055205558</div></div></div>
+          <div class="con-item"><div class="con-icon">🕐</div><div><div class="con-lbl">Hours</div><div class="con-val">Monday – Sunday · Open 24 Hours</div></div></div>
+          <div class="con-item"><div class="con-icon">🛵</div><div><div class="con-lbl">Order Online</div><div class="con-val">Available on Glovo for delivery & pickup</div></div></div>
         </div>
       </div>
-      <div class="contact-map">
+      <div class="con-map">
         <div class="map-bg"></div>
         <div class="map-pin"></div>
-        <div class="map-text">
-          <strong>Chilis Restaurant</strong>
-          <span>76 MKO Abiola Way, Ibadan</span>
-        </div>
+        <div class="map-txt"><strong>Chilis Restaurant</strong><span>76 MKO Abiola Way, Ibadan</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer>
-  <div class="footer-logo">Chilis<span>.</span></div>
-  <p class="footer-tagline">Good Food · Warm Service · Unforgettable Dining</p>
-  <div class="footer-links">
-    <a href="#about">About</a>
-    <a href="#menu">Menu</a>
-    <a href="#experience">Dining</a>
-    <a href="#catering">Events</a>
-    <a href="#contact">Contact</a>
-  </div>
-  <p class="footer-copy">© 2025 Chilis Restaurant, Ibadan. All rights reserved.</p>
+  <div class="fl">Chilis<span>.</span></div>
+  <p class="ft">Good Food · Warm Service · Unforgettable Dining</p>
+  <div class="flinks"><a href="#about">About</a><a href="#menu">Menu</a><a href="#experience">Dining</a><a href="#catering">Events</a><a href="#contact">Contact</a></div>
+  <p class="fc">© 2025 Chilis Restaurant, Ibadan. Photos courtesy of Pexels.</p>
 </footer>
 
 <script>
   function switchTab(tab, btn) {
-    document.querySelectorAll('.menu-panel').forEach(p => p.classList.remove('active'));
-    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.m-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.m-tab').forEach(b => b.classList.remove('active'));
     document.getElementById('tab-' + tab).classList.add('active');
     btn.classList.add('active');
   }
-
-  // Scroll-triggered fade-in
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        e.target.style.opacity = '1';
-        e.target.style.transform = 'translateY(0)';
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll('.why-card, .dish-card, .exp-item, .contact-item').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(30px)';
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(el);
-  });
+  const obs = new IntersectionObserver(e => e.forEach(x => { if(x.isIntersecting){x.target.style.opacity='1';x.target.style.transform='translateY(0)';} }), {threshold:0.1});
+  document.querySelectorAll('.wcard,.dcard,.exp-item,.con-item').forEach(el => { el.style.opacity='0'; el.style.transform='translateY(30px)'; el.style.transition='opacity 0.6s ease,transform 0.6s ease'; obs.observe(el); });
 </script>
 </body>
 </html>
